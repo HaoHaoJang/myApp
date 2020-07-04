@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <title></title>
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../asset/font/iconfont.css" />
+    <script src="../asset/font/iconfont.js"></script>
+    <script src="../js/jquery_min.js"></script>
+    <script src="../js/template-web.js"></script>
+    <style>
+        .bg-all {
+            background: #f3f3f3;
+        }
+        .header {
+            padding: 4px;
+        }
+        .tab {
+            display: flex;
+            width: 100%;
+            font-size: 1.4rem;
+        }
+        .tab div {
+            text-align: center;
+        }
+        .personal-contetn {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+        .connent-personal-contetn {
+            padding: 10px;
+            padding-bottom: 20px;
+        }
+        .fix-w {
+            width: 4rem;
+            text-align: right;
+        }
+        .back {
+            width: 6rem;
+            line-height: 30px;
+        }
+        .head-tit {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 30px;
+        }
+        .personal-header {
+            font-size: 5rem;
+        }
+        .connent-personal-header {
+            font-size: 3rem;
+        }
+        .header-name {
+            font-size: 1.6rem;
+        }
+        .connent-header-name {
+            font-size: 1.4rem;
+        }
+        .header-ico {
+            color: darkolivegreen;
+            position: relative;
+            top: 1rem;
+        }
+        .personal-tiome {
+            font-size: 1rem;
+            color: #ccc;
+            margin-top: 2rem;
+        }
+        .connent-personal-tiome {
+            font-size: 1rem;
+            color: #ccc;
+            margin-top: 0.8rem;
+        }
+        .personal-focus {
+            background: red;
+            color: white;
+            padding: 8px 10px;
+            font-size: 1.4rem;
+            border-radius: 20px;
+            height: 30px;
+            display: inline-block;
+            text-align: center;
+        }
+        .personal-more {
+            font-size: 3rem;
+            margin-top: 2.5rem;
+        }
+        .connent-personal-more {
+            text-align: right;
+            font-size: 1.2rem;
+            color: #cccccc;
+        }
+        .personal-content {
+            padding: 20px 0;
+        }
+        .text-content-title {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        .comment-personal-text {
+            font-size: 1.4rem;
+            line-height: 22px;
+            margin: 1.4rem 0;
+        }
+        .comment-inpt {
+            background: #f5f5f5;
+            border-radius: 4px;
+            height: 34px;
+            line-height: 34px;
+            padding-left: 6px;
+            width: 100%;
+        }
+        .footer-commen {
+            font-size: 1.8rem;
+            line-height: 30px;
+            width: 4rem;
+        }
+        .footer-commen-ic {
+            font-size: 1.8rem;
+        }
+        .footer-seacj {
+            font-size: 1.4rem;
+            width: calc(100% - 140px);
+            margin-right: 40px;
+            padding-left: 2rem;
+        }
+        .footer-personel {
+            font-size: 0;
+        }
+        .footer-personel div {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="bg-all">
+    <div class="header pad-mix bg-c-w flx">
+        <div class="back"><span> <  </span></div>
+        <div class="flx-1 tex-c head-tit">帖子详情</div>
+        <div class="back"></div>
+    </div>
+    <div class="container">
+        <div class="bg-c-w pd mar-b">
+            <div class="personal-contetn flx">
+                <div class="flx-w">
+                    <i class="icon iconfont icon-pinglun personal-header"></i>
+                </div>
+                <div class="flx-1">
+                    <div>
+                        <span class="header-name">只为回忆青春</span>
+                        <i class="icon iconfont icon-pinglun header-ico"></i>
+                        <i class="icon iconfont icon-pinglun header-nam-co"></i>
+                        <span class="personal-focus">关注</span>
+                    </div>
+                    <div class="personal-tiome">2020-07-01 16:18:54</div>
+                </div>
+                <div class="fix-w personal-more">
+                    <i class="icon iconfont icon-pinglun personal-more"></i>
+                </div>
+            </div>
+            <div class="personal-content">
+                <div class="text-content-title">普通玩家怎么把无视搞到60</div>
+                <div class="content-text fot-s">是否打算发的</div>
+            </div>
+        </div>
+        <div class="bg-c-w pd mar-b">
+            <div class="connent-personal-contetn flx">
+                <div class="flx-w">
+                    <i class="icon iconfont icon-pinglun connent-personal-header"></i>
+                </div>
+                <div class="flx-1">
+                    <div>
+                        <span class="connent-header-name">只为回忆青春</span>
+                        <i class="icon iconfont icon-pinglun"></i>
+                    </div>
+                    <div class="connent-personal-tiome">2020-07-01 16:18:54</div>
+                    <div class="comment-personal-text">钱</div>
+                </div>
+                <div class="fix-w connent-personal-more">
+                    <i class="icon iconfont icon-pinglun"></i> <span> 0 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer footer-personel">
+        <div class="footer-seacj">
+            <input type="text" placeholder="发表你的伟大言论" class="comment-inpt">
+        </div>
+        <div class="footer-commen">
+            <span> 0 </span> <i class="icon iconfont icon-pinglun footer-commen-ic"></i>
+        </div>
+        <div class="footer-commen">
+            <span> 0 </span> <i class="icon iconfont icon-pinglun footer-commen-ic"></i>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/lazyLoad.js"></script>
+</html>
