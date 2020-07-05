@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
     <title></title>
-    <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../asset/font/iconfont.css" />
-    <script src="../asset/font/iconfont.js"></script>
-    <script src="../js/jquery_min.js"></script>
-    <script src="../js/template-web.js"></script>
+    <link rel="stylesheet" href="../../css/base.css" />
+    <link rel="stylesheet" href="../../asset/font/iconfont.css" />
+    <link rel="stylesheet" href="./comment.css" />
+    <script src="../../asset/font/iconfont.js"></script>
+    <script src="../../js/jquery_min.js"></script>
+    <script src="../../js/template-web.js"></script>
     <style>
-        .container {
-            margin-top: 80px;
-        }
-        .bg-all {
-            background: #f3f3f3;
-        }
         .bg-ic {
             height: 40px;
             width: 40px;
@@ -24,127 +20,89 @@
             border-radius: 50%;
             margin-bottom: 6px;
         }
-        .header {
-            height: 80px;
-            padding: 6px;
-        }
-        .header .inp {
-            height: 40px;
-            line-height: 40px;
-            font-size: 1.2rem;
-            padding-left: 8px;
-            border: 1px solid #ddd;
-            border-radius: 40px;
-            width: 100%;
-        }
-        .tab {
-            display: flex;
-            width: 100%;
-            font-size: 1.4rem;
-        }
-        .tab div {
-            text-align: center;
-            padding: 4px;
-        }
-        .tab .clic {
-            color: orange;
-        }
+        
         .flx-fix {
             width: 4rem;
             text-align: right;
         }
+        
         .tex-reference {
             font-size: 1.6rem;
             height: 40px;
         }
+        
         .reference-l {
             font-weight: 500;
             padding: 6px 10px 0px 10px;
         }
+        
         .reference-r {
             text-align: right;
             padding-right: 10px;
             color: #cccccc;
         }
+        
         .tit-text-c {
             padding: 10px 4px;
             font-size: 1.6rem;
         }
+        
         .flx-w {
             width: 6rem;
         }
-        .tit-middle-content {
-            overflow-x: auto;
-            color: #cccccc;
-            white-space: nowrap;
-        }
-        .tit-t {
-            font-weight: 500;
-        }
-        .header-tit {
-            font-size: 1.6rem;
-            line-height: 30px;
-            height: 30px;
-        }
-        .header-tit2 {
-            font-size: 1.4rem;
-            overflow: auto;
-            padding: 6px 0;
-        }
-        .header-tit2 .tag-tit {
-            background: #cccccc;
-            border-radius: 36px;
-            height: 30px;
-            line-height: 30px;
-            margin-right: 14px;
-            padding: 0 10px;
-        }
-        .header-tit2 .tag-tit:first-child {
-            background: red;
-            color: #ffffff;
-        }
+        
         .lu {
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
             font-weight: 500;
         }
+        
         .biaoj {
             font-weight: 500;
             padding: 0 6px;
         }
+        
         .tim-c {
             font-size: 1.2rem;
             color: #dddddd;
             padding: 6px;
         }
+        
         .head-im {
             line-height: 40px;
         }
+        
         .head-cion {
             font-size: 3rem;
         }
+        
         .text-c-content {
             font-size: 1.4rem;
             line-height: 1.8rem;
         }
+        
         .pd {
             padding: 0 10px;
         }
+        
         .comment-content-img {
             overflow-x: auto;
             white-space: nowrap;
         }
+        
         .comment-content-img img {
             width: 11rem;
             height: 11rem;
         }
+        
         .perfect {
             height: 50px;
             line-height: 50px;
             color: #cccccc;
             font-size: 1.8rem;
         }
+        
         .num {
             font-size: 1rem;
             position: absolute;
@@ -152,37 +110,34 @@
         }
     </style>
 </head>
-<body class="bg-all">
-<div class="mar-b">
-    <div class="header pad-mix bg-c-w">
-        <div class="flx header-tit">
-            <div class="flx-w tex-c">
-                <i class="icon iconfont icon-pinglun"></i>
+
+<body class="commentList">
+    <div class="headers ">
+        <div class="header">
+            <div class="back">
+                <i class="icon iconfont icon-kefu"></i>
             </div>
-            <div class="flx-w tex-c">
+            <div class="head-tit">
                 <div class="tit-t">诛仙</div>
+                <div class="tit-t">武林外传</div>
+                <div class="tit-t">笑傲江湖C</div>
+                <div class="tit-t">海贼王</div>
             </div>
-            <div class="flx-1 tex-c tit-middle-content">
-                <span>武林外传</span>
-                <span>笑傲江湖C</span>
-                <span>海贼王</span>
-                <span>大话西游</span>
-            </div>
-            <div class="flx-w tex-c">
-                <div>+</div>
+            <div class="back">
+                <i class="icon iconfont icon-kefu"></i>
             </div>
         </div>
-        <div class="flx header-tit2">
-            <div class="flx-1 tex-c tag-tit">
+        <div class="header header2">
+            <div class="tag-tit clic">
                 综合
             </div>
-            <div class="flx-1 tex-c tag-tit">
+            <div class="tag-tit">
                 新版本资料
             </div>
-            <div class="flx-1 tex-c tag-tit">
+            <div class=" tag-tit">
                 心得交流
             </div>
-            <div class="flx-1 tex-c tag-tit">
+            <div class="tag-tit">
                 攻略
             </div>
         </div>
@@ -194,8 +149,13 @@
                     <i class="icon iconfont icon-pinglun head-cion"></i>
                 </div>
                 <div class="flx-1">
-                    <div class="reference-l">时空空千年 <i class="icon iconfont icon-pinglun"></i></div>
-                    <div class="tim-c"><i class="icon iconfont icon-pinglun"></i>01-17 16:12 <i class="icon iconfont icon-pinglun"></i>1234567</div>
+                    <div class="reference-l">
+                        时空空千年 <i class="icon iconfont icon-pinglun"></i>
+                    </div>
+                    <div class="tim-c">
+                        <i class="icon iconfont icon-pinglun"></i>01-17 16:12
+                        <i class="icon iconfont icon-pinglun"></i>1234567
+                    </div>
                 </div>
             </div>
             <div class="flx tit-text-c">
@@ -210,9 +170,9 @@
                 是的发送地方撒地方是的撒地方是大发的啥阿斯顿发送到发送是的发送是大发阿斯顿发撒地方多舒服是的发撒的发史蒂夫是的地方是的发史蒂夫撒
             </p>
             <div class="comment-content-img">
-                <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
-                <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
-                <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+                <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" />
+                <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" />
+                <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" />
             </div>
             <div class="flx perfect">
                 <div class="flx-1 tex-c posr">
@@ -230,18 +190,19 @@
             </div>
         </div>
     </div>
-    <div class="flx tab footer">
-        <div class="flx-1">
-            <i class="icon iconfont icon-pinglun"></i>
-            <div>论坛</div>
-        </div>
-        <div class="flx-1 clic">
-            <i class="icon iconfont icon-shaixuan"></i>
-            <div>园区活动</div>
-        </div>
+    <div class="footer flx">
+        <a class="nav-item clic">
+            <i class="icon iconfont icon-luntan"></i>
+            <span>论坛</span>
+        </a>
+        <a class="nav-item flx-1" href="../comment/index.html">
+            <i class="icon iconfont icon-activity"></i>
+            <span>园区活动</span>
+        </a>
     </div>
-</div>
+    </div>
 </body>
-<script src="../js/lazyLoad.js"></script>
-<script src="../js/common.js"></script>
+<script src="../../js/lazyLoad.js"></script>
+<script src="../../js/common.js"></script>
+
 </html>

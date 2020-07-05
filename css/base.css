@@ -1,16 +1,21 @@
-body, html {
+body,
+html {
     line-height: 1;
-    font-weight: 200;
-    font-size:62.5%;
+    font-size: 62.5%;
     margin: 0;
     padding: 0;
-    font-family: 'PingFang SC';
-    -ms-text-size-adjust:100%;
-    -webkit-text-size-adjust:100%;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    ;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    background: #f5f5f5;
+    color: #333;
 }
+
 .clearfix {
     display: inline-block;
 }
+
 .clearfix:after {
     display: block;
     content: '';
@@ -19,121 +24,231 @@ body, html {
     clear: both;
     visibility: hidden;
 }
-@media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5) {
-    .border-1px, .border-1px-top ::after {
+
+@media (-webkit-min-device-pixel-ratio: 1.5),
+(min-device-pixel-ratio: 1.5) {
+    .border-1px,
+    .border-1px-top ::after {
         -webkit-transform: scaleY(0.7);
         transform: scaleY(0.7);
     }
 }
-@media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
-    .border-1px, .border-1px-top::after {
+
+@media (-webkit-min-device-pixel-ratio: 3),
+(min-device-pixel-ratio: 3) {
+    .border-1px,
+    .border-1px-top::after {
         -webkit-transform: scaleY(0.5);
         transform: scaleY(0.5);
     }
 }
-div,form,ul,ol,li,span,p,dl,dt,dd,img,section,header,footer,input,textarea,a,i {
-    margin: 0 auto;
+
+div,
+form,
+ul,
+ol,
+li,
+span,
+p,
+dl,
+dt,
+dd,
+img,
+section,
+header,
+footer,
+input,
+textarea,
+a,
+i {
+    /* margin: 0 auto; */
     padding: 0;
     border: 0;
     outline: none;
-    moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     -o-box-sizing: border-box;
     box-sizing: border-box
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: normal;
     margin: 0;
     padding: 0;
     border: 0
 }
 
-ul,ol,li {
+ul,
+ol,
+li {
     list-style: none;
     list-style-position: inside
 }
-a img{
-    border:0;
+
+a img {
+    border: 0;
 }
-a{
-    text-decoration:none;
-    color: #000 !important;
-    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+
+a {
+    text-decoration: none;
+    color: #333;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
 .flx {
     display: flex;
 }
+
+.flx-cc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flx-c {
+    display: flex;
+    align-items: center;
+}
+
 .flx-1 {
     flex: 1;
 }
+
 .fl-r {
     float: right;
 }
+
 .fl-l {
     float: left;
 }
+
 .tex-c {
     text-align: center;
 }
+
 .tex-l {
     text-align: left;
 }
+
 .tex-r {
     text-align: right;
 }
+
 .cor-r {
     color: red;
 }
+
 .cur {
     cursor: pointer;
 }
+
 .mar-b {
     margin-bottom: 1.2rem;
 }
+
 .mar-t {
     margin-top: 1.2rem;
 }
+
 .pd {
     padding: 0 10px;
 }
+
 .bg-img {
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
+
 img {
     width: 100%;
     height: 100%;
 }
+
 .fot-s {
     font-size: 1.2rem;
 }
+
 .posr {
     position: relative;
 }
+
 .pad-mix {
-    padding: 0.6rem;
+    padding: 1rem;
 }
+
 .bg-c-w {
     background: #ffffff;
 }
+
 .header {
-    height: 40px;
+    height: 4.4rem;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     background: #ffffff;
     z-index: 99999;
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
 }
+
+.header .back {
+    font-size: 1.2rem;
+    width: 6rem;
+    display: flex;
+    align-items: center;
+    color: #999;
+    justify-content: center;
+    height: 100%;
+}
+
+.header .back .icon {
+    font-size: 2.6rem;
+}
+
+.header .head-tit {
+    flex: 1;
+    text-align: center;
+    height: 100%;
+}
+
 .container {
-    margin: 40px 0;
+    margin: 4.4rem 0 5rem 0;
 }
+
 .footer {
-    height: 40px;
+    height: 5rem;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     background: #ffffff;
     z-index: 99999;
+}
+
+.footer .nav-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    flex-direction: column;
+}
+
+.clic {
+    color: #ff6600;
+}
+
+.footer .icon {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+input::-webkit-input-placeholder {
+    color: rgba(153, 153, 153, 0.5);
 }
