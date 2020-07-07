@@ -1,0 +1,60 @@
+@import '../../css/main.scss';
+// 评论列表
+.commentList {
+    .head-tit {
+        // align-items: center;
+        display: flex;
+        overflow-x: auto;
+        .tit-t {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-right: 2rem;
+            color: $color9;
+            white-space: nowrap;
+            &:first-child {
+                color: $black;
+                &::after {
+                    content: '';
+                    height: 4px;
+                    width: 8px;
+                    display: inline-block;
+                    background-color: $colorActive;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    -webkit-transform: translateX(-50%);
+                    -moz-transform: translateX(-50%);
+                    -ms-transform: translateX(-50%);
+                    -o-transform: translateX(-50%);
+                }
+            }
+        }
+    }
+    .header2 {
+        top: 4.4rem;
+        padding-left: 2rem;
+        .tag-tit {
+            height: 3rem;
+            padding: 1rem;
+            background-color: $colorb;
+            color: $black;
+            margin-right: 2rem;
+            font-size: 1.2rem;
+            border-radius: 1rem;
+            -webkit-border-radius: 1rem;
+            -moz-border-radius: 1rem;
+            -ms-border-radius: 1rem;
+            -o-border-radius: 1rem;
+            &.clic {
+                color: #fff;
+                background-color: $colorActive;
+            }
+        }
+    }
+    .container {
+        margin-top: 8.8rem
+    }
+}
