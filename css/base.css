@@ -4,7 +4,6 @@ html {
     margin: 0;
     padding: 0;
     font-family: "Helvetica Neue", Helvetica, sans-serif;
-    ;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     background: #f5f5f5;
@@ -17,7 +16,7 @@ html {
 
 .clearfix:after {
     display: block;
-    content: '';
+    content: "";
     height: 0;
     line-height: 0;
     clear: both;
@@ -60,13 +59,13 @@ input,
 textarea,
 a,
 i {
-    /* margin: 0 auto; */
+    margin: 0;
     padding: 0;
     border: 0;
     outline: none;
     -moz-box-sizing: border-box;
     -o-box-sizing: border-box;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 h1,
@@ -78,14 +77,14 @@ h6 {
     font-weight: normal;
     margin: 0;
     padding: 0;
-    border: 0
+    border: 0;
 }
 
 ul,
 ol,
 li {
     list-style: none;
-    list-style-position: inside
+    list-style-position: inside;
 }
 
 a img {
