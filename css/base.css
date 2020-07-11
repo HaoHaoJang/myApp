@@ -40,7 +40,10 @@ html {
         transform: scaleY(0.5);
     }
 }
-
+button {
+    border: none;
+    border-radius: 4px;
+}
 div,
 form,
 ul,
@@ -167,9 +170,14 @@ img {
     width: 100%;
     height: 100%;
 }
-
+.btn-co {
+    color: #ffffff;
+}
 .fot-s {
     font-size: 1.2rem;
+}
+.mar-t-mix {
+    margin-top: 0.8rem;
 }
 .fot-m {
     font-size: 1.4rem;
@@ -190,7 +198,9 @@ img {
 .posr {
     position: relative;
 }
-
+.btn-back {
+    background: #ff6600;
+}
 .pad-mix {
     padding: 1rem;
 }
@@ -198,7 +208,12 @@ img {
 .bg-c-w {
     background: #ffffff;
 }
-
+.header-h {
+    height: 4rem;
+}
+.mar-h {
+    margin-top: 4rem;
+}
 .header {
     height: 4.4rem;
     position: fixed;
@@ -206,7 +221,7 @@ img {
     left: 0;
     right: 0;
     background: #ffffff;
-    z-index: 99999;
+    z-index: 9;
     display: flex;
     align-items: center;
     font-size: 1.6rem;
@@ -257,7 +272,14 @@ img {
     font-size: 1.2rem;
     flex-direction: column;
 }
-
+.header2 {
+    height: 4.4rem;
+    margin-top: 4.6rem;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+}
 .clic {
     color: #ff6600;
 }
@@ -269,4 +291,14 @@ img {
 
 input::-webkit-input-placeholder {
     color: rgba(153, 153, 153, 0.5);
+}
+.slid-shadow {
+    background: rgba(0,0,0,0.2);
+    position: fixed;
+    right: 0;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    z-index: 999;
+    display: none;
 }
