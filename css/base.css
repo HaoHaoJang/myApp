@@ -100,7 +100,9 @@ a {
 .flx {
     display: flex;
 }
-
+.border-b {
+    border-bottom: 1px solid #ccc;
+}
 .flx-cc {
     display: flex;
     align-items: center;
@@ -169,7 +171,22 @@ img {
 .fot-s {
     font-size: 1.2rem;
 }
-
+.fot-m {
+    font-size: 1.4rem;
+}
+.fot-max {
+    font-size: 1.6rem;
+}
+.mar-r-l {
+    margin: 0 1rem;
+}
+.flx-w-button {
+    width: 7rem;
+    height: 4rem;
+    line-height: 4rem;
+    border-radius: 2px;
+    font-size: 1.4rem;
+}
 .posr {
     position: relative;
 }
