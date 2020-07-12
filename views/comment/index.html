@@ -14,25 +14,27 @@
 
     <style>
       .container {
-        margin-top: 80px;
+        margin-top: 1rem;
       }
 
       .bg-ic {
-        height: 40px;
-        width: 40px;
-        background: #cccccc;
+        height: 4rem;
+        width: 4rem;
         border-radius: 50%;
         margin-bottom: 6px;
       }
+      .bg-ic img {
+        border-radius: 50%;
+      }
 
       .header {
-        height: 70px;
-        padding: 6px;
+        position: relative;
+        padding: 1rem;
         font-size: 1.2rem;
+        height: auto;
       }
 
       .header .inp {
-        height: 40px;
         line-height: 40px;
         font-size: 1.2rem;
         padding-left: 8px;
@@ -85,12 +87,18 @@
       }
 
       .flx-w {
-        width: 6rem;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        margin: 0 2rem 0 1rem;
+        line-height: 4rem;
       }
-
+      .flx-w img {
+        border-radius: 50%;
+      }
       .modu-content {
-        height: 8rem;
-        padding: 6px 10px;
+        /* height: 8rem; */
+        padding: 1rem;
         display: flex;
         align-items: center;
       }
@@ -104,15 +112,9 @@
       .modu-content:first-child {
         margin-top: 0;
       }
-
-      .modu-content .lie {
-        line-height: 10rem;
-      }
-
       .modu-content .modul-tit {
         font-size: 1.6rem;
         line-height: normal;
-        font-weight: 500;
       }
 
       .modu-content .modul-text {
@@ -120,29 +122,15 @@
         line-height: normal;
         color: #777272;
       }
+      .mar-r0 {
+        margin-right: 0;
+      }
     </style>
   </head>
 
   <body class="bg-all">
     <div class="mar-b">
-      <div class="header pad-mix bg-c-w flx">
-        <div class="flx-1 flx-dir flx-cc">
-          <div class="bg-ic"></div>
-          <div>邻里互助</div>
-        </div>
-        <div class="flx-1 flx-dir flx-cc">
-          <div class="bg-ic"></div>
-          <div>邻里分享</div>
-        </div>
-        <div class="flx-1 flx-dir flx-cc">
-          <div class="bg-ic"></div>
-          <div>二手闲置</div>
-        </div>
-        <div class="flx-1 flx-dir flx-cc">
-          <div class="bg-ic"></div>
-          <div>保险理财</div>
-        </div>
-      </div>
+      <div class="header pad-mix bg-c-w flx" id="forum"></div>
       <div class="container">
         <div>
           <div class="flx tex-reference bg-c-w">
@@ -152,49 +140,8 @@
               <i class="icon icon-arrow-right iconfont"></i>
             </div>
           </div>
-          <div class="flx bg-c-w border-b modu-content">
-            <div class="flx-w lie">
-              <i
-                class="icon iconfont icon-pinglun tex-c"
-                style="font-size: 4rem;"
-              ></i>
-            </div>
-            <div class="flx-1">
-              <div class="modul-tit">热心肠</div>
-              <div class="modul-text">
-                话题数：<span class="cor-r">8</span>关注数：<span class="cor-r"
-                  >8</span
-                >
-              </div>
-              <div class="modul-text">在这里可以像邻里求助</div>
-            </div>
-            <div class="flx-w lie tex-r">
-              <i class="icon icon-arrow-right iconfont"></i>
-            </div>
-          </div>
-          <div class="flx bg-c-w border-b modu-content">
-            <a href="./commentList.html">
-              <div class="flx-w lie">
-                <i
-                  class="icon iconfont icon-pinglun tex-c"
-                  style="font-size: 4rem;"
-                ></i>
-              </div>
-              <div class="flx-1">
-                <div class="modul-tit">装修展示</div>
-                <div class="modul-text">
-                  话题数：<span class="cor-r">8</span>关注数：<span
-                    class="cor-r"
-                    >8</span
-                  >
-                </div>
-                <div class="modul-text">在这里可以像邻里求助</div>
-              </div>
-              <div class="flx-w lie tex-r">
-                <i class="icon icon-arrow-right iconfont"></i>
-              </div>
-            </a>
-          </div>
+          <!-- 推荐版块 -->
+          <section id="recommend"></section>
         </div>
       </div>
       <div class="footer flx">
@@ -230,7 +177,8 @@
     {{each list as item}}
       <div class="flx-1 flx-dir flx-cc" onclick="openRecommend('{{item.fdId}}')">
         <div class="bg-ic">
-          <img src="item.imageUrl" alt="" srcset="">
+          <!-- <img src="{{domain + item.imageUrl}}" alt=""> -->
+          <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="" srcset="">
         </div>
         <div>{{item.fdName}}</div>
       </div>
@@ -239,21 +187,22 @@
   <!-- 模板 推荐版块 -->
   <script id="recommendTpl" type="text/html">
     {{each list as item}}
-      <div class="flx bg-c-w border-b modu-content">
+      <a class="flx bg-c-w border-b modu-content" href="./commentList.html?fdId={{item.fdId}}">
         <div class="flx-w lie">
-          <i class="icon iconfont icon-pinglun tex-c" style="font-size: 4rem;"></i>
+          <!-- <img src="{{domain + item.imageUrl}}" alt=""> -->
+          <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="" srcset="">
         </div>
         <div class="flx-1">
-          <div class="modul-tit">热心肠</div>
+          <div class="modul-tit">{{item.fdName}}</div>
           <div class="modul-text">
-            话题数：<span class="cor-r">8</span>关注数：<span class="cor-r">8</span>
+            话题数：<span class="cor-r">{{item.fdTopicCountVal}}</span>关注数：<span class="cor-r">{{item.fdPostCountVal}}</span>
           </div>
-          <div class="modul-text">在这里可以像邻里求助</div>
+          <div class="modul-text">{{item.fdDescription}}</div>
         </div>
-        <div class="flx-w lie tex-r">
+        <div class="flx-w lie tex-r mar-r0">
           <i class="icon icon-arrow-right iconfont"></i>
         </div>
-      </div>
+      </a>
     {{/each}}
   </script>
   <script>
@@ -262,14 +211,15 @@
     });
     // 获取论坛列表
     function getForumCateList() {
-      var result = ajax("/ekp/resource/forum/getForumCateList", "");
+      var result = ajaxMothed("/ekp/resource/forum/getForumCateList", {});
       result.done(function (resp) {
-        console.log(resp);
+        renderTemplate("forumTpl", resp.data, "forum");
+        renderTemplate("recommendTpl", resp.data[0].children, "recommend");
       });
     }
     /*渲染模板*/
     function renderTemplate(templateId, data, contentId) {
-      var html = template(id, {
+      var html = template(templateId, {
         list: data,
       });
       $("#" + contentId).append(html);
