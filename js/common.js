@@ -15,6 +15,7 @@ $(".back").click(function () {
     (n.addEventListener(o, a, !1),
       e.addEventListener("DOMContentLoaded", a, !1));
 })(window);
+var domain = 'http://121.196.21.9/'
 // ajax封装
 function ajax(url, params, option) {
   var defer = $.Deferred(),
@@ -91,7 +92,7 @@ function formatParams(data){
 
 function ajaxMothed(url, type, params, callback) {
     ajax({
-        url: url,
+        url: domain + url,
         type: type,
         data: params,
         dataType:'json',
