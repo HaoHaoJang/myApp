@@ -34,36 +34,6 @@
         </div>
         <div class="container">
             <ul class="list">
-                <li>
-                    <a href="./details.html">
-                        <p class="img">
-                            <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="">
-                        </p>
-                        <!--  -->
-                        <div class="con">
-                            <p class="tit">2019年第三季2019年第三季度盘古2019年第三季度盘古度盘古</p>
-                            <p class="time"><span>【深圳市】09月30日 发布</span></p>
-                            <p class="votes">
-                                <span><i class="icon iconfont icon-xinxi2"></i>2</span>
-                                <span><i class="icon iconfont icon-dianzan1"></i>6</span>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <p class="img">
-                        <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="">
-                    </p>
-                    <!--  -->
-                    <div class="con">
-                        <p class="tit">2019年第三季2019年第三季度盘古2019年第三季度盘古度盘古</p>
-                        <p class="time"><span>【深圳市】09月30日 发布</span></p>
-                        <p class="votes">
-                            <span><i class="icon iconfont icon-xinxi2"></i>2</span>
-                            <span><i class="icon iconfont icon-dianzan1"></i>6</span>
-                        </p>
-                    </div>
-                </li>
             </ul>
         </div>
     </div>
@@ -98,6 +68,32 @@
             $(this).addClass("active").siblings().removeClass("active")
         })
     })
+
+    var result = ajaxMothed('ekp/resource/wechatDoc/getNewList', {pageno: 0, rowsize: 20})
+    result.done(function (resp) {
+        render('.container', 'newlist',resp.data, true )
+    });
+</script>
+<!-- 模板 -->
+<script id="newlist" type="text/html">
+    {{each list as item}}
+    <li>
+        <a href="./details.html?id=1">
+            <p class="img">
+                <img src="" data-src="{{item.imageUrl}}" alt="">
+            </p>
+            <!--  -->
+            <div class="con">
+                <p class="tit">{{item.docSubject}}</p>
+                <p class="time"><span>【深圳市】{{item.createTime}} 发布</span></p>
+                <p class="votes">
+                    <span><i class="icon iconfont icon-xinxi2"></i>2</span>
+                    <span><i class="icon iconfont icon-dianzan1"></i>6</span>
+                </p>
+            </div>
+        </a>
+    </li>
+    {{/each}}
 </script>
 
 </html>

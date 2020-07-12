@@ -98,3 +98,46 @@ function ajaxMothed(url, params, type) {
   });
   return defer;
 }
+// template 模版名，data元数据,isAppend,是append还是html container模版容器
+function render(container, templateName, data, isAppend) {
+    var status = {
+        "0": "未开始",
+        "1": "进行中",
+        "2": "已结束",
+    };
+    template.defaults.imports.formatStatus = function(startTime, endTime) {
+        var result = compareTime(startTime, endTime);
+        return status[result];
+    };
+
+    var html = template(templateName, {
+        list: data,
+    });
+    if (isAppend) {
+        $(container).append(html);
+    } else {
+        $(container).html(html);
+    }
+}
+/**
+  * [获取URL中的参数名及参数值的集合]
+  * 示例URL:http://htmlJsTest/getrequest.html?uid=admin&rid=1&fid=2&name=小明
+  * @param {[string]} urlStr [当该参数不为空的时候，则解析该url中的参数集合]
+  * @return {[string]}       [参数集合]
+  */
+function GetRequest(urlStr) {
+     if (typeof urlStr == "undefined") {
+         var url = decodeURI(location.search); //获取url中"?"符后的字符串
+     } else {
+         var url = "?" + urlStr.split("?")[1];
+     }
+     var theRequest = new Object();
+     if (url.indexOf("?") != -1) {
+         var str = url.substr(1);
+         strs = str.split("&");
+         for (var i = 0; i < strs.length; i++) {
+             theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+         }
+     }
+     return theRequest;
+ }
