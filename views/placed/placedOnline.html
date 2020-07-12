@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <title>线上预订</title>
+    <link rel="stylesheet" href="../../css/base.css" />
+    <link rel="stylesheet" href="../../css/jquery.pickTime.css" />
+    <link rel="stylesheet" href="../../asset/font/iconfont.css" />
+    <link rel="stylesheet" href="./placed.css" />
+    <script src="../../asset/font/iconfont.js"></script>
+  </head>
+
+  <body>
+    <div class="placedOnline">
+      <header>
+        <div class="header">
+          <div class="back">
+            <i class="icon iconfont icon-arrow-lift"></i>
+          </div>
+          <div class="head-tit">线上预订</div>
+          <div class="back"></div>
+        </div>
+      </header>
+      <!-- 内容列表 -->
+      <div class="container">
+        <div class="detail">
+          <p class="img">
+            <img
+              src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"
+              alt=""
+              srcset=""
+            />
+          </p>
+          <div class="info">
+            <p class="tit">人力资源服务大厅</p>
+            <p class="desc">天滴滴滴滴IDIDID议弟弟</p>
+          </div>
+        </div>
+        <!-- form 信息 -->
+        <ul id="form">
+          <li>
+            <label for="">联系人</label>
+            <input type="text" placeholder="请输入联系人" />
+          </li>
+          <li>
+            <label for="">联系电话</label>
+            <input type="text" placeholder="请输入联系电话" />
+          </li>
+          <li>
+            <label for="">所属公司</label>
+            <input type="text" placeholder="请输入公司名称" />
+          </li>
+          <li>
+            <label for="">邮箱</label>
+            <input type="text" placeholder="请输入邮箱" />
+          </li>
+        </ul>
+        <ul id="dateTime">
+          <li>
+            <label for="">选择日期</label>
+            <p class="date">2020-07-12</p>
+            <i></i>
+          </li>
+          <li>
+            <label for="">选择时间</label>
+            <p class="time">2020-07-12</p>
+            <i></i>
+          </li>
+          <!-- <li class="time" style="font-size: 14px;">
+            时间
+          </li>
+          <li class="date" style="font-size: 14px;">
+            日期
+          </li> -->
+        </ul>
+      </div>
+      <!-- 底部按钮 -->
+      <footer>
+        <p>提交</p>
+      </footer>
+    </div>
+  </body>
+  <script src="../../js/jquery_min.js"></script>
+  <script src="../../js/template-web.js"></script>
+  <script src="../../js/jquery.pickTime.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/lazyLoad.js"></script>
+  <!-- 模板 -->
+  <script>
+    $(function () {
+      $(".date").pickTimer({
+        pickType: "y:m:d",
+        yearSize: "30",
+      });
+      $(".time").pickTimer({
+        pickType: "h:m:s",
+        speed: 3,
+      });
+    });
+  </script>
+</html>

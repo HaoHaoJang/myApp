@@ -1,157 +1,254 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
     <meta content="yes" name="apple-mobile-web-app-capable" />
-    <title></title>
+    <title>活动列表</title>
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
     <script src="../../asset/font/iconfont.js"></script>
     <style>
-        .header {
-            padding: 5px 10px;
-        }
+      .header {
+        padding: 5px 10px;
+      }
 
-        .header .inp {
-            height: 34px;
-            line-height: 34px;
-            font-size: 1.2rem;
-            padding-left: 8px;
-            border: 1px solid rgba(217, 217, 217, 0.5);
-            border-radius: 34px;
-            width: 100%;
-            color: #999;
-        }
+      .header .inp {
+        height: 34px;
+        line-height: 34px;
+        font-size: 1.2rem;
+        padding-left: 8px;
+        border: 1px solid rgba(217, 217, 217, 0.5);
+        border-radius: 34px;
+        width: 100%;
+        color: #999;
+      }
+      .header .inp input {
+        width: calc(100% - 2rem);
+        color: #999;
+      }
+      .act-img-content {
+        width: 100%;
+        height: 16rem;
+        position: relative;
+      }
 
-        .act-img-content {
-            width: 100%;
-            height: 16rem;
-            position: relative;
-        }
+      .flx-fix {
+        width: 5rem;
+        text-align: right;
+      }
 
-        .flx-fix {
-            width: 5rem;
-            text-align: right;
-        }
+      .ac-text {
+        margin: 1rem 0;
+        font-size: 1.4rem;
+        font-weight: bold;
+      }
 
-        .ac-text {
-            margin: 1rem 0;
-            font-size: 1.4rem;
-            font-weight: bold;
-        }
+      .ac-ico {
+        color: #999;
+      }
 
-        .ac-ico {
-            color: #999;
-        }
+      .is-stop {
+        display: inline-block;
+        position: absolute;
+        top: 1.5rem;
+        left: -0.8rem;
+        width: 5.4rem;
+        height: 1.8rem;
+        border-radius: 1.8rem;
+        text-align: center;
+        line-height: 1.8rem;
+        background: #ffffff;
+        color: #999;
+      }
 
-        .is-stop {
-            display: inline-block;
-            position: absolute;
-            top: 1.5rem;
-            left: -0.8rem;
-            width: 5.4rem;
-            height: 1.8rem;
-            border-radius: 1.8rem;
-            text-align: center;
-            line-height: 1.8rem;
-            background: #ffffff;
-            color: #999;
-        }
+      .tite {
+        padding-bottom: 1.6rem;
+        padding-top: 1.6rem;
+        font-size: 1.4rem;
+        border-left: 4px solid #4e70de;
+        padding-left: 0.6rem;
+      }
 
-        .tite {
-            padding-bottom: 1.6rem;
-            padding-top: 1.6rem;
-            font-size: 1.4rem;
-            border-left: 4px solid #4e70de;
-            padding-left: 0.6rem;
-        }
+      .titl-chine {
+        font-weight: bold;
+        padding-right: 4px;
+      }
 
-        .titl-chine {
-            font-weight: bold;
-            padding-right: 4px;
-        }
+      .titl-eng {
+        color: #4e70de;
+        padding-left: 4px;
+        font-size: 1.2rem;
+      }
 
-        .titl-eng {
-            color: #4e70de;
-            padding-left: 4px;
-            font-size: 1.2rem;
-        }
+      .content-img {
+        margin-bottom: 1rem;
+      }
 
-        .content-img {
-            margin-bottom: 1rem;
-        }
-
-        .container i.icon {
-            margin-right: 0.5rem;
-        }
+      .container i.icon {
+        margin-right: 0.5rem;
+      }
+      .container {
+        margin-bottom: 6rem;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="bg-all">
-        <div class="header pad-mix bg-c-w">
-            <input type="text" placeholder="搜索活动" class="inp" />
+      <div class="header pad-mix bg-c-w">
+        <div class="inp">
+          <i
+            class="icon-sousuo icon iconfont"
+            onclick="loadActivityList(1)"
+          ></i>
+          <input type="text" placeholder="搜索活动" id="activeName" />
         </div>
-        <div class="container">
-            <div>
-                <div class="tite bg-c-w">
-                    <span class="titl-chine">热门活动</span>/<span class="titl-eng">POPULAR ACTIVITY</span
+      </div>
+      <!-- 内容区 -->
+      <div class="container">
+        <div class="info">
+          <div class="tite bg-c-w">
+            <span class="titl-chine">热门活动</span>/<span class="titl-eng"
+              >POPULAR ACTIVITY</span
             >
           </div>
         </div>
       </div>
+      <div class="empty hide">
+        <i class="icon icon-empty iconfont"></i>
+        <p>
+          暂无活动，敬请期待！！！
+        </p>
+      </div>
+      <!-- 底部 -->
       <div class="footer flx">
-        <a class="nav-item clic">
+        <a class="nav-item" href="../comment/index.html">
           <i class="icon iconfont icon-luntan"></i>
           <span>论坛</span>
-            </a>
-            <a class="nav-item flx-1" href="../comment/index.html">
-                <i class="icon iconfont icon-remenhuodong"></i>
-                <span>园区活动</span>
-            </a>
-            <a class="nav-item flx-1" href="../news/list.html">
-                <i class="icon iconfont icon-zixun"></i>
-                <span>资讯</span>
-            </a>
-            <a class="nav-item flx-1" href="../meeting/index.html">
-                <i class="icon iconfont icon-huiyishi"></i>
-                <span>会议室</span>
-            </a>
-            <a class="nav-item flx-1" href="../placed/index.html">
-                <i class="icon iconfont icon-chad"></i>
-                <span>场地</span>
-            </a>
-        </div>
+        </a>
+        <a class="nav-item flx-1 clic" href="../activity/index.html">
+          <i class="icon iconfont icon-remenhuodong"></i>
+          <span>园区活动</span>
+        </a>
+        <a class="nav-item flx-1" href="../news/list.html">
+          <i class="icon iconfont icon-zixun"></i>
+          <span>资讯</span>
+        </a>
+        <a class="nav-item flx-1" href="../meeting/index.html">
+          <i class="icon iconfont icon-huiyishi"></i>
+          <span>会议室</span>
+        </a>
+        <a class="nav-item flx-1" href="../placed/index.html">
+          <i class="icon iconfont icon-chad"></i>
+          <span>场地</span>
+        </a>
+      </div>
     </div>
-</body>
-<script src="../../js/jquery_min.js"></script>
-<script src="../../js/common.js"></script>
-<script src="../../js/template-web.js"></script>
-<script src="../../js/lazyLoad.js"></script>
-<script src="./activity.js"></script>
-<!-- 模板 -->
-<script id="activityListTpl" type="text/html">
+  </body>
+  <script src="../../js/jquery_min.js"></script>
+  <script src="../../js/template-web.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/lazyLoad.js"></script>
+  <!-- 模板 -->
+  <script id="activityListTpl" type="text/html">
     {{each list as item}}
-    <a href="./activeDetail.html">
+    <a href="./activeDetail.html?activeId={{item.fdId}}">
         <div class="content-img bg-c-w pad-mix">
             <div class="act-img-content">
+              <!-- <img src="" data-src="{{domain + item.imageUrl}}" alt=""> -->
                 <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" />
-                <span class="is-stop fot-s">{{item.startTime | formatStatus item.endTime }}</span>
+                <span class="is-stop fot-s">{{item.fdState | formatStatus }}</span>
             </div>
             <div class="ac-text">
                 {{item.activeName}}
             </div>
             <div class="flx flx-c fot-s ac-ico">
                 <i class="icon iconfont icon-ai253"></i>
-                <span class="flx-1">{{item.closeTime}}</span>
+                <span class="flx-1">{{item.startTime}}~{{endTime}}</span>
                 <i class="icon iconfont icon-yanjing_huaban1"></i>
-                <span>{{item.closeTime}}</span>
+                <span>{{item.enterPerson}}</span>
             </div>
         </div>
     </a>
     {{/each}}
-</script>
+  </script>
+  <script>
+    var pageno = 1,
+      rowsize = 10;
 
+    $(function () {
+      loadActivityList();
+      pageScroll(loadActivityList);
+    });
+    // 获取论坛列表;
+    function loadActivityList(flag) {
+      if (flag == 1) {
+        pageno = 1;
+      }
+      var result = ajaxMothed("/ekp/resource/wechatActive/auth/wechatActives", {
+        pageno: pageno,
+        rowsize: 10,
+        activeName: $("#activeName").val() || "",
+      });
+      result
+        .done(function (resp) {
+          // 重置滚动条开关
+          resetFresh();
+          if (resp.data.length == 0) {
+            if (pageno == 1) {
+              $(".container .info").html("");
+              $(".empty").removeClass("hide");
+            }
+            return false;
+          }
+          $(".empty").addClass("hide");
+          pageno++;
+          render(resp.data);
+        })
+        .fail(function () {
+          if (pageno == 1) {
+            $(".container .info").html("");
+            $(".empty").removeClass("hide");
+          }
+        });
+    }
+    /*****模板渲染*****/
+    function render(data) {
+      var status = {
+        "20": "报名中",
+        "30": "进行中",
+        "40": "已结束",
+      };
+      // 活动状态 20报名中 30 进行中 40 已经结束
+      template.defaults.imports.formatStatus = function (state) {
+        return status[state];
+      };
+
+      var html = template("activityListTpl", {
+        list: data,
+      });
+      $(".container .info").append(html);
+    }
+    /**
+     * 0 未开始  1正在进行 2已结束
+     * @param {*} startTime 开始时间
+     * @param {*} endTime 结束时间
+     */
+    // function compareTime(startTime, endTime) {
+    //   var startDate = new Date(startTime).getTime();
+    //   var endDate = new Date(endTime).getTime();
+    //   var currentDate = new Date().getTime();
+    //   if (startDate > currentDate) {
+    //     return 0;
+    //   } else if (currentDate <= endDate) {
+    //     return 1;
+    //   } else {
+    //     return 2;
+    //   }
+    // }
+  </script>
 </html>
