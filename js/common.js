@@ -90,7 +90,7 @@ function formatParams(data){
 
 }
 
-function ajaxMothed(url, type, params, callback) {
+function ajaxMethod(url, type, params, callback) {
     ajax({
         url: domain + url,
         type: type,
