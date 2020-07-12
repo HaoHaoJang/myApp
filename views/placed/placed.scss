@@ -1,17 +1,20 @@
 @import "../../css/main.scss";
-.placed {
-    .header.tit2 {
-        padding: 0 1rem;
-        height: 4rem;
-        line-height: 4rem;
-        font-size: 1.2rem;
-        top: 4.4rem;
-    }
+.placed,
+.placedDetail {
     .container {
-        .placed-item {
+        margin-top: 4.4rem;
+        .header2.tit2 {
+            padding: 0 1rem;
+            height: 4rem;
+            line-height: 4rem;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
             background-color: #fff;
-            margin-top: 9rem;
+        }
+        .placed-item {
             padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: #fff;
             .con {
                 position: relative;
                 .price {
@@ -37,13 +40,16 @@
                     height: 2rem;
                     line-height: 2rem;
                     background-color: $colorActive;
-                    border-radius: 1rem 0 0 1rem;
-                    -webkit-border-radius: 1rem 0 0 1rem;
-                    -moz-border-radius: 1rem 0 0 1rem;
-                    -ms-border-radius: 1rem 0 0 1rem;
-                    -o-border-radius: 1rem 0 0 1rem;
+                    border-radius: 0.6rem 0 0 0.6rem;
+                    -webkit-border-radius: 0.6rem 0 0 0.6rem;
+                    -moz-border-radius: 0.6rem 0 0 0.6rem;
+                    -ms-border-radius: 0.6rem 0 0 0.6rem;
+                    -o-border-radius: 0.6rem 0 0 0.6rem;
                 }
             }
+        }
+        .placed-item,
+        .info {
             .img {
                 height: 15rem;
                 width: 100%;
@@ -71,10 +77,101 @@
                     -ms-border-radius: 0.2rem;
                     -o-border-radius: 0.2rem;
                     color: #fff;
-                    background-color: $colorActive;
+                    background-color: $colorActive03;
                     font-size: 1rem;
                     margin-bottom: 0.5rem;
                     margin-right: 0.5rem;
+                }
+            }
+        }
+    }
+}
+
+.placedDetail {
+    font-size: 1.2rem;
+    .container {
+        margin-bottom: 6rem;
+        .img {
+            height: 15rem;
+        }
+        .summary,
+        .description,
+        .service {
+            font-size: 1.2rem;
+            padding: 0 1rem;
+            background-color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .summary {
+            .price {
+                color: $colorActive;
+                padding-top: 0.5rem;
+            }
+            .tip {
+                font-size: 1rem;
+                color: $color9;
+                padding: 0.5rem 0 1rem 0;
+            }
+        }
+        .description {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            h3 {
+                padding-bottom: 1rem;
+            }
+            .con {
+                font-size: 1rem;
+                line-height: 1.2;
+            }
+        }
+        .service {
+            padding-bottom: 1.5rem;
+            p {
+                padding: 1.5rem 0;
+            }
+            ul {
+                display: flex;
+                li {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    i {
+                        display: block;
+                        width: 4rem;
+                        height: 4rem;
+                        margin-bottom: 0.3rem;
+                    }
+                    span {
+                        color: $color9;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        height: 4rem;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        display: flex;
+        ul {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            li {
+                flex: 1;
+                margin: 0 1rem;
+                background-color: $colorActive03;
+                height: 3rem;
+                line-height: 3rem;
+                text-align: center;
+                &:first-child {
+                    background-color: $colorActive2;
                 }
             }
         }

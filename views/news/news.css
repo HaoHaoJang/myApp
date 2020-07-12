@@ -17,6 +17,7 @@
   color: #999; }
 
 .newsList .header.nav {
+  font-size: 1.2rem;
   top: 4.4rem;
   overflow-x: auto; }
   .newsList .header.nav ul {
@@ -36,6 +37,8 @@
   display: flex;
   padding: 1.4rem 0;
   border-bottom: 1px solid rgba(217, 217, 217, 0.3); }
+  .newsList .list li a {
+    display: flex; }
   .newsList .list li .img {
     width: 10rem;
     height: 8rem;

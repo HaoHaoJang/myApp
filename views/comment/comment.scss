@@ -1,4 +1,4 @@
-@import '../../css/main.scss';
+@import "../../css/main.scss";
 // 评论列表
 .commentList {
     .head-tit {
@@ -16,7 +16,7 @@
             &:first-child {
                 color: $black;
                 &::after {
-                    content: '';
+                    content: "";
                     height: 4px;
                     width: 8px;
                     display: inline-block;
@@ -34,11 +34,14 @@
         }
     }
     .header2 {
-        top: 4.4rem;
         padding-left: 2rem;
+        border-bottom: 1px solid $colorb03;
+        overflow-x: auto;
         .tag-tit {
-            height: 3rem;
-            padding: 1rem;
+            white-space: nowrap;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            padding: 0 1rem;
             background-color: $colorb;
             color: $black;
             margin-right: 2rem;
@@ -50,11 +53,11 @@
             -o-border-radius: 1rem;
             &.clic {
                 color: #fff;
-                background-color: $colorActive;
+                background-color: #9BBAF0;
             }
         }
     }
     .container {
-        margin-top: 8.8rem
+        margin-top: 8.8rem;
     }
 }

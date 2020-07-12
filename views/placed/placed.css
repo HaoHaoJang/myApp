@@ -1,58 +1,82 @@
-.placed .header.tit2 {
-  padding: 0 1rem;
-  height: 4rem;
-  line-height: 4rem;
-  font-size: 1.2rem;
-  top: 4.4rem; }
-
-.placed .container .placed-item {
-  background-color: #fff;
-  margin-top: 9rem;
-  padding: 1rem; }
-  .placed .container .placed-item .con {
-    position: relative; }
-    .placed .container .placed-item .con .price {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      height: 2rem;
-      line-height: 2rem;
-      background-color: rgba(51, 51, 51, 0.3);
-      padding: 0 0.8rem; }
-      .placed .container .placed-item .con .price span {
+.placed .container,
+.placedDetail .container {
+  margin-top: 4.4rem; }
+  .placed .container .header2.tit2,
+  .placedDetail .container .header2.tit2 {
+    padding: 0 1rem;
+    height: 4rem;
+    line-height: 4rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    background-color: #fff; }
+  .placed .container .placed-item,
+  .placedDetail .container .placed-item {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #fff; }
+    .placed .container .placed-item .con,
+    .placedDetail .container .placed-item .con {
+      position: relative; }
+      .placed .container .placed-item .con .price,
+      .placedDetail .container .placed-item .con .price {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 2rem;
+        line-height: 2rem;
+        background-color: rgba(51, 51, 51, 0.3);
+        padding: 0 0.8rem; }
+        .placed .container .placed-item .con .price span,
+        .placedDetail .container .placed-item .con .price span {
+          font-size: 1rem;
+          color: #fff; }
+      .placed .container .placed-item .con .share,
+      .placedDetail .container .placed-item .con .share {
+        position: absolute;
+        right: 0;
+        top: 2rem;
         font-size: 1rem;
-        color: #fff; }
-    .placed .container .placed-item .con .share {
-      position: absolute;
-      right: 0;
-      top: 2rem;
-      font-size: 1rem;
-      padding: 0 0.8rem;
-      color: #fff;
-      height: 2rem;
-      line-height: 2rem;
-      background-color: #ff6600;
-      border-radius: 1rem 0 0 1rem;
-      -webkit-border-radius: 1rem 0 0 1rem;
-      -moz-border-radius: 1rem 0 0 1rem;
-      -ms-border-radius: 1rem 0 0 1rem;
-      -o-border-radius: 1rem 0 0 1rem; }
-  .placed .container .placed-item .img {
+        padding: 0 0.8rem;
+        color: #fff;
+        height: 2rem;
+        line-height: 2rem;
+        background-color: #ff6600;
+        border-radius: 0.6rem 0 0 0.6rem;
+        -webkit-border-radius: 0.6rem 0 0 0.6rem;
+        -moz-border-radius: 0.6rem 0 0 0.6rem;
+        -ms-border-radius: 0.6rem 0 0 0.6rem;
+        -o-border-radius: 0.6rem 0 0 0.6rem; }
+  .placed .container .placed-item .img,
+  .placed .container .info .img,
+  .placedDetail .container .placed-item .img,
+  .placedDetail .container .info .img {
     height: 15rem;
     width: 100%;
     position: relative; }
-  .placed .container .placed-item .tit {
+  .placed .container .placed-item .tit,
+  .placed .container .info .tit,
+  .placedDetail .container .placed-item .tit,
+  .placedDetail .container .info .tit {
     font-size: 1.4rem;
     padding: 0.8rem 0 0.5rem 0; }
-  .placed .container .placed-item .desc {
+  .placed .container .placed-item .desc,
+  .placed .container .info .desc,
+  .placedDetail .container .placed-item .desc,
+  .placedDetail .container .info .desc {
     color: #999;
     font-size: 1.2rem; }
-  .placed .container .placed-item .button {
+  .placed .container .placed-item .button,
+  .placed .container .info .button,
+  .placedDetail .container .placed-item .button,
+  .placedDetail .container .info .button {
     margin-top: 1rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap; }
-    .placed .container .placed-item .button a {
+    .placed .container .placed-item .button a,
+    .placed .container .info .button a,
+    .placedDetail .container .placed-item .button a,
+    .placedDetail .container .info .button a {
       height: 2rem;
       padding: 0.5rem 0.8rem;
       border-radius: 0.2rem;
@@ -61,7 +85,77 @@
       -ms-border-radius: 0.2rem;
       -o-border-radius: 0.2rem;
       color: #fff;
-      background-color: #ff6600;
+      background-color: rgba(255, 72, 0, 0.3);
       font-size: 1rem;
       margin-bottom: 0.5rem;
       margin-right: 0.5rem; }
+
+.placedDetail {
+  font-size: 1.2rem; }
+  .placedDetail .container {
+    margin-bottom: 6rem; }
+    .placedDetail .container .img {
+      height: 15rem; }
+    .placedDetail .container .summary,
+    .placedDetail .container .description,
+    .placedDetail .container .service {
+      font-size: 1.2rem;
+      padding: 0 1rem;
+      background-color: #fff;
+      margin-bottom: 0.5rem; }
+    .placedDetail .container .summary .price {
+      color: #ff6600;
+      padding-top: 0.5rem; }
+    .placedDetail .container .summary .tip {
+      font-size: 1rem;
+      color: #999;
+      padding: 0.5rem 0 1rem 0; }
+    .placedDetail .container .description {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem; }
+      .placedDetail .container .description h3 {
+        padding-bottom: 1rem; }
+      .placedDetail .container .description .con {
+        font-size: 1rem;
+        line-height: 1.2; }
+    .placedDetail .container .service {
+      padding-bottom: 1.5rem; }
+      .placedDetail .container .service p {
+        padding: 1.5rem 0; }
+      .placedDetail .container .service ul {
+        display: flex; }
+        .placedDetail .container .service ul li {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column; }
+          .placedDetail .container .service ul li i {
+            display: block;
+            width: 4rem;
+            height: 4rem;
+            margin-bottom: 0.3rem; }
+          .placedDetail .container .service ul li span {
+            color: #999;
+            font-size: 1.2rem; }
+  .placedDetail footer {
+    height: 4rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    display: flex; }
+    .placedDetail footer ul {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center; }
+      .placedDetail footer ul li {
+        flex: 1;
+        margin: 0 1rem;
+        background-color: rgba(255, 72, 0, 0.3);
+        height: 3rem;
+        line-height: 3rem;
+        text-align: center; }
+        .placedDetail footer ul li:first-child {
+          background-color: #ffbb00; }

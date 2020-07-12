@@ -1,11 +1,14 @@
-// 字体颜色
-$color9: #999;
-$black: #333;
-$colorActive: #ff6600;
+// 二级字体颜色
+$color9: #C3C3C3;
+$black: #000000;
+$black03: #868686;
+// 主色
+$colorActive: #4777F3;
+$colorActive2: #75A6E9;
 // 右箭头
 $colorr: #c8c8cd;
 // border-bottom
-$colorb: rgb(217, 217, 217);
+$colorb: #FAFAFA;
 $colorb03: rgba(217, 217, 217, 0.3);
 @mixin line-clamp($num: 1) {
     word-break: break-all;

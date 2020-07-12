@@ -35,18 +35,20 @@
         <div class="container">
             <ul class="list">
                 <li>
-                    <p class="img">
-                        <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="">
-                    </p>
-                    <!--  -->
-                    <div class="con">
-                        <p class="tit">2019年第三季2019年第三季度盘古2019年第三季度盘古度盘古</p>
-                        <p class="time"><span>【深圳市】09月30日 发布</span></p>
-                        <p class="votes">
-                            <span><i class="icon iconfont icon-xinxi2"></i>2</span>
-                            <span><i class="icon iconfont icon-dianzan1"></i>6</span>
+                    <a href="./details.html">
+                        <p class="img">
+                            <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="">
                         </p>
-                    </div>
+                        <!--  -->
+                        <div class="con">
+                            <p class="tit">2019年第三季2019年第三季度盘古2019年第三季度盘古度盘古</p>
+                            <p class="time"><span>【深圳市】09月30日 发布</span></p>
+                            <p class="votes">
+                                <span><i class="icon iconfont icon-xinxi2"></i>2</span>
+                                <span><i class="icon iconfont icon-dianzan1"></i>6</span>
+                            </p>
+                        </div>
+                    </a>
                 </li>
                 <li>
                     <p class="img">
@@ -90,5 +92,12 @@
     </div>
 </body>
 <script src="../../js/lazyLoad.js"></script>
+<script>
+    $(function() {
+        $(".nav li").click(function() {
+            $(this).addClass("active").siblings().removeClass("active")
+        })
+    })
+</script>
 
 </html>

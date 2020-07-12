@@ -1,254 +1,278 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <title></title>
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
     <script src="../../asset/font/iconfont.js"></script>
-    <script src="../../js/jquery_min.js"></script>
-    <script src="../../js/template-web.js"></script>
-    <script src="../../js/common.js"></script>
 
     <style>
-        .container {
-            margin-top: 80px;
-        }
+      .container {
+        margin-top: 80px;
+      }
 
-        .bg-all {
-            background: #f3f3f3;
-        }
+      .bg-ic {
+        height: 40px;
+        width: 40px;
+        background: #cccccc;
+        border-radius: 50%;
+        margin-bottom: 6px;
+      }
 
-        .bg-ic {
-            height: 40px;
-            width: 40px;
-            background: #cccccc;
-            border-radius: 50%;
-            margin-bottom: 6px;
-        }
+      .header {
+        height: 70px;
+        padding: 6px;
+        font-size: 1.2rem;
+      }
 
-        .header {
-            height: 70px;
-            padding: 6px;
-        }
+      .header .inp {
+        height: 40px;
+        line-height: 40px;
+        font-size: 1.2rem;
+        padding-left: 8px;
+        border: 1px solid #ddd;
+        border-radius: 40px;
+        width: 100%;
+      }
 
-        .header .inp {
-            height: 40px;
-            line-height: 40px;
-            font-size: 1.2rem;
-            padding-left: 8px;
-            border: 1px solid #ddd;
-            border-radius: 40px;
-            width: 100%;
-        }
+      .tab {
+        display: flex;
+        width: 100%;
+        font-size: 1.4rem;
+      }
 
-        .tab {
-            display: flex;
-            width: 100%;
-            font-size: 1.4rem;
-        }
+      .tab div {
+        text-align: center;
+        padding: 4px;
+      }
 
-        .tab div {
-            text-align: center;
-            padding: 4px;
-        }
+      .tab .clic {
+        color: orange;
+      }
 
-        .tab .clic {
-            color: orange;
-        }
+      .flx-fix {
+        width: 8rem;
+        text-align: right;
+      }
 
-        .flx-fix {
-            width: 8rem;
-            text-align: right;
-        }
+      .tex-reference {
+        font-size: 1.4rem;
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid rgba(217, 217, 217, 0.3);
+      }
 
-        .tex-reference {
-            font-size: 1.6rem;
-            height: 40px;
-            line-height: 40px;
-        }
+      .reference-l {
+        font-weight: 500;
+        padding-left: 10px;
+      }
 
-        .reference-l {
-            font-weight: 500;
-            padding-left: 10px;
-        }
+      .reference-r {
+        display: flex;
+        padding-right: 10px;
+        color: #999;
+      }
 
-        .reference-r {
-            text-align: right;
-            padding-right: 10px;
-            color: #cccccc;
-        }
+      .icon-arrow-right {
+        color: #999;
+        font-size: 2rem;
+      }
 
-        .flx-w {
-            width: 6rem;
-        }
+      .flx-w {
+        width: 6rem;
+      }
 
-        .modu-content {
-            height: 10rem;
-            padding: 6px 10px;
-        }
+      .modu-content {
+        height: 8rem;
+        padding: 6px 10px;
+        display: flex;
+        align-items: center;
+      }
 
-        .modu-content .lie {
-            line-height: 10rem;
-        }
+      .modu-content a {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
 
-        .modu-content .modul-tit {
-            font-size: 2rem;
-            line-height: 36px;
-            font-weight: 500;
-        }
+      .modu-content:first-child {
+        margin-top: 0;
+      }
 
-        .modu-content .modul-text {
-            font-size: 1.4rem;
-            line-height: 26px;
-            color: #777272;
-        }
+      .modu-content .lie {
+        line-height: 10rem;
+      }
+
+      .modu-content .modul-tit {
+        font-size: 1.6rem;
+        line-height: normal;
+        font-weight: 500;
+      }
+
+      .modu-content .modul-text {
+        font-size: 1.2rem;
+        line-height: normal;
+        color: #777272;
+      }
     </style>
-</head>
+  </head>
 
-<body class="bg-all">
+  <body class="bg-all">
     <div class="mar-b">
-        <div class="header pad-mix bg-c-w flx">
-            <div class="flx-1 tex-c">
-                <div class="bg-ic"></div>
-                <div>邻里互助</div>
-            </div>
-            <div class="flx-1 tex-c">
-                <div class="bg-ic"></div>
-                <div>邻里分享</div>
-            </div>
-            <div class="flx-1 tex-c">
-                <div class="bg-ic"></div>
-                <div>二手闲置</div>
-            </div>
-            <div class="flx-1 tex-c">
-                <div class="bg-ic"></div>
-                <div>保险理财</div>
-            </div>
+      <div class="header pad-mix bg-c-w flx">
+        <div class="flx-1 flx-dir flx-cc">
+          <div class="bg-ic"></div>
+          <div>邻里互助</div>
         </div>
-        <div class="container">
-            <div>
-                <div class="flx tex-reference bg-c-w">
-                    <div class="flx-1 reference-l">推荐板块</div>
-                    <div class="flx-fix reference-r">全部></div>
+        <div class="flx-1 flx-dir flx-cc">
+          <div class="bg-ic"></div>
+          <div>邻里分享</div>
+        </div>
+        <div class="flx-1 flx-dir flx-cc">
+          <div class="bg-ic"></div>
+          <div>二手闲置</div>
+        </div>
+        <div class="flx-1 flx-dir flx-cc">
+          <div class="bg-ic"></div>
+          <div>保险理财</div>
+        </div>
+      </div>
+      <div class="container">
+        <div>
+          <div class="flx tex-reference bg-c-w">
+            <div class="flx-1 reference-l">推荐板块</div>
+            <div class="reference-r">
+              全部
+              <i class="icon icon-arrow-right iconfont"></i>
+            </div>
+          </div>
+          <div class="flx bg-c-w border-b modu-content">
+            <div class="flx-w lie">
+              <i
+                class="icon iconfont icon-pinglun tex-c"
+                style="font-size: 4rem;"
+              ></i>
+            </div>
+            <div class="flx-1">
+              <div class="modul-tit">热心肠</div>
+              <div class="modul-text">
+                话题数：<span class="cor-r">8</span>关注数：<span class="cor-r"
+                  >8</span
+                >
+              </div>
+              <div class="modul-text">在这里可以像邻里求助</div>
+            </div>
+            <div class="flx-w lie tex-r">
+              <i class="icon icon-arrow-right iconfont"></i>
+            </div>
+          </div>
+          <div class="flx bg-c-w border-b modu-content">
+            <a href="./commentList.html">
+              <div class="flx-w lie">
+                <i
+                  class="icon iconfont icon-pinglun tex-c"
+                  style="font-size: 4rem;"
+                ></i>
+              </div>
+              <div class="flx-1">
+                <div class="modul-tit">装修展示</div>
+                <div class="modul-text">
+                  话题数：<span class="cor-r">8</span>关注数：<span
+                    class="cor-r"
+                    >8</span
+                  >
                 </div>
-                <div class="flx bg-c-w mar-t modu-content">
-                    <div class="flx-w lie">
-                        <i class="icon iconfont icon-pinglun tex-c" style="font-size: 4rem;"></i>
-                    </div>
-                    <div class="flx-1">
-                        <div class="modul-tit">热心肠</div>
-                        <div class="modul-text">
-                            话题数：<span class="cor-r">8</span>关注数：<span class="cor-r">8</span
-                >
+                <div class="modul-text">在这里可以像邻里求助</div>
               </div>
-              <div class="modul-text">在这里可以像邻里求助</div>
-            </div>
-            <div class="flx-w lie tex-r">></div>
-          </div>
-          <div class="flx bg-c-w mar-t modu-content">
-            <div class="flx-w lie">
-              <i
-                class="icon iconfont icon-pinglun tex-c"
-                style="font-size: 4rem;"
-              ></i>
-            </div>
-            <div class="flx-1">
-              <div class="modul-tit">装修展示</div>
-              <div class="modul-text">
-                话题数：<span class="cor-r">8</span>关注数：<span class="cor-r">8</span
-                >
+              <div class="flx-w lie tex-r">
+                <i class="icon icon-arrow-right iconfont"></i>
               </div>
-              <div class="modul-text">在这里可以像邻里求助</div>
-            </div>
-            <div class="flx-w lie tex-r">></div>
-          </div>
-          <div class="flx bg-c-w mar-t modu-content">
-            <div class="flx-w lie">
-              <i
-                class="icon iconfont icon-pinglun tex-c"
-                style="font-size: 4rem;"
-              ></i>
-            </div>
-            <div class="flx-1">
-              <div class="modul-tit">养花心得</div>
-              <div class="modul-text">
-                话题数：<span class="cor-r">8</span>关注数：<span class="cor-r">8</span
-                >
-              </div>
-              <div class="modul-text">在这里可以像邻里求助</div>
-            </div>
-            <div class="flx-w lie tex-r">></div>
-          </div>
-          <div class="flx bg-c-w mar-t modu-content">
-            <div class="flx-w lie">
-              <i
-                class="icon iconfont icon-pinglun tex-c"
-                style="font-size: 4rem;"
-              ></i>
-            </div>
-            <div class="flx-1">
-              <div class="modul-tit">帮帮忙</div>
-              <div class="modul-text">
-                话题数：<span class="cor-r">8</span>关注数：<span class="cor-r">8</span
-                >
-              </div>
-              <div class="modul-text">在这里可以像邻里求助</div>
-            </div>
-            <div class="flx-w lie tex-r">></div>
-          </div>
-          <div class="flx bg-c-w mar-t modu-content">
-            <div class="flx-w lie">
-              <i
-                class="icon iconfont icon-pinglun tex-c"
-                style="font-size: 4rem;"
-              ></i>
-            </div>
-            <div class="flx-1">
-              <div class="modul-tit">帮帮忙</div>
-              <div class="modul-text">
-                话题数：<span class="cor-r">8</span>关注数：<span class="cor-r">8</span
-                >
-              </div>
-              <div class="modul-text">在这里可以像邻里求助</div>
-            </div>
-            <div class="flx-w lie tex-r">></div>
-          </div>
-          <div class="flx bg-c-w mar-t modu-content">
-            <div class="flx-w lie">
-              <i
-                class="icon iconfont icon-pinglun tex-c"
-                style="font-size: 4rem;"
-              ></i>
-            </div>
-            <div class="flx-1">
-              <div class="modul-tit">帮帮忙</div>
-              <div class="modul-text">
-                话题数：<span class="cor-r">8</span>关注数：<span class="cor-r">8</span
-                >
-              </div>
-              <div class="modul-text">在这里可以像邻里求助</div>
-            </div>
-            <div class="flx-w lie tex-r">></div>
+            </a>
           </div>
         </div>
       </div>
-      <div class="flx tab footer">
-        <div class="flx-1">
-          <a href="../activity/index.html">
-            <i class="icon iconfont icon-pinglun"></i>
-            <div>论坛</div>
-          </a>
-        </div>
-        <div class="flx-1 clic">
-          <i class="icon iconfont icon-shaixuan"></i>
-          <div>园区活动</div>
-        </div>
+      <div class="footer flx">
+        <a class="nav-item clic">
+          <i class="icon iconfont icon-luntan"></i>
+          <span>论坛</span>
+        </a>
+        <a class="nav-item flx-1" href="../comment/index.html">
+          <i class="icon iconfont icon-remenhuodong"></i>
+          <span>园区活动</span>
+        </a>
+        <a class="nav-item flx-1" href="../news/list.html">
+          <i class="icon iconfont icon-zixun"></i>
+          <span>资讯</span>
+        </a>
+        <a class="nav-item flx-1" href="../meeting/index.html">
+          <i class="icon iconfont icon-huiyishi"></i>
+          <span>会议室</span>
+        </a>
+        <a class="nav-item flx-1" href="../placed/index.html">
+          <i class="icon iconfont icon-chad"></i>
+          <span>场地</span>
+        </a>
       </div>
     </div>
   </body>
+  <script src="../../js/jquery_min.js"></script>
+  <script src="../../js/template-web.js"></script>
+  <script src="../../js/common.js"></script>
   <script src="../../js/lazyLoad.js"></script>
+  <!-- 论坛导航 -->
+  <script id="forumTpl" type="text/html">
+    {{each list as item}}
+      <div class="flx-1 flx-dir flx-cc" onclick="openRecommend('{{item.fdId}}')">
+        <div class="bg-ic">
+          <img src="item.imageUrl" alt="" srcset="">
+        </div>
+        <div>{{item.fdName}}</div>
+      </div>
+    {{/each}}
+  </script>
+  <!-- 模板 推荐版块 -->
+  <script id="recommendTpl" type="text/html">
+    {{each list as item}}
+      <div class="flx bg-c-w border-b modu-content">
+        <div class="flx-w lie">
+          <i class="icon iconfont icon-pinglun tex-c" style="font-size: 4rem;"></i>
+        </div>
+        <div class="flx-1">
+          <div class="modul-tit">热心肠</div>
+          <div class="modul-text">
+            话题数：<span class="cor-r">8</span>关注数：<span class="cor-r">8</span>
+          </div>
+          <div class="modul-text">在这里可以像邻里求助</div>
+        </div>
+        <div class="flx-w lie tex-r">
+          <i class="icon icon-arrow-right iconfont"></i>
+        </div>
+      </div>
+    {{/each}}
+  </script>
+  <script>
+    $(function () {
+      getForumCateList();
+    });
+    // 获取论坛列表
+    function getForumCateList() {
+      var result = ajax("/ekp/resource/forum/getForumCateList", "");
+      result.done(function (resp) {
+        console.log(resp);
+      });
+    }
+    /*渲染模板*/
+    function renderTemplate(templateId, data, contentId) {
+      var html = template(id, {
+        list: data,
+      });
+      $("#" + contentId).append(html);
+    }
+  </script>
 </html>

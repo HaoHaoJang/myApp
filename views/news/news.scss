@@ -21,6 +21,7 @@
         }
     }
     .header.nav {
+        font-size: 1.2rem;
         top: 4.4rem;
         overflow-x: auto;
         ul {
@@ -41,6 +42,9 @@
         }
     }
     .list li {
+        a {
+            display: flex;
+        }
         display: flex;
         padding: 1.4rem 0;
         border-bottom: 1px solid $colorb03;
