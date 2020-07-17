@@ -27,8 +27,7 @@ body {
     visibility: hidden;
 }
 
-@media (-webkit-min-device-pixel-ratio: 1.5),
-(min-device-pixel-ratio: 1.5) {
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
     .border-1px,
     .border-1px-top ::after {
         -webkit-transform: scaleY(0.7);
@@ -36,8 +35,7 @@ body {
     }
 }
 
-@media (-webkit-min-device-pixel-ratio: 3),
-(min-device-pixel-ratio: 3) {
+@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
     .border-1px,
     .border-1px-top::after {
         -webkit-transform: scaleY(0.5);
@@ -297,11 +295,11 @@ img {
 }
 
 .footer .nav-item span {
-    color: #9E9DA4;
+    color: #9e9da4;
 }
 
 .footer .nav-item.clic span {
-    color: #4777F3;
+    color: #4777f3;
 }
 
 .header2 {
@@ -314,7 +312,7 @@ img {
 }
 
 .clic {
-    color: #4777F3;
+    color: #4777f3;
 }
 
 .footer .icon {
@@ -336,6 +334,7 @@ input::-webkit-input-placeholder {
     z-index: 999;
     display: none;
 }
+<<<<<<< HEAD
 
 .clor-active {
     color: #ff6600;
@@ -345,6 +344,22 @@ input::-webkit-input-placeholder {
 }
 .clor-blu {
     color: #0849a2;
+=======
+.hide {
+    display: none;
+}
+/* 空页面 */
+.empty {
+    color: #9e9da4;
+    margin-top: 50%;
+    text-align: center;
+    font-size: 1.4rem;
+}
+.empty .icon {
+    font-size: 5rem;
+    display: block;
+    margin-bottom: 1rem;
+>>>>>>> e28eb42ba0c7d901e00e18226630f201d547d496
 }
 
 /* 重置轮播图样式 */

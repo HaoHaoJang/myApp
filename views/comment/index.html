@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no"
     />
     <meta content="yes" name="apple-mobile-web-app-capable" />
-    <title></title>
+    <title>论坛首页</title>
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
     <script src="../../asset/font/iconfont.js"></script>
@@ -125,6 +125,9 @@
       .mar-r0 {
         margin-right: 0;
       }
+      #forum .active {
+        color: #4777f3;
+      }
     </style>
   </head>
 
@@ -144,12 +147,12 @@
           <section id="recommend"></section>
         </div>
       </div>
-      <div class="footer flx">
-        <a class="nav-item clic">
+      <div class="footer flx clic">
+        <a class="nav-item" href="../comment/index.html">
           <i class="icon iconfont icon-luntan"></i>
           <span>论坛</span>
         </a>
-        <a class="nav-item flx-1" href="../comment/index.html">
+        <a class="nav-item flx-1" href="../activity/index.html">
           <i class="icon iconfont icon-remenhuodong"></i>
           <span>园区活动</span>
         </a>
@@ -174,8 +177,8 @@
   <script src="../../js/lazyLoad.js"></script>
   <!-- 论坛导航 -->
   <script id="forumTpl" type="text/html">
-    {{each list as item}}
-      <div class="flx-1 flx-dir flx-cc" onclick="openRecommend('{{item.fdId}}')">
+    {{each list as item index}}
+      <div class="flx-1 flx-dir flx-cc {{index == 0 ? 'active':''}}" onclick="openRecommend('{{item}}',this)">
         <div class="bg-ic">
           <!-- <img src="{{domain + item.imageUrl}}" alt=""> -->
           <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="" srcset="">
@@ -186,7 +189,7 @@
   </script>
   <!-- 模板 推荐版块 -->
   <script id="recommendTpl" type="text/html">
-    {{each list as item}}
+    {{each list as item }}
       <a class="flx bg-c-w border-b modu-content" href="./commentList.html?fdId={{item.fdId}}">
         <div class="flx-w lie">
           <!-- <img src="{{domain + item.imageUrl}}" alt=""> -->
@@ -222,7 +225,12 @@
       var html = template(templateId, {
         list: data,
       });
-      $("#" + contentId).append(html);
+      $("#" + contentId).html(html);
+    }
+    //
+    function openRecommend(item, obj) {
+      $(obj).addClass("active").siblings().removeClass("active");
+      renderTemplate("recommendTpl", JSON.parse(item).children, "recommend");
     }
   </script>
 </html>

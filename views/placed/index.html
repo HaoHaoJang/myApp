@@ -1,57 +1,128 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
     <meta content="yes" name="apple-mobile-web-app-capable" />
-    <title></title>
+    <title>场地列表</title>
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
     <link rel="stylesheet" href="./placed.css" />
     <script src="../../asset/font/iconfont.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="placed">
-        <header>
-            <div class="header">
-                <div class="back">
-                    <i class="icon iconfont icon-arrow-lift"></i>
-                </div>
-                <div class="head-tit">预定场地</div>
-                <div class="back"></div>
-            </div>
-        </header>
-        <div class="container">
-            <div class="header2 tit2">
-                <p>六安市六安市</p>
-            </div>
-            <div class="placed-item" onclick="location.href='./detail.html'">
-                <div class="con">
-                    <p class="img">
-                        <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="" srcset="" />
-                    </p>
-                    <p class="price"><span>分享有奖</span></p>
-                    <p class="share"><span>分享有奖</span></p>
-                </div>
-                <p class="tit">创业实验室</p>
-                <p class="desc">临期发随风飘散佛菩萨福爬服啊</p>
-                <p class="button">
-                    <a>电脑40组</a>
-                    <a>电脑40组</a>
-                    <a>电脑40组</a>
-                    <a>电脑40组</a><a>电脑40组</a><a>电脑40组</a><a>电脑40组</a
-            ><a>电脑40组</a><a>电脑40组</a><a>电脑40组</a>
-                    <a>电脑40组</a>
-                </p>
-            </div>
+      <header>
+        <div class="header">
+          <div class="back">
+            <i class="icon iconfont icon-arrow-lift"></i>
+          </div>
+          <div class="head-tit">预定场地</div>
+          <div class="back"></div>
         </div>
+      </header>
+      <!-- 内容列表 -->
+      <div class="container">
+        <!-- <div class="header2 tit2">
+          <p>六安市六安市</p>
+        </div> -->
+        <div class="info"></div>
+      </div>
+      <!-- 底部按钮 -->
+      <div class="footer flx">
+        <a class="nav-item" href="../comment/index.html">
+          <i class="icon iconfont icon-luntan"></i>
+          <span>论坛</span>
+        </a>
+        <a class="nav-item flx-1" href="../activity/index.html">
+          <i class="icon iconfont icon-remenhuodong"></i>
+          <span>园区活动</span>
+        </a>
+        <a class="nav-item flx-1" href="../news/list.html">
+          <i class="icon iconfont icon-zixun"></i>
+          <span>资讯</span>
+        </a>
+        <a class="nav-item flx-1" href="../meeting/index.html">
+          <i class="icon iconfont icon-huiyishi"></i>
+          <span>会议室</span>
+        </a>
+        <a class="nav-item flx-1 clic" href="../placed/index.html">
+          <i class="icon iconfont icon-chad"></i>
+          <span>场地</span>
+        </a>
+      </div>
     </div>
-</body>
-<script src="../../js/jquery_min.js"></script>
-<script src="../../js/common.js"></script>
-<script src="../../js/template-web.js"></script>
-<script src="../../js/lazyLoad.js"></script>
-
+  </body>
+  <script src="../../js/jquery_min.js"></script>
+  <script src="../../js/template-web.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/lazyLoad.js"></script>
+  <!-- 模板 -->
+  <script id="placedTpl" type="text/html">
+    {{each list as item}}
+        <div class="placed-item" onclick='location.href="./detail.html?fdArea={{item.fdArea}}"'>
+          <div class="con">
+            <p class="img">
+                   <!-- <img src="" data-src="{{domain + item.fdImage[0]}}" alt=""> -->
+                   <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" />
+            </p>
+            <p class="price"><span>{{item.fdbalancetype}}</span></p>
+            <p class="share"><span>分享有奖</span></p>
+          </div>
+          <p class="tit">{{item.areaName}}</p>
+          <p class="desc">{{item.areaAdress}}</p>
+          <p class="button">
+            {{each item.wechatAreaItem as subItem}}
+            <a>{{subItem}}</a>
+            {{/each}}
+          </p>
+        </div>
+    {{/each}}
+  </script>
+  <script>
+    var pageno = 1,
+      rowsize = 10;
+    $(function () {
+      getAreaList();
+    });
+    // 获取论坛列表;
+    function getAreaList(flag) {
+      var result = ajaxMothed("/ekp/resource/wechatArea/auth/getAreaList", {
+        pageno: pageno,
+        rowsize: 10,
+      });
+      result
+        .done(function (resp) {
+          // 重置滚动条开关
+          resetFresh();
+          if (resp.data.length == 0) {
+            if (pageno == 1) {
+              $(".container .info").html("");
+              $(".empty").removeClass("hide");
+            }
+            return false;
+          }
+          $(".empty").addClass("hide");
+          pageno++;
+          render(resp.data);
+        })
+        .fail(function () {
+          if (pageno == 1) {
+            $(".container .info").html("");
+            $(".empty").removeClass("hide");
+          }
+        });
+    }
+    /*****模板渲染*****/
+    function render(data) {
+      var html = template("placedTpl", {
+        list: data,
+      });
+      $(".container .info").append(html);
+    }
+  </script>
 </html>
