@@ -1,0 +1,59 @@
+.perdetermine .line-content {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 1rem;
+}
+.perdetermine .flx-w {
+    width: 4rem;
+}
+.perdetermine .pre-timmer {
+    padding: 2rem 1rem;
+    padding-bottom: 0.5rem;
+}
+.perdetermine .pre-timmer .pre-timmer-container {
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.perdetermine .pre-timmer .pre-timmer-container .timer-content {
+    display: inline-block;
+    font-size: 1rem;
+    color: #dddddd;
+    height: 2rem;
+    width: 5rem;
+    line-height: 2rem;
+    text-align: center;
+    border: 1px solid #dddddd;
+    border-radius: 2px;
+    margin-bottom: 0.5rem;
+}
+.perdetermine .titp {
+    color: #dddddd;
+}
+.perdetermine .btn-span {
+    display: inline-block;
+    font-size: 0.8rem;
+    height: 1.4rem;
+    width: 4rem;
+    line-height: 1.4rem;
+    text-align: center;
+    border: 1px solid #dddddd;
+    border-radius: 1px;
+}
+.perdetermine .bor-t {
+    border-top: 1px solid #efefef;
+}
+.fl-tex-w {
+    width: 10rem;
+}
+.fl-tex-t-w {
+    width: 9rem;
+}
+.btn-sure {
+    background-color: rgb(4, 84, 148);
+    color: #ffffff;
+    font-size: 1.4rem;
+    text-align: center;
+    border-radius: 4px;
+    margin: 1rem 0;
+    letter-spacing: 6px;
+}

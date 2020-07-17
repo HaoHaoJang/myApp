@@ -182,7 +182,9 @@ img {
 .btn-co {
     color: #ffffff;
 }
-
+.fot-mi-s {
+    font-size: 1rem;
+}
 .fot-s {
     font-size: 1.2rem;
 }
@@ -335,6 +337,15 @@ input::-webkit-input-placeholder {
     display: none;
 }
 
+.clor-active {
+    color: #ff6600;
+}
+.clor-gre {
+    color: #989696;
+}
+.clor-blu {
+    color: #0849a2;
+}
 
 /* 重置轮播图样式 */
 
