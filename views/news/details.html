@@ -8,6 +8,8 @@
     />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <title>发表评论</title>
+    <link rel="stylesheet" href="../../css/weui.css" />
+    <link rel="stylesheet" href="../../css/jquery-weui.css" />
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
     <script src="../../asset/font/iconfont.js"></script>
@@ -130,7 +132,7 @@
         line-height: 3.5rem;
         color: #ffffff;
         border: none;
-        background: #ff6600;
+        background: #4777f3;
         border-radius: 4px;
       }
 
@@ -162,6 +164,9 @@
         font-size: 1.2rem;
         margin-top: 1rem;
       }
+      .icon-dianzan2 {
+        color: #4777f3 !important;
+      }
     </style>
   </head>
 
@@ -178,35 +183,36 @@
       </header>
       <div class="content pad-mix bg-c-w">
         <div class="container">
-          <div class="title-content">
-            <h4>2019年第三季度盘古剑客之星名单！！！</h4>
-            <span>【深圳市】09月30日 15：25发布</span>
-          </div>
-          <div class="tex-r share-content">
-            <span class="share">
-              <i class="icon iconfont icon-arrow-lift"></i>
-              分享
-            </span>
-          </div>
-          <div>
-            <p>
-              月底，史蒂夫史蒂夫，是的发送，放水淀粉，人，儿童，为，玩儿玩儿，我给惹我，哥，人个人，ger
-              沃尔沃，而为，额，玩儿玩儿温柔，werwerwe.werwer，we.w，沃尔沃，we.we，werwerw，。。
-              werw.rw.e，玩儿，。。
-            </p>
-          </div>
+          <script id="newsDetailTpl" type="text/html">
+
+            <div class="title-content">
+              <h4>{{list.docSubject}}</h4>
+              <span>{{list.docCreateTime}}发布 </span>
+            </div>
+            <div class="tex-r share-content">
+              <!-- <span class="share">
+                <i class="icon iconfont icon-arrow-lift"></i>
+                分享
+              </span> -->
+            </div>
+            <div>
+              <p>
+               {{@ list.docContent}}
+              </p>
+            </div>
+          </script>
         </div>
-        <div class="page-next">
+        <!-- <div class="page-next">
           <div>上一篇：<span>重庆盘古互联网+是的发送发大水</span></div>
           <div>下一篇：<span>重庆盘古互联网+是的发送发大水</span></div>
-        </div>
+        </div> -->
       </div>
       <div class="comment-footer pad-mix bg-c-w">
         <div class="flx fot-m publishTit">
-          <div class="flx-1 tex-l">评论 <span>(2)</span></div>
+          <div class="flx-1 tex-l">评论 (<span id="num1">2</span>)</div>
           <div class="flx-1 tex-r" id="greate">
-            <i class="icon iconfont icon-dianzan1"></i>点赞
-            <span class="num">(6)</span>
+            <i class="icon iconfont icon-dianzan1"></i>点赞(
+            <span class="num" id="num2">6</span>)
           </div>
         </div>
         <div>
@@ -222,10 +228,11 @@
                 type="text"
                 class="comment-input"
                 placeholder="来说说你的想法吧"
+                id="docContent"
               />
             </div>
             <div class="flx-w-button">
-              <button class="btn">发布</button>
+              <button class="btn" onclick="publish()">发布</button>
             </div>
           </div>
           <div class="flx comment-comment-user"></div>
@@ -237,14 +244,14 @@
   <script id="newCommentList" type="text/html">
     {{each list as item}}
     <div class="flx-w">
-        <img src="" class="header-im" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" />
+        <img src="" class="header-im" data-src="{{domain + item.fanPhoto}}" />
         <div></div>
     </div>
     <div class="flx-1">
-        <div class="comment-user-name">郭晓玉</div>
-        <div class="comment-user-time">11月06日00:30发布</div>
+        <div class="comment-user-name">{{item.fanNick}}</div>
+        <div class="comment-user-time">{{item.docCreateTime}}发布</div>
         <div class="comment-user-content">
-            史蒂夫撒都放水淀粉大沙发上飞机哦几哦就哦家
+          {{item.talkContent }}
         </div>
     </div>
     {{/each}}
@@ -253,44 +260,75 @@
   <script src="../../js/lazyLoad.js"></script>
   <script src="../../js/common.js"></script>
   <script>
+    var fdId = "";
     $(function () {
-      $(".nav li").click(function () {
-        $(this).addClass("active").siblings().removeClass("active");
-      });
+      getDetail();
+      newsCommentList();
     });
-    console.log(window.location.href, 3333);
-    alert(GetRequest(window.location.href));
     // 查询详情接口
     function getDetail() {
       var result = ajaxMothed("/resource/wechatDoc/getDocDetail", {
         fdId: GetRequest(window.location.href)["fdId"],
       });
       result.done(function (resp) {
-        render(".container", "newlist", resp.data, true);
+        fdId = resp.data.fdId;
+        render(".container", "newsDetailTpl", resp.data, true);
+        // 渲染评论列表
+        newsCommentList(resp.data.talkList);
+        // 评论数量
+        $("#num1").html(resp.data.talkNum);
+        // 点赞数量
+        $("#num2").html(resp.data.thumupNum);
       });
     }
-    getDetail();
+    // 点赞
     $("#greate").click(function () {
+      if ($(".greate .icon").hasClass("icon-dianzan2")) {
+        return false;
+      }
       onfocue();
     });
     // 点赞接口
     function onfocue() {
-      var result1 = ajaxMothed("/resource/forum/thumUpDoc", {
-        fdId: GetRequest(window.location.href)["fdId"],
+      var result = ajaxMothed("/resource/wechatDoc/auth/thumUpDoc", {
+        fdId: fdId,
       });
-      result.done(function (resp) {
-        alert(resp.data.msg);
-        getDetail();
-      });
+      result
+        .done(function (resp) {
+          if (resp.success) {
+            $(".greate .icon").addClass("icon-dianzan2");
+            getDetail();
+          }
+        })
+        .fail(function (resp) {
+          $.toast(resp.msg, "text");
+        });
     }
-    // 点赞接口
-    function newsCommentList() {
-      var result1 = ajaxMothed("/resource/forum/talkDoc", {
-        fdId: GetRequest(window.location.href)["fdId"],
+    // 获取评论列表
+    function newsCommentList(talkList) {
+      render(".comment-comment-user", "newCommentList", talkList, true);
+    }
+    // 发布评论
+    function publish() {
+      if (!$("#docContent").val()) {
+        return false;
+      }
+      var result = ajaxMothed("/resource/wechatDoc/auth/talkDoc", {
+        fdId: fdId,
+        docContent: $("#docContent").val(),
       });
-      result.done(function (resp) {
-        render(".comment-comment-user", "newCommentList", resp.data, true);
-      });
+      result
+        .done(function (resp) {
+          if (resp.success) {
+            $.toast("评论成功", "text");
+            getDetail();
+          } else {
+            $.toast(resp.msg, "text");
+          }
+        })
+        .fail(function (resp) {
+          $.toast(resp.msg, "text");
+        });
     }
   </script>
 </html>

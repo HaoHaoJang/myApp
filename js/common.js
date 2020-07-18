@@ -84,7 +84,7 @@ function ajaxMothed(url, params, type) {
     timeout: 100000,
     contentType: "application/json",
     success: function (data) {
-      console.log(data, 333333)
+      console.log(data, 333333);
       var data = JSON.parse(data);
       if (data.success) {
         defer.resolve(data);
@@ -133,9 +133,16 @@ function GetRequest(urlStr) {
   return theRequest;
 }
 //  下拉滚动 开启
-var _scrollFresh = false;
+var _scrollFresh = false,
+  _scrollPageNo = 1,
+  _scrollTotalPage = null;
+// 设置下拉滚动开关
 function resetFresh() {
   _scrollFresh = false;
+}
+// 初始化当前页
+function resetPageNo() {
+  _scrollPageNo = 1;
 }
 // 设置加载更多的文案
 function setLoadMore() {
@@ -147,11 +154,22 @@ function setLoadFinish() {
   $(".weui-loadmore .weui-loading").hide();
   $(".weui-loadmore .weui-loadmore__tips").text("已加载完成");
 }
+function setScrollPage() {
+  if (_scrollPageNo < _scrollTotalPage) {
+    _scrollPageNo++;
+    setLoadMore();
+    // 开启下拉加载
+    resetFresh();
+  } else {
+    // 加载完成
+    setLoadFinish();
+  }
+}
 /**
  * 滚动加载
  * @param {} callback
  */
-function pageScroll(callback) {
+function pageScroll(callback, pageNo, total) {
   $(document.body)
     .infinite()
     .on("infinite", function () {
@@ -163,19 +181,22 @@ function pageScroll(callback) {
 function dateFormat(fmt, date) {
   let ret;
   const opt = {
-    "y+": date.getFullYear().toString(),        // 年
-    "m+": (date.getMonth() + 1).toString(),     // 月
-    "d+": date.getDate().toString(),            // 日
-    "H+": date.getHours().toString(),           // 时
-    "M+": date.getMinutes().toString(),         // 分
-    "S+": date.getSeconds().toString()          // 秒
+    "y+": date.getFullYear().toString(), // 年
+    "m+": (date.getMonth() + 1).toString(), // 月
+    "d+": date.getDate().toString(), // 日
+    "H+": date.getHours().toString(), // 时
+    "M+": date.getMinutes().toString(), // 分
+    "S+": date.getSeconds().toString(), // 秒
     // 有其他格式化字符需求可以继续添加，必须转化成字符串
   };
   for (let k in opt) {
     ret = new RegExp("(" + k + ")").exec(fmt);
     if (ret) {
-      fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
-    };
-  };
+      fmt = fmt.replace(
+        ret[1],
+        ret[1].length == 1 ? opt[k] : opt[k].padStart(ret[1].length, "0")
+      );
+    }
+  }
   return fmt;
 }

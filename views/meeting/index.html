@@ -31,8 +31,8 @@
             前一天
           </div>
           <div class="flx-1 tex-c posr">
-              预定场地
-              <input type="text" id="my_input" class="data-sele"/>
+            预定场地
+            <input type="text" id="my_input" class="data-sele" />
           </div>
           <div class="flx-1 tex-c" id="next_day">
             后一天
@@ -152,11 +152,12 @@
   <script src="../../js/common.js"></script>
   <script src="../../js/lazyLoad.js"></script>
   <script>
-      var nowdate= dateFormat('yyyy-mm-dd', new Date()) // 当前日期
-      var numDate = 0 // 日期默认点击数
-      var pageno = 0, rowsize= 10;
+    var nowdate = dateFormat("yyyy-mm-dd", new Date()); // 当前日期
+    var numDate = 0; // 日期默认点击数
+    var pageno = 0,
+      rowsize = 10;
     $(function () {
-        // 高级搜索伸缩点击事件
+      // 高级搜索伸缩点击事件
       $("ul.accordion li span").on("click", function (event) {
         event.stopPropagation();
         $(this).parent().siblings().removeClass("selected").find("div").hide();
@@ -180,48 +181,53 @@
         });
       });
       // 设置默认时间
-      $('#my_input').val(nowdate)
-        // 时间组建初始化
-      $('#my_input').calendar({
-          value: [nowdate],
-          dateFormat: 'yyyy-mm-dd'
-      })
-        // 选择新的时间出发change事件 调取查询接口
-      $('#my_input').on('change', function (val) {
-          getDateApi()
-      })
-        // 点击前一天
-        $('#pre_day').click(function () {
-          if ($('#my_input').val() === nowdate) {
-              $.toast('日期大于今天', 'text');
-              return
-          }
-            numDate --
-          $('#my_input').val(dateFormat('yyyy-mm-dd', (new Date(new Date() + 3600000*24*numDate))))
-            getDateApi()
-        })
-        // 点击后一天
-        $('#next_day').click(function () {
-            numDate ++
-            var timme = new Date(new Date() * 1 + 3600000*24 * numDate)
-            $('#my_input').val(dateFormat('yyyy-mm-dd', timme))
-            getDateApi()
-        })
-        // 获取接口方法
-        function getDateApi() {
-            var result = ajaxMothed("/ekp/resource/wechatArea/auth/getMeetList", {
-                pageno: pageno,
-                rowsize: rowsize,
-                // date: $('#my_input').val() || dateFormat('yyyy-mm-dd', nowdate)
-            });
-            result.done(function (resp) {
-                render(".container", "newlist", resp.data.dataList, true);
-            });
+      $("#my_input").val(nowdate);
+      // 时间组建初始化
+      $("#my_input").calendar({
+        value: [nowdate],
+        dateFormat: "yyyy-mm-dd",
+      });
+      // 选择新的时间出发change事件 调取查询接口
+      $("#my_input").on("change", function (val) {
+        getDateApi();
+      });
+      // 点击前一天
+      $("#pre_day").click(function () {
+        if ($("#my_input").val() === nowdate) {
+          $.toast("日期大于今天", "text");
+          return;
         }
-        getDateApi()
-      $('#goToDetailMeeting').click(function () {
-        window.location.href('./detail.html?fdId=' + '1')
-      })
+        numDate--;
+        $("#my_input").val(
+          dateFormat(
+            "yyyy-mm-dd",
+            new Date(new Date() + 3600000 * 24 * numDate)
+          )
+        );
+        getDateApi();
+      });
+      // 点击后一天
+      $("#next_day").click(function () {
+        numDate++;
+        var timme = new Date(new Date() * 1 + 3600000 * 24 * numDate);
+        $("#my_input").val(dateFormat("yyyy-mm-dd", timme));
+        getDateApi();
+      });
+      // 获取接口方法
+      function getDateApi() {
+        var result = ajaxMothed("/ekp/resource/wechatArea/auth/getMeetList", {
+          pageno: pageno,
+          rowsize: rowsize,
+          // date: $('#my_input').val() || dateFormat('yyyy-mm-dd', nowdate)
+        });
+        result.done(function (resp) {
+          render(".container", "newlist", resp.data.dataList, true);
+        });
+      }
+      getDateApi();
+      $("#goToDetailMeeting").click(function () {
+        window.location.href("./detail.html?fdId=" + "1");
+      });
     });
   </script>
 </html>

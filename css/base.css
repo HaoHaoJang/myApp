@@ -377,3 +377,6 @@ input::-webkit-input-placeholder {
     margin: 0 auto !important;
     padding: 1.5rem 0;
 }
+.weui-dialog__btn {
+    color: #0849a2;
+}

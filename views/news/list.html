@@ -7,7 +7,9 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
     />
     <meta content="yes" name="apple-mobile-web-app-capable" />
-    <title></title>
+    <title>新闻列表</title>
+    <link rel="stylesheet" href="../../css/weui.css" />
+    <link rel="stylesheet" href="../../css/jquery-weui.css" />
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
     <link rel="stylesheet" href="./news.css" />
@@ -17,22 +19,34 @@
   <body>
     <div class="newsList">
       <div class="header pad-mix bg-c-w">
-        <input type="text" placeholder="搜索活动" class="inp" id="newsName" />
+        <div class="inp">
+          <i class="icon-sousuo icon iconfont" onclick="getNewList()"></i>
+          <input type="text" placeholder="搜索活动" id="newsName" />
+        </div>
       </div>
       <div class="header nav">
         <ul>
-          <li class="active" data-id="all">全部</li>
-          <li>本地</li>
-          <li>盘古频道</li>
-          <li>创新创业</li>
-          <li>创新创业</li>
-          <li>创新创业</li>
-          <li>创新创业</li>
-          <li>创新创业</li>
+          <script id="categoryTpl" type="text/html">
+            {{each list as item index}}
+            <li class="{{index == 0?'active':''}}" data-id="{{item.id}}">
+              {{item.name}}
+            </li>
+            {{/each}}
+          </script>
         </ul>
       </div>
       <div class="container">
         <ul class="list"></ul>
+        <div class="weui-loadmore">
+          <i class="weui-loading"></i>
+          <span class="weui-loadmore__tips">正在加载</span>
+        </div>
+      </div>
+      <div class="empty hide">
+        <i class="icon icon-empty iconfont"></i>
+        <p>
+          暂无数据！！！
+        </p>
       </div>
     </div>
     <div class="footer flx">
@@ -62,17 +76,17 @@
   <script id="newlist" type="text/html">
     {{each list as item}}
     <li>
-        <a href="./details.html?id={{item.id}}">
+        <a href="./details.html?fdId={{item.fdId}}">
             <p class="img">
                 <img src="" data-src="{{domain + item.imageUrl}}" alt="">
             </p>
             <!--  -->
             <div class="con">
                 <p class="tit">{{item.docSubject}}</p>
-                <p class="time"><span>【深圳市】{{item.createTime}} 发布</span></p>
+                <p class="time"><span>{{item.createTime}} 发布</span></p>
                 <p class="votes">
-                    <span><i class="icon iconfont icon-xinxi2"></i>2</span>
-                    <span><i class="icon iconfont icon-dianzan1"></i>6</span>
+                    <span><i class="icon iconfont icon-xinxi2"></i>{{item.talkNum}}</span>
+                    <span><i class="icon iconfont icon-dianzan1"></i>{{item.thumupNum}}</span>
                 </p>
             </div>
         </a>
@@ -83,21 +97,70 @@
   <script src="../../js/common.js"></script>
   <script src="../../js/lazyLoad.js"></script>
   <script>
-    var pageno = 0,
-      rowsize = 10;
+    var categoryList = [
+      {
+        id: "all",
+        name: "全部",
+      },
+      {
+        id: "1",
+        name: "频道",
+      },
+      {
+        id: "2",
+        name: "创新创业",
+      },
+      {
+        id: "3",
+        name: "园区动态",
+      },
+      {
+        id: "4",
+        name: "智慧党建",
+      },
+    ];
     $(function () {
+      render(".nav ul", "categoryTpl", categoryList, false);
       $(".nav li").click(function () {
         $(this).addClass("active").siblings().removeClass("active");
+        $(".container .list").html("");
+        resetPageNo();
+        getNewList();
       });
+      getNewList();
     });
-    var result = ajaxMothed("/resource/wechatDoc/getNewList", {
-      pageno: pageno,
-      rowsize: rowsize,
-      docCate: $(".nav .active").attr("data-id") || "all",
-      newsName: $("#newsName").val() || "",
-    });
-    result.done(function (resp) {
-      render(".container", "newlist", resp.data.dataList, true);
-    });
+    function getNewList() {
+      var result = ajaxMothed("/resource/wechatDoc/getNewList", {
+        pageNo: _scrollPageNo,
+        rowsize: 10,
+        docCate: $(".nav .active").attr("data-id") || "all",
+        newsName: $("#newsName").val() || "",
+      });
+      result
+        .done(function (resp) {
+          _scrollTotalPage = resp.data.total;
+          // 重置滚动条开关
+          if (resp.data.dataList.length == 0) {
+            if (_scrollPageNo == 1) {
+              $(".container .list").html("");
+              $(".empty").removeClass("hide");
+              $(".weui-loadmore").hide();
+            }
+            return false;
+          }
+          $(".empty").addClass("hide");
+          $(".weui-loadmore").show();
+          render(".list", "newlist", resp.data.dataList, true);
+          lazyRender();
+          setScrollPage();
+        })
+        .fail(function () {
+          if (_scrollPageNo == 1) {
+            $(".container .list").html("");
+            $(".empty").removeClass("hide");
+            $(".weui-loadmore").hide();
+          }
+        });
+    }
   </script>
 </html>

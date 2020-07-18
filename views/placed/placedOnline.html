@@ -8,6 +8,8 @@
     />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <title>线上预订</title>
+    <link rel="stylesheet" href="../../css/weui.css" />
+    <link rel="stylesheet" href="../../css/jquery-weui.css" />
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../css/jquery.pickTime.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
@@ -29,58 +31,77 @@
       <!-- 内容列表 -->
       <div class="container">
         <div class="detail">
-          <p class="img">
-            <img
-              src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"
-              alt=""
-              srcset=""
-            />
-          </p>
-          <div class="info">
-            <p class="tit">人力资源服务大厅</p>
-            <p class="desc">天滴滴滴滴IDIDID议弟弟</p>
-          </div>
+          <script id="areaOnlineTpl" type="text/html">
+            <p class="img">
+              <img src="{{domain + list.fdImage}}" alt="" srcset="" />
+            </p>
+            <div class="info">
+              <p class="tit">{{list.areaName}}</p>
+              <p class="desc">{{list.areaAdress}}</p>
+            </div>
+          </script>
         </div>
         <!-- form 信息 -->
-        <ul id="form">
-          <li>
-            <label for="">联系人</label>
-            <input type="text" placeholder="请输入联系人" />
-          </li>
-          <li>
-            <label for="">联系电话</label>
-            <input type="text" placeholder="请输入联系电话" />
-          </li>
-          <li>
-            <label for="">所属公司</label>
-            <input type="text" placeholder="请输入公司名称" />
-          </li>
-          <li>
-            <label for="">邮箱</label>
-            <input type="text" placeholder="请输入邮箱" />
-          </li>
-        </ul>
-        <ul id="dateTime">
-          <li>
-            <label for="">选择日期</label>
-            <p class="date">2020-07-12</p>
-            <i></i>
-          </li>
-          <li>
-            <label for="">选择时间</label>
-            <p class="time">2020-07-12</p>
-            <i></i>
-          </li>
-          <!-- <li class="time" style="font-size: 14px;">
-            时间
-          </li>
-          <li class="date" style="font-size: 14px;">
-            日期
-          </li> -->
-        </ul>
+        <form action="" method="post">
+          <ul id="form">
+            <li>
+              <label for="">联系人</label>
+              <input
+                value="22"
+                type="text"
+                placeholder="请输入联系人"
+                name="fdcontact"
+                id="fdcontact"
+              />
+            </li>
+            <li>
+              <label for="">联系电话</label>
+              <input
+                value="18801586484"
+                type="text"
+                placeholder="请输入联系电话"
+                name=""
+                id="phone"
+              />
+            </li>
+            <li>
+              <label for="">所属公司</label>
+              <input
+                value="ooooo"
+                type="text"
+                placeholder="请输入公司名称"
+                name="fdcompany"
+              />
+            </li>
+            <li>
+              <label for="">邮箱</label>
+              <input
+                type="email"
+                placeholder="请输入邮箱"
+                value="1039544668@qqw.com"
+                id="email"
+              />
+            </li>
+          </ul>
+          <ul id="dateTime">
+            <li>
+              <label for="">选择日期</label>
+              <p class="date"></p>
+              <i></i>
+              <input type="hidden" name="fddate" value="" id="date" />
+            </li>
+            <li>
+              <label for="">选择时间</label>
+              <p class="time"></p>
+              <i></i>
+              <input type="hidden" name="fdtime" value="" id="time" />
+            </li>
+          </ul>
+          <input type="hidden" value="" name="fdId" id="fdId" />
+        </form>
       </div>
       <!-- 底部按钮 -->
-      <footer>
+      <footer onclick="submit()">
         <p>提交</p>
       </footer>
     </div>
@@ -91,6 +112,7 @@
   <script src="../../js/lazyLoad.js"></script>
   <!-- 模板 -->
   <script>
+    var fdId = "";
     $(function () {
       $(".date").pickTimer({
         pickType: "y:m:d",
@@ -100,6 +122,50 @@
         pickType: "h:m:s",
         speed: 3,
       });
+      var date = new Date(),
+        yy = date.getFullYear(),
+        month = date.getMonth() + 1,
+        dd = date.getDate(),
+        hh = date.getHours(),
+        mm = date.getMinutes(),
+        ss = date.getSeconds();
+      $(".date").text(yy + "-" + month + "-" + dd);
+      $(".time").text(hh + ":" + mm + ":" + ss);
+      fdId = GetRequest().fdId || "1734221d392627ccd7f7d2c40db89fe2";
+      getAreaAbstract();
     });
+    /*场地预约信息*/
+    function getAreaAbstract() {
+      var result = ajaxMothed("/resource/wechatArea/auth/getAreaAbstract", {
+        fdId: fdId,
+      });
+      result
+        .done(function (resp) {
+          if (resp.success) {
+            render(".container .detail", "areaOnlineTpl", resp.data, false);
+          }
+        })
+        .fail(function (resp) {
+          $.toast(resp.msg, "text");
+        });
+    }
+    function submit() {
+      $("#date").val($(".date").text());
+      $("#time").val($(".time").text());
+      $("#fdId").val(fdId);
+      $.ajax({
+        //几个参数需要注意一下
+        type: "POST", //方法类型
+        dataType: "json", //预期服务器返回的数据类型
+        url: domain + "/resource/wechatArea/auth/saveAreaOrder", //url
+        data: $("form").serialize(),
+        success: function (result) {
+          $.alert(result.data);
+        },
+        error: function () {
+          $.alert("异常！");
+        },
+      });
+    }
   </script>
 </html>
