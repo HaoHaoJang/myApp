@@ -40,35 +40,6 @@
         </div>
       </header>
       <div class="container">
-        <div class="placed-item" id="goToDetailMeeting">
-          <div class="con">
-            <p class="img">
-              <img
-                src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"
-                alt=""
-                srcset=""
-              />
-            </p>
-            <p class="price"><span>500元/半小时</span></p>
-          </div>
-          <p class="tit">大沙龙空间</p>
-          <div class="flx fot-s mar-t">
-            <div class="flx-1">
-              <p class="desc">
-                <i class="icon iconfont icon-arrow-lift"></i>可容纳60人
-              </p>
-              <p class="desc">
-                <i class="icon iconfont icon-arrow-lift"></i>庚坊国际发展中心
-              </p>
-            </div>
-            <div class="flx-1 tex-r mar-t-mix">
-              <button class="btn-back btn-co pre-btn">
-                <i class="icon iconfont icon-arrow-lift"></i>
-                我要预定
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <div class="slid-shadow">
@@ -151,6 +122,35 @@
   <script src="../../js/lib.js"></script>
   <script src="../../js/common.js"></script>
   <script src="../../js/lazyLoad.js"></script>
+  <script id="meeting" type="text/html">
+    {{each list as item}}
+    <div class="placed-item goToDetailMeeting" fdId="{{item.fdId}}">
+      <div class="con">
+        <p class="img">
+          <img src="" data-src="{{domain + item.fdImage[0]}}"/>
+        </p>
+        <p class="price"><span>{{item.fdbalancetype}}</span></p>
+      </div>
+      <p class="tit" id="titName" name="{{item.meetName}}">{{item.meetName}}</p>
+      <div class="flx fot-s mar-t">
+        <div class="flx-1">
+          <p class="desc">
+            <i class="icon iconfont icon-arrow-lift"></i>可容纳{{item.fdArea}}人
+          </p>
+          <p class="desc">
+            <i class="icon iconfont icon-arrow-lift"></i>{{item.meetAdress}}
+          </p>
+        </div>
+        <div class="flx-1 tex-r mar-t-mix">
+          <button class="btn-back btn-co pre-btn" id="preMeet">
+            <i class="icon iconfont icon-arrow-lift"></i>
+            我要预定
+          </button>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </script>
   <script>
       var nowdate= dateFormat('yyyy-mm-dd', new Date()) // 当前日期
       var numDate = 0 // 日期默认点击数
@@ -209,19 +209,26 @@
         })
         // 获取接口方法
         function getDateApi() {
-            var result = ajaxMothed("/ekp/resource/wechatArea/auth/getMeetList", {
+            var result = ajaxMothed("/resource/wechatArea/auth/getMeetList", {
                 pageno: pageno,
                 rowsize: rowsize,
-                // date: $('#my_input').val() || dateFormat('yyyy-mm-dd', nowdate)
+                date: $('#my_input').val() || dateFormat('yyyy-mm-dd', nowdate)
             });
             result.done(function (resp) {
-                render(".container", "newlist", resp.data.dataList, true);
+                render(".container", "meeting", resp.data.dataList, true);
+                // 渲染玩模版 绑定点击事件
+                $('.goToDetailMeeting').click(function (val) {
+                  console.log($('.goToDetailMeeting').attr('fdId'), 88888)
+                  window.location.href ='detail.html?fdId=' + $('.goToDetailMeeting').attr('fdId') + '&date=' + $('#my_input').val()
+                })
+                // 我要预定
+              $('#preMeet').click(function (event) {
+                event.stopPropagation();
+                window.location.href= 'predetermine.html?fdId=' +  $('.goToDetailMeeting').attr('fdId') + '&date=' + $('#my_input').val() + '&name=' + $('#titName').attr('name')
+              })
             });
         }
         getDateApi()
-      $('#goToDetailMeeting').click(function () {
-        window.location.href('./detail.html?fdId=' + '1')
-      })
     });
   </script>
 </html>

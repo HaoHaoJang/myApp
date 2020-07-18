@@ -17,14 +17,21 @@
 .perdetermine .pre-timmer .pre-timmer-container .timer-content {
     display: inline-block;
     font-size: 1rem;
-    color: #dddddd;
     height: 2rem;
     width: 5rem;
     line-height: 2rem;
     text-align: center;
-    border: 1px solid #dddddd;
+    border: 1px solid #000000;
     border-radius: 2px;
     margin-bottom: 0.5rem;
+}
+.perdetermine .pre-timmer .pre-timmer-container .select-disable {
+    color: #dddddd;
+    border-color: #dddddd;
+}
+.perdetermine .pre-timmer .pre-timmer-container .select-style {
+    border-color: #ff6600;
+    color: #ff6600;
 }
 .perdetermine .titp {
     color: #dddddd;
