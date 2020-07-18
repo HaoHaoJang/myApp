@@ -20,6 +20,7 @@
   line-height: 2.4rem;
   font-size: 1.2rem;
   text-align: center;
+  padding: 0 0.6rem;
 }
   .meeting .container .placed-item .con {
     position: relative; }
@@ -63,6 +64,7 @@
       margin-bottom: 0.5rem;
       margin-right: 0.5rem; }
 .slid-shadow-container {
+  z-index: 999 !important;
   position: absolute;
   right: 0;
   height: 100%;
@@ -138,4 +140,13 @@
 .slid-footer .sure {
   color: #ffffff;
   background-color: rgb(4, 84, 148);
+}
+.meeting .data-sele {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  color: #ff6600;
 }

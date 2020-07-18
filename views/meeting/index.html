@@ -22,22 +22,25 @@
         <div class="header">
           <div class="back"></div>
           <div class="head-tit"></div>
-          <div class="back fot-max">
+          <div class="back fot-max" id="highSeach">
             高级搜索
           </div>
         </div>
         <div class="flx header2">
-          <div class="flx-1 tex-c">
+          <div class="flx-1 tex-c" id="pre_day">
             前一天
           </div>
-          <div class="flx-1 tex-c">预定场地</div>
-          <div class="flx-1 tex-c">
+          <div class="flx-1 tex-c posr">
+              预定场地
+              <input type="text" id="my_input" class="data-sele"/>
+          </div>
+          <div class="flx-1 tex-c" id="next_day">
             后一天
           </div>
         </div>
       </header>
       <div class="container">
-        <div class="placed-item">
+        <div class="placed-item" id="goToDetailMeeting">
           <div class="con">
             <p class="img">
               <img
@@ -142,21 +145,27 @@
           <div class="flx-1 sure tex-c fot-m">确定</div>
         </div>
       </div>
+      <div class="slid-shadow-background"></div>
     </div>
   </body>
   <script src="../../js/lib.js"></script>
   <script src="../../js/common.js"></script>
   <script src="../../js/lazyLoad.js"></script>
   <script>
+      var nowdate= dateFormat('yyyy-mm-dd', new Date()) // 当前日期
+      var numDate = 0 // 日期默认点击数
+      var pageno = 0, rowsize= 10;
     $(function () {
+        // 高级搜索伸缩点击事件
       $("ul.accordion li span").on("click", function (event) {
         event.stopPropagation();
         $(this).parent().siblings().removeClass("selected").find("div").hide();
         $(this).parent().addClass("selected");
         $(this).next().slideDown(500);
       });
-      $(".back").on("click", function () {
+      $("#highSeach").on("click", function () {
         $(".slid-shadow").width(0);
+        $(".slid-shadow").show();
         $(".slid-shadow").show();
         $(".slid-shadow").animate(
           { width: "100%" },
@@ -165,11 +174,54 @@
           function () {}
         );
       });
-      $(".slid-shadow").click(function () {
+      $(".slid-shadow-background").click(function () {
         $(".slid-shadow").animate({ width: "0px" }, 500, "linear", function () {
           $(".slid-shadow").hide();
         });
       });
+      // 设置默认时间
+      $('#my_input').val(nowdate)
+        // 时间组建初始化
+      $('#my_input').calendar({
+          value: [nowdate],
+          dateFormat: 'yyyy-mm-dd'
+      })
+        // 选择新的时间出发change事件 调取查询接口
+      $('#my_input').on('change', function (val) {
+          getDateApi()
+      })
+        // 点击前一天
+        $('#pre_day').click(function () {
+          if ($('#my_input').val() === nowdate) {
+              $.toast('日期大于今天', 'text');
+              return
+          }
+            numDate --
+          $('#my_input').val(dateFormat('yyyy-mm-dd', (new Date(new Date() + 3600000*24*numDate))))
+            getDateApi()
+        })
+        // 点击后一天
+        $('#next_day').click(function () {
+            numDate ++
+            var timme = new Date(new Date() * 1 + 3600000*24 * numDate)
+            $('#my_input').val(dateFormat('yyyy-mm-dd', timme))
+            getDateApi()
+        })
+        // 获取接口方法
+        function getDateApi() {
+            var result = ajaxMothed("/ekp/resource/wechatArea/auth/getMeetList", {
+                pageno: pageno,
+                rowsize: rowsize,
+                // date: $('#my_input').val() || dateFormat('yyyy-mm-dd', nowdate)
+            });
+            result.done(function (resp) {
+                render(".container", "newlist", resp.data.dataList, true);
+            });
+        }
+        getDateApi()
+      $('#goToDetailMeeting').click(function () {
+        window.location.href('./detail.html?fdId=' + '1')
+      })
     });
   </script>
 </html>
