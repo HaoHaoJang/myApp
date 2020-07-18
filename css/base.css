@@ -334,7 +334,6 @@ input::-webkit-input-placeholder {
     z-index: 999;
     display: none;
 }
-<<<<<<< HEAD
 
 .clor-active {
     color: #ff6600;
@@ -344,7 +343,7 @@ input::-webkit-input-placeholder {
 }
 .clor-blu {
     color: #0849a2;
-=======
+}
 .hide {
     display: none;
 }
@@ -359,11 +358,15 @@ input::-webkit-input-placeholder {
     font-size: 5rem;
     display: block;
     margin-bottom: 1rem;
->>>>>>> e28eb42ba0c7d901e00e18226630f201d547d496
 }
 
 /* 重置轮播图样式 */
 
 .swiper-pagination-bullet-active {
     background: #fff !important;
+}
+/*重置weui*/
+.weui-loadmore {
+    margin: 0 auto !important;
+    padding: 1.5rem 0;
 }

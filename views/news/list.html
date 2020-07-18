@@ -1,86 +1,70 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <title></title>
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
     <link rel="stylesheet" href="./news.css" />
     <script src="../../asset/font/iconfont.js"></script>
-    <script src="../../js/jquery_min.js"></script>
-    <script src="../../js/template-web.js"></script>
-    <script src="../../js/common.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="newsList">
-        <div class="header pad-mix bg-c-w">
-            <input type="text" placeholder="搜索活动" class="inp" />
-        </div>
-        <div class="header nav">
-            <ul>
-                <li class="active">全部</li>
-                <li>本地</li>
-                <li>盘古频道</li>
-                <li>创新创业</li>
-                <li>创新创业</li>
-                <li>创新创业</li>
-                <li>创新创业</li>
-                <li>创新创业</li>
-            </ul>
-        </div>
-        <div class="container">
-            <ul class="list">
-            </ul>
-        </div>
+      <div class="header pad-mix bg-c-w">
+        <input type="text" placeholder="搜索活动" class="inp" id="newsName" />
+      </div>
+      <div class="header nav">
+        <ul>
+          <li class="active" data-id="all">全部</li>
+          <li>本地</li>
+          <li>盘古频道</li>
+          <li>创新创业</li>
+          <li>创新创业</li>
+          <li>创新创业</li>
+          <li>创新创业</li>
+          <li>创新创业</li>
+        </ul>
+      </div>
+      <div class="container">
+        <ul class="list"></ul>
+      </div>
     </div>
     <div class="footer flx">
-        <a class="nav-item " href="../comment/index.html">
-          <i class="icon iconfont icon-luntan"></i>
-          <span>论坛</span>
-        </a>
-        <a class="nav-item flx-1" href="../activity/index.html">
-          <i class="icon iconfont icon-remenhuodong"></i>
-          <span>园区活动</span>
-        </a>
-        <a class="nav-item flx-1 clic" href="../news/list.html">
-          <i class="icon iconfont icon-zixun"></i>
-          <span>资讯</span>
-        </a>
-        <a class="nav-item flx-1" href="../meeting/index.html">
-          <i class="icon iconfont icon-huiyishi"></i>
-          <span>会议室</span>
-        </a>
-        <a class="nav-item flx-1" href="../placed/index.html">
-          <i class="icon iconfont icon-chad"></i>
-          <span>场地</span>
-        </a>
+      <a class="nav-item" href="../comment/index.html">
+        <i class="icon iconfont icon-luntan"></i>
+        <span>论坛</span>
+      </a>
+      <a class="nav-item flx-1" href="../activity/index.html">
+        <i class="icon iconfont icon-remenhuodong"></i>
+        <span>园区活动</span>
+      </a>
+      <a class="nav-item flx-1 clic" href="../news/list.html">
+        <i class="icon iconfont icon-zixun"></i>
+        <span>资讯</span>
+      </a>
+      <a class="nav-item flx-1" href="../meeting/index.html">
+        <i class="icon iconfont icon-huiyishi"></i>
+        <span>会议室</span>
+      </a>
+      <a class="nav-item flx-1" href="../placed/index.html">
+        <i class="icon iconfont icon-chad"></i>
+        <span>场地</span>
+      </a>
     </div>
-    </div>
-</body>
-<script src="../../js/lazyLoad.js"></script>
-<script>
-    $(function() {
-        $(".nav li").click(function() {
-            $(this).addClass("active").siblings().removeClass("active")
-        })
-    })
-
-    var result = ajaxMothed('ekp/resource/wechatDoc/getNewList', {pageno: 0, rowsize: 20})
-    result.done(function (resp) {
-        render('.container', 'newlist',resp.data, true )
-    });
-</script>
-<!-- 模板 -->
-<script id="newlist" type="text/html">
+  </body>
+  <!-- 模板 -->
+  <script id="newlist" type="text/html">
     {{each list as item}}
     <li>
-        <a href="./details.html?id=1">
+        <a href="./details.html?id={{item.id}}">
             <p class="img">
-                <img src="" data-src="{{item.imageUrl}}" alt="">
+                <img src="" data-src="{{domain + item.imageUrl}}" alt="">
             </p>
             <!--  -->
             <div class="con">
@@ -94,6 +78,26 @@
         </a>
     </li>
     {{/each}}
-</script>
-
+  </script>
+  <script src="../../js/lib.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/lazyLoad.js"></script>
+  <script>
+    var pageno = 1,
+      rowsize = 10;
+    $(function () {
+      $(".nav li").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+      });
+    });
+    var result = ajaxMothed("/resource/wechatDoc/getNewList", {
+      pageno: pageno,
+      rowsize: rowsize,
+      docCate: $(".nav .active").attr("data-id") || "all",
+      newsName: $("#newsName").val() || "",
+    });
+    result.done(function (resp) {
+      render(".container", "newlist", resp.data.dataList, true);
+    });
+  </script>
 </html>

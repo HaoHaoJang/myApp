@@ -8,8 +8,10 @@
     />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <title>场地列表</title>
-    <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
+    <link rel="stylesheet" href="../../css/weui.css" />
+    <link rel="stylesheet" href="../../css/jquery-weui.css" />
+    <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="./placed.css" />
     <script src="../../asset/font/iconfont.js"></script>
   </head>
@@ -30,7 +32,12 @@
         <!-- <div class="header2 tit2">
           <p>六安市六安市</p>
         </div> -->
+
         <div class="info"></div>
+        <div class="weui-loadmore">
+          <i class="weui-loading"></i>
+          <span class="weui-loadmore__tips">正在加载</span>
+        </div>
       </div>
       <!-- 底部按钮 -->
       <div class="footer flx">
@@ -57,18 +64,16 @@
       </div>
     </div>
   </body>
-  <script src="../../js/jquery_min.js"></script>
-  <script src="../../js/template-web.js"></script>
+  <script src="../../js/lib.js"></script>
   <script src="../../js/common.js"></script>
   <script src="../../js/lazyLoad.js"></script>
   <!-- 模板 -->
   <script id="placedTpl" type="text/html">
     {{each list as item}}
-        <div class="placed-item" onclick='location.href="./detail.html?fdArea={{item.fdArea}}"'>
+        <div class="placed-item" onclick='location.href="./detail.html?fdId={{item.fdArea}}"'>
           <div class="con">
             <p class="img">
-                   <!-- <img src="" data-src="{{domain + item.fdImage[0]}}" alt=""> -->
-                   <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" />
+              <img src="{{domain + item.fdImage[0]}}" data-src="" alt="">
             </p>
             <p class="price"><span>{{item.fdbalancetype}}</span></p>
             <p class="share"><span>分享有奖</span></p>
@@ -86,20 +91,17 @@
   <script>
     var pageno = 1,
       rowsize = 10;
-    $(function () {
-      getAreaList();
-    });
-    // 获取论坛列表;
-    function getAreaList(flag) {
-      var result = ajaxMothed("/ekp/resource/wechatArea/auth/getAreaList", {
+    // 获取场地列表;
+    function getAreaList() {
+      var result = ajaxMothed("/resource/wechatArea/auth/getAreaList", {
         pageno: pageno,
         rowsize: 10,
       });
       result
         .done(function (resp) {
+          var total = resp.data.total;
           // 重置滚动条开关
-          resetFresh();
-          if (resp.data.length == 0) {
+          if (resp.data.dataList.length == 0) {
             if (pageno == 1) {
               $(".container .info").html("");
               $(".empty").removeClass("hide");
@@ -107,8 +109,16 @@
             return false;
           }
           $(".empty").addClass("hide");
-          pageno++;
-          render(resp.data);
+          render(".container .info", "placedTpl", resp.data.dataList, true);
+          if (pageno < total) {
+            pageno++;
+            setLoadMore();
+            // 开启下拉加载
+            resetFresh();
+          } else {
+            // 加载完成
+            setLoadFinish();
+          }
         })
         .fail(function () {
           if (pageno == 1) {
@@ -117,12 +127,10 @@
           }
         });
     }
-    /*****模板渲染*****/
-    function render(data) {
-      var html = template("placedTpl", {
-        list: data,
-      });
-      $(".container .info").append(html);
-    }
+    $(function () {
+      getAreaList();
+      // 滚动加载
+      pageScroll(getAreaList);
+    });
   </script>
 </html>

@@ -15,7 +15,7 @@ $(".back").click(function () {
     (n.addEventListener(o, a, !1),
     e.addEventListener("DOMContentLoaded", a, !1));
 })(window);
-var domain = "http://121.196.21.9/";
+var domain = "http://121.196.21.9/ekp";
 // 全局template配置格式化url
 template.defaults.imports.domain = domain;
 
@@ -131,19 +131,31 @@ function GetRequest(urlStr) {
   }
   return theRequest;
 }
-//  下拉滚动
+//  下拉滚动 开启
 var _scrollFresh = false;
 function resetFresh() {
   _scrollFresh = false;
 }
+// 设置加载更多的文案
+function setLoadMore() {
+  $(".weui-loadmore .weui-loading").hide();
+  $(".weui-loadmore .weui-loadmore__tips").text("下拉加载更多");
+}
+// 设置加载完成文案
+function setLoadFinish() {
+  $(".weui-loadmore .weui-loading").hide();
+  $(".weui-loadmore .weui-loadmore__tips").text("已加载完成");
+}
+/**
+ * 滚动加载
+ * @param {} callback
+ */
 function pageScroll(callback) {
-  window.onscroll = function () {
-    var scrollTop = $(window).scrollTop(),
-      winHeight = $(window).height(),
-      doumentHeight = $(document).height();
-    if (scrollTop + winHeight + 80 >= doumentHeight && !_scrollFresh) {
+  $(document.body)
+    .infinite()
+    .on("infinite", function () {
+      if (_scrollFresh) return;
       _scrollFresh = true;
       callback();
-    }
-  };
+    });
 }

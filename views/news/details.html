@@ -1,269 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <title>发表评论</title>
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
     <script src="../../asset/font/iconfont.js"></script>
     <style>
-        .comment .content input {
-            height: 3rem;
-            line-height: 3rem;
-        }
+      .comment .content input {
+        height: 3rem;
+        line-height: 3rem;
+      }
 
-        .comment .content {
-            margin-bottom: 1rem;
-        }
+      .comment .content {
+        margin-bottom: 1rem;
+      }
 
-        .comment .content .title-content {
-            padding: 0.2rem;
-            font-size: 1.2rem;
-        }
+      .comment .content .title-content {
+        padding: 0.2rem;
+        font-size: 1.2rem;
+      }
 
-        .flx-w-button {
-            height: 3.5rem;
-            line-height: 3.5rem;
-        }
+      .flx-w-button {
+        height: 3.5rem;
+        line-height: 3.5rem;
+      }
 
-        .comment .content .title-content h4 {
-            font-size: 1.4rem;
-            font-weight: 500;
-            padding: 1rem 0;
-        }
+      .comment .content .title-content h4 {
+        font-size: 1.4rem;
+        font-weight: 500;
+        padding: 1rem 0;
+      }
 
-        .comment .content p {
-            font-size: 1.2rem;
-            line-height: 1.6rem;
-        }
+      .comment .content p {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+      }
 
-        .comment .content .title-content span {
-            color: #cccccc;
-        }
+      .comment .content .title-content span {
+        color: #cccccc;
+      }
 
-        .comment .content .area {
-            height: 4rem;
-            line-height: 4rem;
-            background: #ffffff;
-            border-bottom: 1px solid #dddddd;
-            border-top: 1px solid #dddddd;
-            font-size: 1.4rem;
-            padding-left: 0.5rem;
-        }
+      .comment .content .area {
+        height: 4rem;
+        line-height: 4rem;
+        background: #ffffff;
+        border-bottom: 1px solid #dddddd;
+        border-top: 1px solid #dddddd;
+        font-size: 1.4rem;
+        padding-left: 0.5rem;
+      }
 
-        .comment .content input,
-        .comment .content textarea {
-            width: 100%;
-            padding-left: 6px;
-            font-size: 1.4rem;
-        }
+      .comment .content input,
+      .comment .content textarea {
+        width: 100%;
+        padding-left: 6px;
+        font-size: 1.4rem;
+      }
 
-        .comment .content textarea {
-            padding-top: 0.5rem;
-        }
+      .comment .content textarea {
+        padding-top: 0.5rem;
+      }
 
-        .flx-w {
-            width: 4rem;
-        }
+      .flx-w {
+        width: 4rem;
+      }
 
-        .share-content {
-            height: 40px;
-            line-height: 40px;
-        }
+      .share-content {
+        height: 40px;
+        line-height: 40px;
+      }
 
-        .share-content .share {
-            padding: 0.6rem 0.8rem;
-            font-size: 1.4rem;
-            background: #ff6600;
-            border-radius: 2px;
-            color: #ffffff;
-        }
+      .share-content .share {
+        padding: 0.6rem 0.8rem;
+        font-size: 1.4rem;
+        background: #ff6600;
+        border-radius: 2px;
+        color: #ffffff;
+      }
 
-        .page-next {
-            border-top: 1px solid #ddd;
-            padding: 1rem 0;
-        }
+      .page-next {
+        border-top: 1px solid #ddd;
+        padding: 1rem 0;
+      }
 
-        .page-next div {
-            margin: 0.5rem 0;
-        }
+      .page-next div {
+        margin: 0.5rem 0;
+      }
 
-        .share-content {
-            height: 40px;
-            line-height: 40px;
-            font-size: 1.2rem;
-        }
+      .share-content {
+        height: 40px;
+        line-height: 40px;
+        font-size: 1.2rem;
+      }
 
-        .comment-footer .iconfont {
-            font-size: 1.6rem !important;
-        }
+      .comment-footer .iconfont {
+        font-size: 1.6rem !important;
+      }
 
-        .comment-footer .num {
-            margin-left: 0.5rem;
-        }
+      .comment-footer .num {
+        margin-left: 0.5rem;
+      }
 
-        .comment-footer .publishTit {
-            padding-bottom: 2rem;
-        }
+      .comment-footer .publishTit {
+        padding-bottom: 2rem;
+      }
 
-        .publish .flx-w {
-            height: 3rem;
-            width: 3rem;
-        }
+      .publish .flx-w {
+        height: 3rem;
+        width: 3rem;
+      }
 
-        .comment-input {
-            padding-left: 6px;
-            width: 100%;
-            height: 35px;
-            line-height: 35px;
-            background: #ececec;
-        }
+      .comment-input {
+        padding-left: 6px;
+        width: 100%;
+        height: 35px;
+        line-height: 35px;
+        background: #ececec;
+      }
 
-        .comment .btn {
-            height: 3.5rem;
-            width: 100%;
-            line-height: 3.5rem;
-            color: #ffffff;
-            border: none;
-            background: #ff6600;
-            border-radius: 4px;
-        }
+      .comment .btn {
+        height: 3.5rem;
+        width: 100%;
+        line-height: 3.5rem;
+        color: #ffffff;
+        border: none;
+        background: #ff6600;
+        border-radius: 4px;
+      }
 
-        .comment .header-im {
-            border-radius: 100%;
-            height: 4rem;
-            width: 4rem;
-        }
+      .comment .header-im {
+        border-radius: 100%;
+        height: 4rem;
+        width: 4rem;
+      }
 
-        .comment-comment-user {
-            margin-top: 3rem;
-        }
+      .comment-comment-user {
+        margin-top: 3rem;
+      }
 
-        .comment-comment-user .comment-user-name,
-        .comment-comment-user .comment-user-time {
-            height: 2rem;
-            line-height: 2rem;
-            font-size: 1.2rem;
-            margin-left: 1rem;
-        }
+      .comment-comment-user .comment-user-name,
+      .comment-comment-user .comment-user-time {
+        height: 2rem;
+        line-height: 2rem;
+        font-size: 1.2rem;
+        margin-left: 1rem;
+      }
 
-        .comment-comment-user .comment-user-time {
-            color: #dddddd;
-        }
+      .comment-comment-user .comment-user-time {
+        color: #dddddd;
+      }
 
-        .comment-comment-user .comment-user-content {
-            margin-left: 1rem;
-            line-height: 2rem;
-            font-size: 1.2rem;
-            margin-top: 1rem;
-        }
+      .comment-comment-user .comment-user-content {
+        margin-left: 1rem;
+        line-height: 2rem;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="comment">
-        <header>
-            <div class="header">
-                <div class="back">
-                    <i class="icon iconfont icon-arrow-lift"></i>
-                </div>
-                <div class="head-tit">资讯详情</div>
-                <div class="back"></div>
-            </div>
-        </header>
-        <div class="content pad-mix bg-c-w">
-            <div class="container">
-                <div class="title-content">
-                    <h4>2019年第三季度盘古剑客之星名单！！！</h4>
-                    <span>【深圳市】09月30日 15：25发布</span>
-                </div>
-                <div class="tex-r share-content">
-                    <span class="share">
+      <header>
+        <div class="header">
+          <div class="back">
+            <i class="icon iconfont icon-arrow-lift"></i>
+          </div>
+          <div class="head-tit">资讯详情</div>
+          <div class="back"></div>
+        </div>
+      </header>
+      <div class="content pad-mix bg-c-w">
+        <div class="container">
+          <div class="title-content">
+            <h4>2019年第三季度盘古剑客之星名单！！！</h4>
+            <span>【深圳市】09月30日 15：25发布</span>
+          </div>
+          <div class="tex-r share-content">
+            <span class="share">
               <i class="icon iconfont icon-arrow-lift"></i>
               分享
             </span>
-                </div>
-                <div>
-                    <p>
-                        月底，史蒂夫史蒂夫，是的发送，放水淀粉，人，儿童，为，玩儿玩儿，我给惹我，哥，人个人，ger 沃尔沃，而为，额，玩儿玩儿温柔，werwerwe.werwer，we.w，沃尔沃，we.we，werwerw，。。 werw.rw.e，玩儿，。。
-                    </p>
-                </div>
-            </div>
-            <div class="page-next">
-                <div>上一篇：<span>重庆盘古互联网+是的发送发大水</span></div>
-                <div>下一篇：<span>重庆盘古互联网+是的发送发大水</span></div>
-            </div>
+          </div>
+          <div>
+            <p>
+              月底，史蒂夫史蒂夫，是的发送，放水淀粉，人，儿童，为，玩儿玩儿，我给惹我，哥，人个人，ger
+              沃尔沃，而为，额，玩儿玩儿温柔，werwerwe.werwer，we.w，沃尔沃，we.we，werwerw，。。
+              werw.rw.e，玩儿，。。
+            </p>
+          </div>
         </div>
-        <div class="comment-footer pad-mix bg-c-w">
-            <div class="flx fot-m publishTit">
-                <div class="flx-1 tex-l">评论 <span>(2)</span></div>
-                <div class="flx-1 tex-r" id="greate">
-                    <i class="icon iconfont icon-dianzan1"></i>点赞
-                    <span class="num">(6)</span>
-                </div>
-            </div>
-            <div>
-                <div class="flx publish">
-                    <div class="flx-w">
-                        <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" />
-                    </div>
-                    <div class="flx-1 mar-r-l">
-                        <input type="text" class="comment-input" placeholder="来说说你的想法吧" />
-                    </div>
-                    <div class="flx-w-button">
-                        <button class="btn">发布</button>
-                    </div>
-                </div>
-                <div class="flx comment-comment-user">
-                </div>
-            </div>
+        <div class="page-next">
+          <div>上一篇：<span>重庆盘古互联网+是的发送发大水</span></div>
+          <div>下一篇：<span>重庆盘古互联网+是的发送发大水</span></div>
         </div>
+      </div>
+      <div class="comment-footer pad-mix bg-c-w">
+        <div class="flx fot-m publishTit">
+          <div class="flx-1 tex-l">评论 <span>(2)</span></div>
+          <div class="flx-1 tex-r" id="greate">
+            <i class="icon iconfont icon-dianzan1"></i>点赞
+            <span class="num">(6)</span>
+          </div>
+        </div>
+        <div>
+          <div class="flx publish">
+            <div class="flx-w">
+              <img
+                src=""
+                data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"
+              />
+            </div>
+            <div class="flx-1 mar-r-l">
+              <input
+                type="text"
+                class="comment-input"
+                placeholder="来说说你的想法吧"
+              />
+            </div>
+            <div class="flx-w-button">
+              <button class="btn">发布</button>
+            </div>
+          </div>
+          <div class="flx comment-comment-user"></div>
+        </div>
+      </div>
     </div>
-</body>
-<script src="../../js/jquery_min.js"></script>
-<script src="../../js/lazyLoad.js"></script>
-<script src="../../js/template-web.js"></script>
-<script src="../../js/common.js"></script>
-<script>
-    $(function() {
-        $(".nav li").click(function() {
-            $(this).addClass("active").siblings().removeClass("active")
-        })
-    })
-    console.log(window.location.href, 3333)
-    alert(GetRequest(window.location.href))
-    // 查询详情接口
-    function getDetail() {
-        var result = ajaxMothed('ekp/resource/wechatDoc/getDocDetail', {fdId: GetRequest(window.location.href)['fdId']})
-        result.done(function (resp) {
-            render('.container', 'newlist',resp.data, true )
-        });
-    }
-    getDetail()
-    $('#greate').click(function () {
-        onfocue()
-    })
-    // 点赞接口
-    function onfocue() {
-        var result1 = ajaxMothed('ekp/resource/forum/thumUpDoc', {fdId: GetRequest(window.location.href)['fdId']})
-        result.done(function (resp) {
-            alert(resp.data.msg)
-            getDetail()
-        });
-    }
-    // 点赞接口
-    function newsCommentList() {
-        var result1 = ajaxMothed('ekp/resource/forum/talkDoc', {fdId: GetRequest(window.location.href)['fdId']})
-        result.done(function (resp) {
-            render('.comment-comment-user', 'newCommentList',resp.data, true )
-        });
-    }
-</script>
-<!-- 模板 -->
-<script id="newCommentList" type="text/html">
+  </body>
+  <!-- 模板 -->
+  <script id="newCommentList" type="text/html">
     {{each list as item}}
     <div class="flx-w">
         <img src="" class="header-im" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" />
@@ -277,6 +248,49 @@
         </div>
     </div>
     {{/each}}
-</script>
-
+  </script>
+  <script src="../../js/lib.js"></script>
+  <script src="../../js/lazyLoad.js"></script>
+  <script src="../../js/common.js"></script>
+  <script>
+    $(function () {
+      $(".nav li").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+      });
+    });
+    console.log(window.location.href, 3333);
+    alert(GetRequest(window.location.href));
+    // 查询详情接口
+    function getDetail() {
+      var result = ajaxMothed("/resource/wechatDoc/getDocDetail", {
+        fdId: GetRequest(window.location.href)["fdId"],
+      });
+      result.done(function (resp) {
+        render(".container", "newlist", resp.data, true);
+      });
+    }
+    getDetail();
+    $("#greate").click(function () {
+      onfocue();
+    });
+    // 点赞接口
+    function onfocue() {
+      var result1 = ajaxMothed("/resource/forum/thumUpDoc", {
+        fdId: GetRequest(window.location.href)["fdId"],
+      });
+      result.done(function (resp) {
+        alert(resp.data.msg);
+        getDetail();
+      });
+    }
+    // 点赞接口
+    function newsCommentList() {
+      var result1 = ajaxMothed("/resource/forum/talkDoc", {
+        fdId: GetRequest(window.location.href)["fdId"],
+      });
+      result.done(function (resp) {
+        render(".comment-comment-user", "newCommentList", resp.data, true);
+      });
+    }
+  </script>
 </html>

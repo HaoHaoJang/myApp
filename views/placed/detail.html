@@ -3,13 +3,16 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <title>场地详情</title>
-    <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
     <link rel="stylesheet" href="./placed.css" />
     <link rel="stylesheet" href="../../css/swiper.min.css">
+    <link rel="stylesheet" href="../../css/weui.css">
+    <link rel="stylesheet" href="../../css/jquery-weui.css">
+    <link rel="stylesheet" href="../../css/base.css" />
     <script src="../../asset/font/iconfont.js"></script>
 </head>
 
@@ -25,15 +28,16 @@
             </div>
         </header>
         <div class="container detail">
+            <script id="areaDetailTpl" type="text/html">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
+                    {{each list.fdImage as img}}
                     <div class="swiper-slide">
                         <p class="img">
-                            <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="" srcset="" />
+                            <img src="{{domain + img}}" alt="" srcset="" />
                         </p>
                     </div>
-                    <div class="swiper-slide">Slide 2</div>
-                    <div class="swiper-slide">Slide 3</div>
+                    {{/each}}
                 </div>
                 <!-- 如果需要分页器 -->
                 <div class="swiper-pagination"></div>
@@ -41,43 +45,37 @@
 
             <div class="info">
                 <div class="summary">
-                    <p class="tit">盘古咖啡厅</p>
-                    <p class="price">价格面议</p>
+                    <p class="tit">{{list.areaName}}</p>
+                    <p class="price">
+                        {{list.fdbalancetypeValue == 0? list.fdbalancetype : list.fdbalancetypeValue}}</p>
                     <p class="button">
-                        <a>电脑40组</a>
-                        <a>电脑40组</a>
-                        <a>电脑40组</a>
-                        <a>电脑40组</a><a>电脑40组</a><a>电脑40组</a><a>电脑40组</a
-            ><a>电脑40组</a><a>电脑40组</a><a>电脑40组</a>
-                        <a>电脑40组</a>
+                        {{each list.wechatAreaItem as item}}
+                        <a>{{item}}</a>
+                        {{/each}}
                     </p>
-                    <p class="tip">经济开发区</p>
+                    <p class="tip">{{list.areaAdress}}.{{list.fdcontain}}.{{list.fdArea}}</p>
                 </div>
                 <div class="description">
                     <h3>详情介绍</h3>
                     <p class="con">
-                        详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍详情介绍
+                        {{list.fdContent}}
                     </p>
                 </div>
                 <div class="service">
                     <p>设施服务</p>
                     <ul>
+                        {{each list.facilList as facil}}
                         <li>
-                            <i></i>
-                            <span>空调</span>
+                            <i>
+                                <img src="{{domain + facil.faclImage}}" alt="" srcset="">
+                            </i>
+                            <span>{{facil.faclName}}</span>
                         </li>
-                        <li>
-                            <i></i>
-                            <span>空调</span>
-                        </li>
-                        <li>
-                            <i></i>
-                            <span>空调</span>
-                        </li>
+                   {{/each}}
                     </ul>
                 </div>
             </div>
-
+        </script>
         </div>
         <footer>
             <ul>
@@ -92,20 +90,38 @@
     </div>
     </div>
 </body>
-<script src="../../js/jquery_min.js"></script>
-<script src="../../js/common.js"></script>
+<script src="../../js/lib.js"></script>
 <script src="../../js/swiper.min.js"></script>
-<script src="../../js/template-web.js"></script>
-<script src="../../js/lazyLoad.js"></script>
-<script>
-    var mySwiper = new Swiper('.swiper-container', {
-        loop: true, // 循环模式选项
 
-        // 如果需要分页器
-        pagination: {
-            el: '.swiper-pagination',
-        }
+<script src="../../js/lazyLoad.js"></script>
+<script src="../../js/common.js"></script>
+<script>   
+    //获取场地详情
+    $(function () {
+        getAreaDetail();
     })
+    // 获取场地详情;
+    function getAreaDetail(flag) {
+        var result = ajaxMothed("/resource/wechatArea/auth/getAreaDetail", {
+            fdId: GetRequest().fdId || '1734221d392627ccd7f7d2c40db89fe2'
+        });
+        result
+            .done(function (resp) {
+                if (resp.success) {
+                    render('.container', 'areaDetailTpl', resp.data, false)
+                    new Swiper('.swiper-container', {
+                        loop: true, // 循环模式选项
+                        // 如果需要分页器
+                        pagination: {
+                            el: '.swiper-pagination',
+                        }
+                    })
+                }
+            })
+            .fail(function (resp) {
+              $.toast(resp.msg, 'text')
+            });
+    }
 </script>
 
 </html>

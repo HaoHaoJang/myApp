@@ -171,8 +171,7 @@
       </div>
     </div>
   </body>
-  <script src="../../js/jquery_min.js"></script>
-  <script src="../../js/template-web.js"></script>
+  <script src="../../js/lib.js"></script>
   <script src="../../js/common.js"></script>
   <script src="../../js/lazyLoad.js"></script>
   <!-- 论坛导航 -->
@@ -180,8 +179,7 @@
     {{each list as item index}}
       <div class="flx-1 flx-dir flx-cc {{index == 0 ? 'active':''}}" onclick="openRecommend('{{item}}',this)">
         <div class="bg-ic">
-          <!-- <img src="{{domain + item.imageUrl}}" alt=""> -->
-          <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="" srcset="">
+          <img src="{{domain + item.imageUrl}}" alt="">
         </div>
         <div>{{item.fdName}}</div>
       </div>
@@ -192,8 +190,7 @@
     {{each list as item }}
       <a class="flx bg-c-w border-b modu-content" href="./commentList.html?fdId={{item.fdId}}">
         <div class="flx-w lie">
-          <!-- <img src="{{domain + item.imageUrl}}" alt=""> -->
-          <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="" srcset="">
+          <img src="{{domain + item.imageUrl}}" alt="">
         </div>
         <div class="flx-1">
           <div class="modul-tit">{{item.fdName}}</div>
@@ -214,7 +211,7 @@
     });
     // 获取论坛列表
     function getForumCateList() {
-      var result = ajaxMothed("/ekp/resource/forum/getForumCateList", {});
+      var result = ajaxMothed("/resource/forum/getForumCateList", {});
       result.done(function (resp) {
         renderTemplate("forumTpl", resp.data, "forum");
         renderTemplate("recommendTpl", resp.data[0].children, "recommend");
