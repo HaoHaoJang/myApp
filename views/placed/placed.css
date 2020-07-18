@@ -169,6 +169,10 @@
         text-align: center; }
         .placedDetail footer ul li:first-child {
           background-color: #f4b942; }
+        .placedDetail footer ul li a {
+          color: #fff;
+          display: block;
+          height: 100%; }
 
 .placedOnline .detail {
   margin-bottom: 1rem;

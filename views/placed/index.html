@@ -89,20 +89,18 @@
     {{/each}}
   </script>
   <script>
-    var pageno = 1,
-      rowsize = 10;
     // 获取场地列表;
     function getAreaList() {
       var result = ajaxMothed("/resource/wechatArea/auth/getAreaList", {
-        pageno: pageno,
+        pageno: _scrollPageNo,
         rowsize: 10,
       });
       result
         .done(function (resp) {
-          var total = resp.data.total;
+          _scrollTotalPage = resp.data.total;
           // 重置滚动条开关
           if (resp.data.dataList.length == 0) {
-            if (pageno == 1) {
+            if (_scrollPageNo == 1) {
               $(".container .info").html("");
               $(".empty").removeClass("hide");
             }
@@ -110,18 +108,10 @@
           }
           $(".empty").addClass("hide");
           render(".container .info", "placedTpl", resp.data.dataList, true);
-          if (pageno < total) {
-            pageno++;
-            setLoadMore();
-            // 开启下拉加载
-            resetFresh();
-          } else {
-            // 加载完成
-            setLoadFinish();
-          }
+          setScrollPage();
         })
         .fail(function () {
-          if (pageno == 1) {
+          if (_scrollPageNo == 1) {
             $(".container .info").html("");
             $(".empty").removeClass("hide");
           }

@@ -101,7 +101,7 @@
 }
 .pick-timer .list li.pick-active {
   font-size: 20px;
-  color: #e02222;
+  color: #e97c6d;
 }
 .pick-timer .current {
   position: absolute;
@@ -125,7 +125,7 @@
 .pick-sure {
   display: block;
   font-size: 14px;
-  color: #e02222;
+  color: #e97c6d;
   height: 40px;
   line-height: 40px;
 }

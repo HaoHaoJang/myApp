@@ -8,6 +8,8 @@
     />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <title>活动列表</title>
+    <link rel="stylesheet" href="../../css/weui.css" />
+    <link rel="stylesheet" href="../../css/jquery-weui.css" />
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
     <script src="../../asset/font/iconfont.js"></script>
@@ -115,7 +117,12 @@
             <span class="titl-chine">热门活动</span>/<span class="titl-eng"
               >POPULAR ACTIVITY</span
             >
+            <section class="activityList"></section>
           </div>
+        </div>
+        <div class="weui-loadmore">
+          <i class="weui-loading"></i>
+          <span class="weui-loadmore__tips">正在加载</span>
         </div>
       </div>
       <div class="empty hide">
@@ -175,9 +182,6 @@
     {{/each}}
   </script>
   <script>
-    var pageno = 1,
-      rowsize = 10;
-
     $(function () {
       loadActivityList();
       pageScroll(loadActivityList);
@@ -185,33 +189,37 @@
     // 获取论坛列表;
     function loadActivityList(flag) {
       if (flag == 1) {
-        pageno = 1;
+        resetPageNo();
+        $(".activityList").html("");
       }
       var result = ajaxMothed("/resource/wechatActive/auth/wechatActives", {
-        pageno: pageno,
+        pageno: _scrollPageNo,
         rowsize: 10,
         activeName: $("#activeName").val() || "",
       });
       result
         .done(function (resp) {
           // 重置滚动条开关
-          resetFresh();
+          _scrollTotalPage = resp.data.total;
           if (resp.data.length == 0) {
-            if (pageno == 1) {
-              $(".container .info").html("");
+            if (_scrollPageNo == 1) {
+              $(".activityList").html("");
               $(".empty").removeClass("hide");
+              $(".weui-loadmore").hide();
             }
             return false;
           }
+          $(".weui-loadmore").show();
           $(".empty").addClass("hide");
-          pageno++;
-          render(resp.data);
+          render(resp.data.dataList);
+          setScrollPage();
           lazyRender();
         })
         .fail(function () {
-          if (pageno == 1) {
-            $(".container .info").html("");
+          if (_scrollPageNo == 1) {
+            $(".activityList").html("");
             $(".empty").removeClass("hide");
+            $(".weui-loadmore").hide();
           }
         });
     }
@@ -230,24 +238,7 @@
       var html = template("activityListTpl", {
         list: data,
       });
-      $(".container .info").append(html);
+      $(".activityList").append(html);
     }
-    /**
-     * 0 未开始  1正在进行 2已结束
-     * @param {*} startTime 开始时间
-     * @param {*} endTime 结束时间
-     */
-    // function compareTime(startTime, endTime) {
-    //   var startDate = new Date(startTime).getTime();
-    //   var endDate = new Date(endTime).getTime();
-    //   var currentDate = new Date().getTime();
-    //   if (startDate > currentDate) {
-    //     return 0;
-    //   } else if (currentDate <= endDate) {
-    //     return 1;
-    //   } else {
-    //     return 2;
-    //   }
-    // }
   </script>
 </html>

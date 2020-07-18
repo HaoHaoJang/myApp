@@ -1,127 +1,133 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <title>场地详情</title>
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
     <link rel="stylesheet" href="./placed.css" />
-    <link rel="stylesheet" href="../../css/swiper.min.css">
-    <link rel="stylesheet" href="../../css/weui.css">
-    <link rel="stylesheet" href="../../css/jquery-weui.css">
+    <link rel="stylesheet" href="../../css/swiper.min.css" />
+    <link rel="stylesheet" href="../../css/weui.css" />
+    <link rel="stylesheet" href="../../css/jquery-weui.css" />
     <link rel="stylesheet" href="../../css/base.css" />
     <script src="../../asset/font/iconfont.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="placedDetail">
-        <header>
-            <div class="header">
-                <div class="back">
-                    <i class="icon iconfont icon-arrow-lift"></i>
-                </div>
-                <div class="head-tit">预定场地详情</div>
-                <div class="back"></div>
-            </div>
-        </header>
-        <div class="container detail">
-            <script id="areaDetailTpl" type="text/html">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    {{each list.fdImage as img}}
-                    <div class="swiper-slide">
-                        <p class="img">
-                            <img src="{{domain + img}}" alt="" srcset="" />
-                        </p>
-                    </div>
-                    {{/each}}
-                </div>
-                <!-- 如果需要分页器 -->
-                <div class="swiper-pagination"></div>
-            </div>
-
-            <div class="info">
-                <div class="summary">
-                    <p class="tit">{{list.areaName}}</p>
-                    <p class="price">
-                        {{list.fdbalancetypeValue == 0? list.fdbalancetype : list.fdbalancetypeValue}}</p>
-                    <p class="button">
-                        {{each list.wechatAreaItem as item}}
-                        <a>{{item}}</a>
-                        {{/each}}
-                    </p>
-                    <p class="tip">{{list.areaAdress}}.{{list.fdcontain}}.{{list.fdArea}}</p>
-                </div>
-                <div class="description">
-                    <h3>详情介绍</h3>
-                    <p class="con">
-                        {{list.fdContent}}
-                    </p>
-                </div>
-                <div class="service">
-                    <p>设施服务</p>
-                    <ul>
-                        {{each list.facilList as facil}}
-                        <li>
-                            <i>
-                                <img src="{{domain + facil.faclImage}}" alt="" srcset="">
-                            </i>
-                            <span>{{facil.faclName}}</span>
-                        </li>
-                   {{/each}}
-                    </ul>
-                </div>
-            </div>
-        </script>
+      <header>
+        <div class="header">
+          <div class="back">
+            <i class="icon iconfont icon-arrow-lift"></i>
+          </div>
+          <div class="head-tit">预定场地详情</div>
+          <div class="back"></div>
         </div>
-        <footer>
-            <ul>
-                <li>
-                    <span>电话咨询</span>
-                </li>
-                <li>
-                    <span>线上预订</span>
-                </li>
-            </ul>
-        </footer>
-    </div>
-    </div>
-</body>
-<script src="../../js/lib.js"></script>
-<script src="../../js/swiper.min.js"></script>
+      </header>
+      <div class="container detail">
+        <script id="areaDetailTpl" type="text/html">
+          <div class="swiper-container">
+              <div class="swiper-wrapper">
+                  {{each list.fdImage as img}}
+                  <div class="swiper-slide">
+                      <p class="img">
+                          <img src="{{domain + img}}" alt="" srcset="" />
+                      </p>
+                  </div>
+                  {{/each}}
+              </div>
+              <!-- 如果需要分页器 -->
+              <div class="swiper-pagination"></div>
+          </div>
 
-<script src="../../js/lazyLoad.js"></script>
-<script src="../../js/common.js"></script>
-<script>   
+          <div class="info">
+              <div class="summary">
+                  <p class="tit">{{list.areaName}}</p>
+                  <p class="price">
+                      {{list.fdbalancetypeValue == 0? list.fdbalancetype : list.fdbalancetypeValue}}</p>
+                  <p class="button">
+                      {{each list.wechatAreaItem as item}}
+                      <a>{{item}}</a>
+                      {{/each}}
+                  </p>
+                  <p class="tip">{{list.areaAdress}}.{{list.fdcontain}}.{{list.fdArea}}</p>
+              </div>
+              <div class="description">
+                  <h3>详情介绍</h3>
+                  <p class="con">
+                      {{list.fdContent}}
+                  </p>
+              </div>
+              <div class="service">
+                  <p>设施服务</p>
+                  <ul>
+                      {{each list.facilList as facil}}
+                      <li>
+                          <i>
+                              <img src="{{domain + facil.faclImage}}" alt="" srcset="">
+                          </i>
+                          <span>{{facil.faclName}}</span>
+                      </li>
+                 {{/each}}
+                  </ul>
+              </div>
+          </div>
+        </script>
+      </div>
+      <footer>
+        <ul>
+          <li>
+            <a href="">
+              <span>电话咨询</span>
+            </a>
+          </li>
+          <li>
+            <a onclick="toTarget()">
+              <span>线上预订</span>
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+  </body>
+  <script src="../../js/lib.js"></script>
+  <script src="../../js/swiper.min.js"></script>
+
+  <script src="../../js/lazyLoad.js"></script>
+  <script src="../../js/common.js"></script>
+  <script>
     //获取场地详情
     $(function () {
-        getAreaDetail();
-    })
+      getAreaDetail();
+    });
     // 获取场地详情;
-    function getAreaDetail(flag) {
-        var result = ajaxMothed("/resource/wechatArea/auth/getAreaDetail", {
-            fdId: GetRequest().fdId || '1734221d392627ccd7f7d2c40db89fe2'
-        });
-        result
-            .done(function (resp) {
-                if (resp.success) {
-                    render('.container', 'areaDetailTpl', resp.data, false)
-                    new Swiper('.swiper-container', {
-                        loop: true, // 循环模式选项
-                        // 如果需要分页器
-                        pagination: {
-                            el: '.swiper-pagination',
-                        }
-                    })
-                }
-            })
-            .fail(function (resp) {
-              $.toast(resp.msg, 'text')
+    function getAreaDetail() {
+      var result = ajaxMothed("/resource/wechatArea/auth/getAreaDetail", {
+        fdId: GetRequest().fdId || "1734221d392627ccd7f7d2c40db89fe2",
+      });
+      result
+        .done(function (resp) {
+          if (resp.success) {
+            render(".container", "areaDetailTpl", resp.data, false);
+            new Swiper(".swiper-container", {
+              loop: true, // 循环模式选项
+              // 如果需要分页器
+              pagination: {
+                el: ".swiper-pagination",
+              },
             });
+          }
+        })
+        .fail(function (resp) {
+          $.toast(resp.msg, "text");
+        });
     }
-</script>
-
+    function toTarget() {
+      location.href = "./placedOnline.html?fdId=" + GetRequest().fdId;
+    }
+  </script>
 </html>

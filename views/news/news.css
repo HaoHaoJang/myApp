@@ -31,7 +31,7 @@
       align-items: center; }
       .newsList .header.nav ul li.active {
         border-bottom: 4px solid;
-        color: #ff6600; }
+        color: #4e70de; }
 
 .newsList .list li {
   display: flex;
@@ -46,11 +46,11 @@
   .newsList .list li .con {
     position: relative;
     flex: 1;
-    color: #999;
+    color: #C3C3C3;
     font-size: 1rem; }
     .newsList .list li .con .tit {
       font-size: 1.4rem;
-      color: #333;
+      color: #000000;
       word-break: break-all;
       text-overflow: ellipsis;
       display: -webkit-box;
