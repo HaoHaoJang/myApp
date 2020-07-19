@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <title>报修记录</title>
+    <link rel="stylesheet" href="../../css/weui.css" />
+    <link rel="stylesheet" href="../../css/jquery-weui.css" />
+    <link rel="stylesheet" href="../../css/base.css" />
+    <link rel="stylesheet" href="../../asset/font/iconfont.css" />
+    <script src="../../asset/font/iconfont.js"></script>
+  </head>
+  <style>
+    .newContainer ul li {
+      background-color: #fff;
+      margin-bottom: 10px;
+      padding: 0 10px;
+    }
+    .newContainer ul li .header-tit {
+      border-bottom: 1px solid #ccc;
+      font-size: 14px;
+      line-height: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .newContainer ul li .header-tit .status {
+      color: #4777f3;
+    }
+    .newContainer ul li .content {
+      padding: 10px 0;
+      font-size: 15px;
+    }
+    .newContainer ul li .content .desc {
+      margin-top: 10px;
+      color: #ccc;
+      font-size: 14px;
+    }
+  </style>
+  <body class="recode">
+    <header>
+      <div class="newHeader">
+        <div class="back">
+          <i class="icon iconfont icon-arrow-lift"></i>
+        </div>
+        <div class="head-tit">报修记录</div>
+        <div class="btn-right"></div>
+      </div>
+    </header>
+    <!-- 内容区 -->
+    <div class="newContainer">
+      <ul>
+        <script id="recodeTpl" type="text/html">
+          <li>
+            <div class="header-tit">
+              <p>2017-09-98</p>
+              <p class="status">待处理</p>
+            </div>
+            <div class="content">
+              <p class="tit">地址001</p>
+              <p class="desc">gjdsgjdgjdsgjs</p>
+            </div>
+          </li>
+        </script>
+      </ul>
+    </div>
+  </body>
+  <script src="../../js/lib.js"></script>
+  <script src="../../js/newCommon.js"></script>
+  <script src="../../js/lazyLoad.js"></script>
+  <script>
+    $(function () {
+      getRecodeList();
+      // 滚动加载
+      pageScroll(getRecodeList);
+    });
+    function getRecodeList() {
+      // 测试
+      render(".newContainer ul", "recodeTpl", [], true);
+      // 使用接口时放开即可
+      // var result = ajaxMothed("/resource/wechatArea/auth/getAreaList", {
+      //   pageno: _scrollPageNo,
+      //   rowsize: 10,
+      // });
+      // result
+      //   .done(function (resp) {
+      //     _scrollTotalPage = resp.data.total;
+      //     // 重置滚动条开关
+      //     if (resp.data.dataList.length == 0) {
+      //       return false;
+      //     }
+      //     render(".newContainer ul", "recodeTpl", resp.data.dataList, true);
+      //     setScrollPage();
+      //   })
+      //   .fail(function () {
+      //     if (_scrollPageNo == 1) {
+      //       $(".newContainer ul").html("");
+      //     }
+      //   });
+    }
+  </script>
+</html>
