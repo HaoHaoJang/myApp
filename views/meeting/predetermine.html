@@ -172,7 +172,7 @@
             <span class="btn-span">可预定</span>
             </div>
             <div class="tex-r fl-tex-w">
-            共 <span class="clor-active">0</span>小时
+            共 <span class="clor-active" id="selectAllTime">0</span>小时
             <!--合计<span-->
             <!--class="clor-active"-->
             <!--&gt;0</span-->
@@ -185,6 +185,7 @@
     </div>
   </script>
   <script>
+    // dateFirst 上午可预定时间 dateSend 下午可以预定时间
     var dateFirst = [{time: '8:00', isSelect: '', isPre: ''}, {time: '8:30', isSelect: '', isPre: ''},{time: '9:00', isSelect: '', isPre: ''}, {time: '9:30', isSelect: '', isPre: ''}, {time: '10:00', isSelect: '', isPre: ''}, {time: '10:30', isSelect: '', isPre: ''}, {time: '11:00', isSelect: '', isPre: ''}, {time: '11:30', isSelect: '', isPre: ''}, {time: '12:00', isSelect: '', isPre: ''}, {time: '12:30', isSelect: '', isPre: ''}],
         dateSend = [{time: '14:00', isSelect: '', isPre: ''}, {time: '14:30', isSelect: '', isPre: ''},{time: '15:00', isSelect: '', isPre: ''}, {time: '15:30', isSelect: '', isPre: ''}, {time: '16:00', isSelect: '', isPre: ''}, {time: '16:30', isSelect: '', isPre: ''}, {time: '17:00', isSelect: '', isPre: ''}, {time: '17:30', isSelect: '', isPre: ''},{time: '18:00', isSelect: '', isPre: ''},
           {time: '18:30', isSelect: '', isPre: ''}, {time: '19:00', isSelect: '', isPre: ''}, {time: '19:30', isSelect: '', isPre: ''}, {time: '20:00', isSelect: '', isPre: ''}, {time: '20:30', isSelect: '', isPre: ''}, {time: '21:00', isSelect: '', isPre: ''}, {time: '21:30', isSelect: '', isPre: ''}, {time: '22:00', isSelect: '', isPre: ''}, {time: '22:30', isSelect: '', isPre: ''}];
@@ -200,34 +201,38 @@
         resp.data.name = GetRequest(window.location.href)["name"]
         resp.data.date = GetRequest(window.location.href)["date"]
         render(".perdetermine", "perdetermineid", resp.data, true);
+        // 选择时间
         $('.timer-content').click(function () {
           if ($(this).hasClass('select-style')) {
+            // 判断是否是已经被选中是则去除选中效果
             if ($('.select-style').length > 0) {
               for(var i=0;i<$('.timer-content').length;i++) {
                 $($('.timer-content')[i]).removeClass('select-style')
                 $($('.timer-content')[i]).removeClass('select-sty')
+                $('#selectAllTime').html(0) // 总是长还原
               }
             }
-          } else {
+          } else { // 否则加上选中效果
             $(this).addClass('select-sty')
+            // 判断是否已经有被选中的了
             if ($('.select-style').length > 0) {
               var param = [], key = 0;
               for(var j=0;j<$('.timer-content').length;j++) {
                 if ($($('.timer-content')[j]).hasClass('select-style')) {
-                  param.push(j)
+                  $($('.timer-content')[j]).removeClass('select-sty')
+                  param.push(j) // 将所有的已经被选中的下标存入param里
                 }
                 if ($($('.timer-content')[j]).hasClass('select-sty')) {
-                  key = j
+                  key = j // 获取刚刚选中的下标
                 }
               }
+              // 选中的下标如果大于已经选中的最大值则将之间的所有值都选上
               if (key > param[0]) {
                 for(var n=param[0];n<key+1;n++) {
                   $($('.timer-content')[n]).addClass('select-style')
                 }
               } else {
-                alert(111)
-                console.log(key, 2222)
-                console.log(param, 33333)
+                // 选中的下标如果小于已经选中的最大值则将之间的所有值都选上
                 for(var m=key;m<param[0]+1;m++) {
                   $($('.timer-content')[m]).addClass('select-style')
                 }
@@ -237,7 +242,20 @@
               $(this).addClass('select-style')
             }
           }
+          if($('.select-style').length > 0) {
+            // 计算总共选中的时长 firstDate1 开始时间的时 firstDate2开始时间的分 lastDate1 结束时间的时 lastDate2结束时间的分
+            var firstDate1 = ($($('.select-style')[0]).html()).split(':')[0], firstDate2 = ($($('.select-style')[0]).html()).split(':')[1]
+            var lastDate1 = ($($('.select-style')[$('.select-style').length-1]).html()).split(':')[0], lastDate2 = ($($('.select-style')[$('.select-style').length-1]).html()).split(':')[1]
+            var hour = lastDate1 - firstDate1 // 计算时的差
+            var minute = lastDate2 - firstDate2 // 计算分的差
+            if (minute < 0) { // 当分小于0时说明firstDate2是30分钟 lastDate2是0分钟 则小时要减一
+              hour = hour - 1
+              minute = minute * (-1) // 分差取反
+            }
+            $('#selectAllTime').html(hour + ':' + minute) // 拼接赋值
+          }
         })
+        // 确定预约
         $('#sureMeet').click(function () {
           postMeeting()
         })

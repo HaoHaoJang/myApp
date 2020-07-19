@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c3d7f41-5cee-40fe-bbaa-824ca78ab55b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/meeting/detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/meeting/detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/meeting/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/meeting/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/meeting/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/meeting/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/meeting/predeter.css" beforeDir="false" afterPath="$PROJECT_DIR$/views/meeting/predeter.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/meeting/predetermine.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/meeting/predetermine.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -23,11 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/meeting/predetermine.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="259" column="10" selection-start-line="259" selection-start-column="10" selection-end-line="259" selection-end-column="10" />
-              <folding>
-                <element signature="e#9823#10877#0" />
-              </folding>
+            <state relative-caret-position="1104">
+              <caret line="254" column="65" selection-start-line="254" selection-start-column="65" selection-end-line="254" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -35,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/meeting/detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="168" column="47" lean-forward="true" selection-start-line="168" selection-end-line="169" />
+            <state relative-caret-position="647">
+              <caret line="166" column="34" selection-start-line="166" selection-start-column="34" selection-end-line="166" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -50,23 +44,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/meeting/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="224" column="49" selection-start-line="224" selection-start-column="49" selection-end-line="224" selection-end-column="49" />
-              <folding>
-                <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
-              </folding>
+            <state relative-caret-position="-503">
+              <caret line="163" column="13" lean-forward="true" selection-start-line="163" selection-start-column="13" selection-end-line="163" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/common.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="24" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="24" />
+            <state relative-caret-position="847">
+              <caret line="74" column="1" lean-forward="true" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="1" />
+              <folding>
+                <element signature="n#!!block;n#formatParams#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,12 +125,12 @@
         <option value="$PROJECT_DIR$/views/news/list.html" />
         <option value="$PROJECT_DIR$/css/base.css" />
         <option value="$PROJECT_DIR$/views/meeting/meeting.css" />
-        <option value="$PROJECT_DIR$/js/common.js" />
         <option value="$PROJECT_DIR$/views/meeting/detail.css" />
-        <option value="$PROJECT_DIR$/views/meeting/detail.html" />
         <option value="$PROJECT_DIR$/views/meeting/predeter.css" />
-        <option value="$PROJECT_DIR$/views/meeting/predetermine.html" />
         <option value="$PROJECT_DIR$/views/meeting/index.html" />
+        <option value="$PROJECT_DIR$/views/meeting/detail.html" />
+        <option value="$PROJECT_DIR$/views/meeting/predetermine.html" />
+        <option value="$PROJECT_DIR$/js/common.js" />
       </list>
     </option>
   </component>
@@ -157,11 +151,6 @@
             <path>
               <item name="myApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="myApp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myApp" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="myApp" type="b2602c69:ProjectViewProjectNode" />
@@ -235,12 +224,12 @@
       <workItem from="1594208901356" duration="7062000" />
       <workItem from="1594344996127" duration="2139000" />
       <workItem from="1594469415742" duration="19723000" />
-      <workItem from="1594987122672" duration="22594000" />
+      <workItem from="1594987122672" duration="24455000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56722000" />
+    <option name="totallyTimeSpent" value="58583000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="79" y="31" width="1231" height="809" extended-state="0" />
@@ -258,7 +247,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.27475592" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.42119944" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -472,36 +461,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/common.js">
+    <entry file="file://$PROJECT_DIR$/views/meeting/detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="24" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="24" />
+        <state relative-caret-position="647">
+          <caret line="166" column="34" selection-start-line="166" selection-start-column="34" selection-end-line="166" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/meeting/predetermine.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="259" column="10" selection-start-line="259" selection-start-column="10" selection-end-line="259" selection-end-column="10" />
-          <folding>
-            <element signature="e#9823#10877#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/meeting/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="168" column="47" lean-forward="true" selection-start-line="168" selection-end-line="169" />
+        <state relative-caret-position="1104">
+          <caret line="254" column="65" selection-start-line="254" selection-start-column="65" selection-end-line="254" selection-end-column="65" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/meeting/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="224" column="49" selection-start-line="224" selection-start-column="49" selection-end-line="224" selection-end-column="49" />
+        <state relative-caret-position="-503">
+          <caret line="163" column="13" lean-forward="true" selection-start-line="163" selection-start-column="13" selection-end-line="163" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="847">
+          <caret line="74" column="1" lean-forward="true" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="1" />
           <folding>
-            <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#!!block;n#formatParams#0" />
           </folding>
         </state>
       </provider>

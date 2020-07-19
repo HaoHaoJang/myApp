@@ -164,7 +164,7 @@
       });
     }
     getDetail();
-    // 我要预定
+    // 点击我要预定 （传参数：fdId date name）
     $('#pred').click(function () {
       window.location.href= 'predetermine.html?fdId=' + GetRequest(window.location.href)["fdId"] + '&date=' + GetRequest(window.location.href)["date"] + '&name=' + $('#titName').attr('name')
     })

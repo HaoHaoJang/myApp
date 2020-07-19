@@ -174,6 +174,7 @@
           function () {}
         );
       });
+      // 动态隐藏高级搜索的弹框
       $(".slid-shadow-background").click(function () {
         $(".slid-shadow").animate({ width: "0px" }, 500, "linear", function () {
           $(".slid-shadow").hide();
@@ -188,7 +189,7 @@
       })
         // 选择新的时间出发change事件 调取查询接口
       $('#my_input').on('change', function (val) {
-          getDateApi()
+          getDateApi() // 日期变化重新获取对应数据
       })
         // 点击前一天
         $('#pre_day').click(function () {
@@ -198,14 +199,14 @@
           }
             numDate --
           $('#my_input').val(dateFormat('yyyy-mm-dd', (new Date(new Date() + 3600000*24*numDate))))
-            getDateApi()
+            getDateApi() // 日期变化重新获取对应数据
         })
         // 点击后一天
         $('#next_day').click(function () {
             numDate ++
             var timme = new Date(new Date() * 1 + 3600000*24 * numDate)
             $('#my_input').val(dateFormat('yyyy-mm-dd', timme))
-            getDateApi()
+            getDateApi() // 日期变化重新获取对应数据
         })
         // 获取接口方法
         function getDateApi() {
@@ -221,7 +222,7 @@
                   console.log($('.goToDetailMeeting').attr('fdId'), 88888)
                   window.location.href ='detail.html?fdId=' + $('.goToDetailMeeting').attr('fdId') + '&date=' + $('#my_input').val()
                 })
-                // 我要预定
+                // 点击我要预定 （传参数：fdId date name）
               $('#preMeet').click(function (event) {
                 event.stopPropagation();
                 window.location.href= 'predetermine.html?fdId=' +  $('.goToDetailMeeting').attr('fdId') + '&date=' + $('#my_input').val() + '&name=' + $('#titName').attr('name')
