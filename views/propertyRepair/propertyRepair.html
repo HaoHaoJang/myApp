@@ -26,43 +26,36 @@
     }
 </style>
 <body class="visit-appointment">
-<div class="weui-cells__title bg-c-w">当前时间：<span id="newDate"></span></div>
-<div class="weui-cells__title">访客信息</div>
+<div class="weui-cells__title">物业报修</div>
 <div class="weui-cells weui-cells_form">
     <div class="weui-cell">
         <div class="weui-cell__hd">
-            <label class="weui-label">来访单位</label>
+            <label class="weui-label">报修日期</label>
         </div>
         <div class="weui-cell__bd">
-            <input class="weui-input" type="text" placeholder="请输入来访单位">
+            <input class="weui-input" type="date" id="repairDate" placeholder="请选择时间">
         </div>
     </div>
     <div class="weui-cell">
-        <div class="weui-cell__hd">
-            <label class="weui-label">访客手机号</label>
-        </div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="tel" placeholder="请输入手机号">
-        </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">访客姓名</label></div>
+        <div class="weui-cell__hd"><label class="weui-label">报修人</label></div>
         <div class="weui-cell__bd">
             <input class="weui-input" type="text" placeholder="请输入姓名">
         </div>
     </div>
     <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">随行人员</label></div>
+        <div class="weui-cell__hd">
+            <label class="weui-label">联系方式</label>
+        </div>
         <div class="weui-cell__bd">
-            <input class="weui-input" type="text" placeholder="请输入随行人员">
+            <input class="weui-input" type="tel" placeholder="请输入手机号">
         </div>
     </div>
 </div>
-<div class="weui-cells__title">来访事由</div>
+<div class="weui-cells__title">报修内容</div>
 <div class="weui-cells weui-cells_form">
     <div class="weui-cell">
         <div class="weui-cell__bd">
-            <textarea class="weui-textarea" placeholder="请输来访事由" rows="3"></textarea>
+            <textarea class="weui-textarea" placeholder="请输报修内容" rows="3"></textarea>
             <div class="weui-textarea-counter"><span>0</span>/200</div>
         </div>
     </div>
@@ -72,7 +65,7 @@
         <div class="weui-cell__bd">
             <div class="weui-uploader">
                 <div class="weui-uploader__hd">
-                    <p class="weui-uploader__title">上传证件</p>
+                    <p class="weui-uploader__title">现场图片</p>
                     <div class="weui-uploader__info">0/2</div>
                 </div>
                 <div class="weui-uploader__bd">
@@ -86,46 +79,34 @@
         </div>
     </div>
 </div>
-<div class="weui-cells__title">被访信息</div>
+<div class="weui-cells__title">物理定位</div>
 <div class="weui-cells weui-cells_form">
     <div class="weui-cell">
         <div class="weui-cell__hd">
-            <label class="weui-label">访问单位</label>
+            <label class="weui-label">状态</label>
         </div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="text" placeholder="请输入访问单位">
-        </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd">
-            <label class="weui-label">访问部门</label>
-        </div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="text" placeholder="请输入访问部门">
-        </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd">
-            <label class="weui-label">访问人</label>
-        </div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="text" placeholder="请输入访问人">
+        <div class="weui-cell__bd flx">
+            <div class="flx-1">
+                <input type="radio" class="clor-gre" id="1">
+                <label for="1" class="clor-gre">已受理</label>
+            </div>
+            <div class="flx-1">
+                <input type="radio" class="clor-gre" id="2">
+                <label for="2" class="clor-gre">待确认</label>
+            </div>
+            <div class="flx-1">
+                <input type="radio" class="clor-gre" id="3">
+                <label for="3" class="clor-gre">已结案</label>
+            </div>
         </div>
     </div>
+</div>
+<div class="weui-cells__title">报修评价</div>
+<div class="weui-cells weui-cells_form">
     <div class="weui-cell">
-        <div class="weui-cell__hd">
-            <label class="weui-label">访问手机号码</label>
-        </div>
         <div class="weui-cell__bd">
-            <input class="weui-input" type="tel" placeholder="请输入手机号码">
-        </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd">
-            <label class="weui-label">访问开始时间</label>
-        </div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="date" placeholder="请选择访问开始时间">
+            <textarea class="weui-textarea" placeholder="请输入评价" rows="3"></textarea>
+            <div class="weui-textarea-counter"><span>0</span>/200</div>
         </div>
     </div>
 </div>
@@ -135,12 +116,7 @@
 <script src="../../js/newCommon.js"></script>
 <script src="../../js/lazyLoad.js"></script>
 <script>
-    var nowdate= dateFormat('yyyy-mm-dd HH:MM:SS', new Date()) // 当前日期
-    $("#newDate").html(nowdate)
-    $("#reasonsForVisiting ").select({
-        closeText: "关闭",
-        title: "请选择来访事由",
-        items: ["商务洽谈", "求职面试", "参加会议", "参加培训", "送文件", "其他"]
-    });
+    var nowdate= dateFormat('yyyy-mm-dd', new Date()) // 当前日期
+    $("#repairDate").html(nowdate)
 </script>
 </html>
