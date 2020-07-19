@@ -1,8 +1,8 @@
 .commentList .head-tit {
-  display: flex;
   overflow-x: auto; }
   .commentList .head-tit .tit-t {
     height: 100%;
+    display: flex;
     align-items: center;
     position: relative;
     margin-right: 2rem;

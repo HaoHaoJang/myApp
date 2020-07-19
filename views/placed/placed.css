@@ -41,7 +41,7 @@
         color: #fff;
         height: 2rem;
         line-height: 2rem;
-        background-color: #e97c6d;
+        background-color: #4777f3;
         border-radius: 0.6rem 0 0 0.6rem;
         -webkit-border-radius: 0.6rem 0 0 0.6rem;
         -moz-border-radius: 0.6rem 0 0 0.6rem;
@@ -86,8 +86,8 @@
       -ms-border-radius: 0.2rem;
       -o-border-radius: 0.2rem;
       color: #fff;
-      background-color: #fddddc;
-      color: #edaba6;
+      background-color: #d4e5fd;
+      color: #6ca5f3;
       font-size: 1rem;
       margin-bottom: 0.5rem;
       margin-right: 0.5rem; }
@@ -162,7 +162,7 @@
       .placedDetail footer ul li {
         flex: 1;
         margin: 0 1rem;
-        background-color: #eb6350;
+        background-color: #4777f3;
         height: 3rem;
         color: #fff;
         line-height: 3rem;

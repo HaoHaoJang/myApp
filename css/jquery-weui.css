@@ -1592,7 +1592,7 @@ body {
 }
 
 .picker-calendar-day.picker-calendar-day-selected span {
-  background: rgb(4, 84, 148);
+  background: #4777f3;
   color: #fff;
 }
 
@@ -1749,7 +1749,7 @@ i.icon.icon-next {
 .icon-next,
 .icon-prev {
   font-size: 1.2rem;
-  color: rgb(4, 84, 148);
+  color: #4777f3;
   display: inline-block;
   vertical-align: middle;
   background-size: 100% auto;

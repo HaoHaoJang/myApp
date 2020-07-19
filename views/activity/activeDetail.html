@@ -82,7 +82,7 @@
       }
       .now {
         color: #fff;
-        background-color: #ff9822 !important;
+        background-color: #4777f3 !important;
       }
     </style>
   </head>
@@ -149,7 +149,7 @@
           <i class="icon iconfont icon-kefu"></i>
           <div style="color: #656565;">客服</div>
         </div>
-        <div class="flx-1 acitve-end flx-cc now end">
+        <div class="flx-1 acitve-end flx-cc end">
           <div id="activityStatus"></div>
         </div>
       </div>
@@ -177,7 +177,9 @@
         // 设置活动状态
         $("#activityStatus").text(status[resp.data.dataList[0].fdState]);
         if (resp.data.dataList[0].fdState == 40) {
-          $("#activityStatus").parent().removeClass("now");
+          $("#activityStatus").parent().removeClass("now").addClass("end");
+        } else {
+          $("#activityStatus").parent().removeClass("end").addClass("now");
         }
       });
     }

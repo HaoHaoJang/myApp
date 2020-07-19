@@ -3,17 +3,21 @@
     line-height: 40px;
     padding: 0 1rem;
 }
+
 .perdetermine .flx-w {
     width: 4rem;
 }
+
 .perdetermine .pre-timmer {
     padding: 2rem 1rem;
     padding-bottom: 0.5rem;
 }
+
 .perdetermine .pre-timmer .pre-timmer-container {
     align-items: center;
     margin-bottom: 1rem;
 }
+
 .perdetermine .pre-timmer .pre-timmer-container .timer-content {
     display: inline-block;
     font-size: 1rem;
@@ -25,17 +29,21 @@
     border-radius: 2px;
     margin-bottom: 0.5rem;
 }
+
 .perdetermine .pre-timmer .pre-timmer-container .select-disable {
     color: #dddddd;
     border-color: #dddddd;
 }
+
 .perdetermine .pre-timmer .pre-timmer-container .select-style {
-    border-color: #ff6600;
-    color: #ff6600;
+    border-color: #4777f3;
+    color: #4777f3;
 }
+
 .perdetermine .titp {
     color: #dddddd;
 }
+
 .perdetermine .btn-span {
     display: inline-block;
     font-size: 0.8rem;
@@ -46,17 +54,21 @@
     border: 1px solid #dddddd;
     border-radius: 1px;
 }
+
 .perdetermine .bor-t {
     border-top: 1px solid #efefef;
 }
+
 .fl-tex-w {
     width: 10rem;
 }
+
 .fl-tex-t-w {
     width: 9rem;
 }
+
 .btn-sure {
-    background-color: rgb(4, 84, 148);
+    background-color: #4777f3;
     color: #ffffff;
     font-size: 1.4rem;
     text-align: center;

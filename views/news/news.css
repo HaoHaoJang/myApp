@@ -31,7 +31,7 @@
       align-items: center; }
       .newsList .header.nav ul li.active {
         border-bottom: 4px solid;
-        color: #4e70de; }
+        color: #4777f3; }
 
 .newsList .list li {
   display: flex;
@@ -65,3 +65,7 @@
       font-size: 1rem; }
       .newsList .list li .con .votes span:first-child {
         margin-right: 0.5rem; }
+
+.weui-toast--text,
+.weui-toast_content {
+  font-size: 1.2rem !important; }

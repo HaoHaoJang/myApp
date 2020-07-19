@@ -27,7 +27,9 @@ body {
     visibility: hidden;
 }
 
-@media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
+@media (-webkit-min-device-pixel-ratio: 1.5),
+(min-device-pixel-ratio: 1.5) {
+
     .border-1px,
     .border-1px-top ::after {
         -webkit-transform: scaleY(0.7);
@@ -35,7 +37,9 @@ body {
     }
 }
 
-@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+@media (-webkit-min-device-pixel-ratio: 3),
+(min-device-pixel-ratio: 3) {
+
     .border-1px,
     .border-1px-top::after {
         -webkit-transform: scaleY(0.5);
@@ -180,9 +184,11 @@ img {
 .btn-co {
     color: #ffffff;
 }
+
 .fot-mi-s {
     font-size: 1rem;
 }
+
 .fot-s {
     font-size: 1.2rem;
 }
@@ -333,6 +339,7 @@ input::-webkit-input-placeholder {
     z-index: 997;
     display: none;
 }
+
 .slid-shadow-background {
     background: rgba(0, 0, 0, 0.2);
     position: absolute;
@@ -342,18 +349,23 @@ input::-webkit-input-placeholder {
     bottom: 0;
     z-index: 998;
 }
+
 .clor-active {
-    color: #ff6600;
+    color: #4777f3;
 }
+
 .clor-gre {
     color: #989696;
 }
+
 .clor-blu {
     color: #0849a2;
 }
+
 .hide {
     display: none;
 }
+
 /* 空页面 */
 .empty {
     color: #9e9da4;
@@ -361,6 +373,7 @@ input::-webkit-input-placeholder {
     text-align: center;
     font-size: 1.4rem;
 }
+
 .empty .icon {
     font-size: 5rem;
     display: block;
@@ -372,11 +385,13 @@ input::-webkit-input-placeholder {
 .swiper-pagination-bullet-active {
     background: #fff !important;
 }
+
 /*重置weui*/
 .weui-loadmore {
     margin: 0 auto !important;
     padding: 1.5rem 0;
 }
+
 .weui-dialog__btn {
     color: #0849a2;
 }

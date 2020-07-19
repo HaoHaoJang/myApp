@@ -37,7 +37,7 @@
   top: 0;
   height: 2rem;
   line-height: 2rem;
-  background-color: rgb(4, 84, 148);
+  background-color: #4777f3;
   padding: 0 0.8rem;
 }
 
@@ -65,7 +65,7 @@
 
 .meeting .container .placed-item .desc .icon {
   margin-right: 1rem;
-  color: rgb(4, 84, 148);
+  color: #4777f3;
   font-size: 1.2rem;
 }
 
@@ -85,7 +85,7 @@
   -ms-border-radius: 0.2rem;
   -o-border-radius: 0.2rem;
   color: #fff;
-  background-color: #f4b942;
+  background-color: #4777f3;
   font-size: 1rem;
   margin-bottom: 0.5rem;
   margin-right: 0.5rem;
@@ -187,7 +187,7 @@ i.icon.icon-yuding {
 
 .slid-footer .sure {
   color: #ffffff;
-  background-color: rgb(4, 84, 148);
+  background-color: #4777f3;
 }
 
 .meeting .data-sele {
@@ -197,9 +197,9 @@ i.icon.icon-yuding {
   height: 100%;
   width: 100%;
   text-align: center;
-  color: #f4b942;
+  color: #4777f3;
 }
 
 .meeting #preMeet {
-  background-color: #f4b942;
+  background-color: #4777f3;
 }

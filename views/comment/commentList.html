@@ -93,7 +93,7 @@
         }
         
         .pd {
-            padding: 0 10px;
+            padding: 0 1rem;
         }
         
         .comment-content-img {
@@ -117,6 +117,9 @@
             font-size: 1rem;
             position: absolute;
             top: -4px;
+        }
+        .list-item{
+            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -175,7 +178,7 @@
         <script id="topListTpl" type="text/html">
             
         {{each list as item}}
-        <div class="bg-c-w pd" onclick="toDetail('{{item.fdId}}','{{item.cateId}}')">
+        <div class="bg-c-w pd list-item" onclick="toDetail('{{item.fdId}}','{{item.cateId}}')">
             <div class="flx tex-reference">
                 <div class="flx-fix tex-c head-im">
                     <img src="{{domain + item.userImg}}" alt="" srcset="">

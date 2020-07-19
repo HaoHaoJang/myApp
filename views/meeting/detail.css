@@ -21,7 +21,7 @@
 
 .meeting-detail .containe .meeting-item .has-content span {
     display: inline-block;
-    border: 1px solid rgb(4, 84, 148);
+    border: 1px solid #4777f3;
     border-radius: 4px;
     margin: 0.5rem 0;
     height: 2rem;
@@ -29,7 +29,7 @@
     text-align: center;
     padding: 0 4px;
     font-size: 0.8rem;
-    color: rgb(4, 84, 148);
+    color: #4777f3;
 }
 
 .meeting-detail .containe2 {
@@ -57,7 +57,7 @@
 }
 
 .meeting-detail .containe2 .condition a {
-    color: rgb(4, 84, 148);
+    color: #4777f3;
 }
 
 .meeting-detail .containe3 {
@@ -87,5 +87,5 @@
 
 .meeting-detail .footer-btn div:last-child {
     color: #ffffff;
-    background-color: rgb(4, 84, 148);
+    background-color: #4777f3;
 }
