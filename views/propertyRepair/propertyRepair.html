@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
     />
     <meta content="yes" name="apple-mobile-web-app-capable" />
-    <title></title>
+    <title>物业报修</title>
     <link rel="stylesheet" href="../../css/weui.css" />
     <link rel="stylesheet" href="../../css/jquery-weui.css" />
     <link rel="stylesheet" href="../../css/base.css" />
@@ -35,7 +35,7 @@
           <i class="icon iconfont icon-arrow-lift"></i>
         </div>
         <div class="head-tit">物业报修</div>
-        <div class="btn-right">
+        <div class="btn-right" onclick="next()">
             报修记录
         </div>
       </div>
@@ -143,5 +143,8 @@
   <script>
     var nowdate = dateFormat("yyyy-mm-dd", new Date()); // 当前日期
     $("#repairDate").html(nowdate);
+    function next(){
+        window.location.href="./record.html"
+    }
   </script>
 </html>
