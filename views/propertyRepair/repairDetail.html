@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <title></title>
+    <link rel="stylesheet" href="../../css/weui.css" />
+    <link rel="stylesheet" href="../../css/jquery-weui.css" />
+    <link rel="stylesheet" href="../../css/base.css" />
+    <link rel="stylesheet" href="../../asset/font/iconfont.css" />
+    <script src="../../asset/font/iconfont.js"></script>
+</head>
+<style>
+    .repairDetail .progress {
+        font-size: 0;
+        height: 80px;
+        line-height: 40px;
+        padding: 0 10px;
+    }
+    .repairDetail .progress .progress-text span {
+        font-size: 14px;
+        display: inline-block;
+        width: 33%;
+        text-align: center;
+    }
+    .repairDetail .progress .progress-text .text-active {
+        color: #ff6600;
+    }
+    .repairDetail .progress .line {
+        display: inline-block;
+        border-bottom: 2px solid #c8c8cd;
+        vertical-align: middle;
+        width: 14.3%;
+    }
+    .repairDetail .progress .dot {
+        display: inline-block;
+        border: 8px solid #c8c8cd;
+        border-radius: 100%;
+        vertical-align: middle;
+    }
+    .repairDetail .progress .line-active {
+        border-color: #ff6600;
+    }
+    .repairDetail .progress .dot-active {
+        border-color: #ff6600;
+    }
+    .repairDetail .detail-text {
+        margin-top: 10px;
+        padding: 10px;
+    }
+    .repairDetail .detail-text div {
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+    }
+    .repairDetail .detail-text div span {
+        color: #868686;
+    }
+</style>
+<body class="repairDetail">
+<header>
+    <div class="newHeader">
+        <div class="back">
+            <i class="icon iconfont icon-arrow-lift"></i>
+        </div>
+        <div class="head-tit">报修详情</div>
+        <div class="btn-right">
+        </div>
+    </div>
+</header>
+<!-- 内容区 -->
+<div class="newContainer">
+    <div class="progress bg-c-w">
+        <div>
+            <span class="line line-active"></span>
+            <span class="dot dot-active"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="dot"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="dot"></span>
+            <span class="line"></span>
+        </div>
+        <div class="progress-text">
+            <span class="text-active">提交报修</span>
+            <span>处理中</span>
+            <span>已处理</span>
+        </div>
+    </div>
+    <div class="detail-text bg-c-w">
+        <div>
+           提交时间： <span> 2020-07-19 17：54</span>
+        </div>
+        <div>
+            报修类别： <span> 消防设备</span>
+        </div>
+        <div>
+            所在位置： <span> 地址001</span>
+        </div>
+        <div>
+            企业名称： <span> 我的企业</span>
+        </div>
+        <div>
+            报修内容：
+
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../js/lib.js"></script>
+<script src="../../js/newCommon.js"></script>
+<script src="../../js/lazyLoad.js"></script>
+<script>
+</script>
+</html>
