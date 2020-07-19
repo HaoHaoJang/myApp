@@ -167,7 +167,7 @@
         activeId: GetRequest().activeId,
       });
       result.done(function (resp) {
-        render(".container section", "detailTpl", resp.data[0], false);
+        render(".container section", "detailTpl", resp.data.dataList[0], false);
         lazyRender();
         var status = {
           "20": "报名中",
@@ -175,8 +175,8 @@
           "40": "已结束",
         };
         // 设置活动状态
-        $("#activityStatus").text(status[resp.data[0].fdState]);
-        if (resp.data[0].fdState == 40) {
+        $("#activityStatus").text(status[resp.data.dataList[0].fdState]);
+        if (resp.data.dataList[0].fdState == 40) {
           $("#activityStatus").parent().removeClass("now");
         }
       });

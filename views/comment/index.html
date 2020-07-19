@@ -128,6 +128,21 @@
       #forum .active {
         color: #4777f3;
       }
+      .publishTopic {
+        position: absolute;
+        bottom: 8rem;
+        right: 2rem;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        background-color: #4777f3;
+        text-align: center;
+        line-height: 4rem;
+        color: #fff;
+      }
+      .publishTopic .icon {
+        font-size: 2rem;
+      }
     </style>
   </head>
 
@@ -138,17 +153,20 @@
         <div>
           <div class="flx tex-reference bg-c-w">
             <div class="flx-1 reference-l">推荐板块</div>
-            <div class="reference-r">
+            <!-- <div class="reference-r">
               全部
               <i class="icon icon-arrow-right iconfont"></i>
-            </div>
+            </div> -->
           </div>
           <!-- 推荐版块 -->
           <section id="recommend"></section>
         </div>
       </div>
-      <div class="footer flx clic">
-        <a class="nav-item" href="../comment/index.html">
+      <div class="publishTopic" onclick="toPublishTopic()">
+        <i class="icon iconfont icon-bianji"></i>
+      </div>
+      <div class="footer flx">
+        <a class="nav-item clic" href="../comment/index.html">
           <i class="icon iconfont icon-luntan"></i>
           <span>论坛</span>
         </a>
@@ -177,7 +195,7 @@
   <!-- 论坛导航 -->
   <script id="forumTpl" type="text/html">
     {{each list as item index}}
-      <div class="flx-1 flx-dir flx-cc {{index == 0 ? 'active':''}}" onclick="openRecommend('{{item}}',this)">
+      <div class=" flx-dir flx-cc {{index == 0 ? 'active':''}}" onclick="openRecommend('{{item}}',this)">
         <div class="bg-ic">
           <img src="{{domain + item.imageUrl}}" alt="">
         </div>
@@ -188,7 +206,7 @@
   <!-- 模板 推荐版块 -->
   <script id="recommendTpl" type="text/html">
     {{each list as item }}
-      <a class="flx bg-c-w border-b modu-content" href="./commentList.html?fdId={{item.fdId}}">
+      <a class="flx bg-c-w border-b modu-content" href="./commentList.html?cateId={{item.fdId}}">
         <div class="flx-w lie">
           <img src="{{domain + item.imageUrl}}" alt="">
         </div>
@@ -206,6 +224,7 @@
     {{/each}}
   </script>
   <script>
+    var fdId = "";
     $(function () {
       getForumCateList();
     });
@@ -213,6 +232,7 @@
     function getForumCateList() {
       var result = ajaxMothed("/resource/forum/getForumCateList", {});
       result.done(function (resp) {
+        fdId = resp.data[0].fdId;
         renderTemplate("forumTpl", resp.data, "forum");
         renderTemplate("recommendTpl", resp.data[0].children, "recommend");
       });
@@ -226,8 +246,12 @@
     }
     //
     function openRecommend(item, obj) {
+      fdId = item.fdId;
       $(obj).addClass("active").siblings().removeClass("active");
       renderTemplate("recommendTpl", JSON.parse(item).children, "recommend");
+    }
+    function toPublishTopic() {
+      location.href = "./comment.html?cateId=" + fdId;
     }
   </script>
 </html>

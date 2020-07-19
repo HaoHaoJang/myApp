@@ -1,42 +1,69 @@
-.meeting-detail .containe {
+.meeting-detail {
+    margin-bottom: 5rem;
+}
+
+.containe {
     background-color: #fff;
     padding: 1rem 1rem 0 1rem;
     margin-top: 0;
 }
+
 .meeting-detail .containe .meeting-item .img {
     height: 17rem;
     width: 100%;
-    position: relative; }
+    position: relative;
+}
+
 .meeting-detail .containe .meeting-item .tit {
     font-size: 1.4rem;
-    padding: 0.8rem 0 0.5rem 0; }
+    padding: 0.8rem 0 0.5rem 0;
+}
+
 .meeting-detail .containe .meeting-item .has-content span {
-   display: inline-block;border: 1px solid rgb(4, 84, 148);border-radius: 4px;margin: 0.5rem 0;
-    height: 2rem;line-height: 2rem;text-align: center;padding: 0 4px;font-size: 0.8rem;color:rgb(4, 84, 148);}
+    display: inline-block;
+    border: 1px solid rgb(4, 84, 148);
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    padding: 0 4px;
+    font-size: 0.8rem;
+    color: rgb(4, 84, 148);
+}
+
 .meeting-detail .containe2 {
     background-color: #fff;
     padding: 0 1rem 0 1rem;
     margin-top: 1rem;
 }
-.meeting-detail .containe .condition, .meeting-detail .containe2 .condition {
+
+.meeting-detail .containe .condition,
+.meeting-detail .containe2 .condition {
     height: 4rem;
     line-height: 4rem;
     border-top: 1px solid #e8e8e8;
-  }
+}
+
 .meeting-detail .containe2 .condition-detail {
     min-height: 4rem;
-    line-height: 4rem;
+    line-height: normal;
+    padding: 1rem 0;
     border-top: 1px solid #e8e8e8;
-  }
+}
+
 .meeting-detail .containe2 .condition:first-child {
     border: none;
 }
+
 .meeting-detail .containe2 .condition a {
-    color:rgb(4, 84, 148);
+    color: rgb(4, 84, 148);
 }
+
 .meeting-detail .containe3 {
     margin-bottom: 4rem;
 }
+
 .meeting-detail .footer-btn {
     position: fixed;
     bottom: 0;
@@ -44,16 +71,20 @@
     font-size: 1.4rem;
     background-color: #ffffff;
 }
+
 .meeting-detail .footer-btn div {
     height: 4rem;
     line-height: 4rem;
     text-align: center;
-    border: 1px solid #e8e8e8;;
+    border: 1px solid #e8e8e8;
+    ;
 }
+
 .meeting-detail .footer-btn div:nth-child(2) {
     border-left: 0;
     border-right: 0;
 }
+
 .meeting-detail .footer-btn div:last-child {
     color: #ffffff;
     background-color: rgb(4, 84, 148);

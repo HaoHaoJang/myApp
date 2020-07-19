@@ -1,20 +1,24 @@
 @import "../../css/main.scss";
+
 // 评论列表
 .commentList {
     .head-tit {
         // align-items: center;
         display: flex;
         overflow-x: auto;
+
         .tit-t {
             height: 100%;
-            display: flex;
+            // display: flex;
             align-items: center;
             position: relative;
             margin-right: 2rem;
             color: $color9;
             white-space: nowrap;
+
             &:first-child {
                 color: $black;
+
                 &::after {
                     content: "";
                     height: 4px;
@@ -33,10 +37,12 @@
             }
         }
     }
+
     .header2 {
         padding-left: 2rem;
         border-bottom: 1px solid $colorb03;
         overflow-x: auto;
+
         .tag-tit {
             white-space: nowrap;
             height: 2.5rem;
@@ -51,13 +57,15 @@
             -moz-border-radius: 1rem;
             -ms-border-radius: 1rem;
             -o-border-radius: 1rem;
+
             &.clic {
                 color: #fff;
                 background-color: #9BBAF0;
             }
         }
     }
+
     .container {
-        margin-top: 8.8rem;
+        margin-top: 4.6rem;
     }
 }

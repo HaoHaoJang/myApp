@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
     />
     <meta content="yes" name="apple-mobile-web-app-capable" />
-    <title></title>
+    <title>会议室列表</title>
     <link rel="stylesheet" href="../../css/weui.css" />
     <link rel="stylesheet" href="../../css/jquery-weui.css" />
     <link rel="stylesheet" href="../../css/base.css" />
@@ -21,28 +21,28 @@
       <header>
         <div class="header">
           <div class="back"></div>
-          <div class="head-tit"></div>
-          <div class="back fot-max" id="highSeach">
+          <div class="head-tit">会议室</div>
+          <div class="back"></div>
+          <!-- <div class="back fot-max" id="highSeach">
             高级搜索
-          </div>
+          </div> -->
         </div>
         <div class="flx header2">
           <div class="flx-1 tex-c" id="pre_day">
             前一天
           </div>
           <div class="flx-1 tex-c posr">
-              预定场地
-              <input type="text" id="my_input" class="data-sele"/>
+            预订场地
+            <input type="text" id="my_input" class="data-sele" />
           </div>
           <div class="flx-1 tex-c" id="next_day">
             后一天
           </div>
         </div>
       </header>
-      <div class="container">
-      </div>
+      <div class="container"></div>
     </div>
-    <div class="slid-shadow">
+    <!-- <div class="slid-shadow">
       <div class="slid-shadow-container">
         <div class="slid-header">
           <input type="text" placeholder="搜索" />
@@ -117,7 +117,7 @@
         </div>
       </div>
       <div class="slid-shadow-background"></div>
-    </div>
+    </div> -->
   </body>
   <script src="../../js/lib.js"></script>
   <script src="../../js/common.js"></script>
@@ -135,16 +135,16 @@
       <div class="flx fot-s mar-t">
         <div class="flx-1">
           <p class="desc">
-            <i class="icon iconfont icon-arrow-lift"></i>可容纳{{item.fdArea}}人
+            <i class="icon iconfont icon-qunzu"></i>可容纳{{item.fdArea}}人
           </p>
           <p class="desc">
-            <i class="icon iconfont icon-arrow-lift"></i>{{item.meetAdress}}
+            <i class="icon iconfont icon-location"></i>{{item.meetAdress}}
           </p>
         </div>
         <div class="flx-1 tex-r mar-t-mix">
           <button class="btn-back btn-co pre-btn" id="preMeet">
-            <i class="icon iconfont icon-arrow-lift"></i>
-            我要预定
+            <i class="icon iconfont icon-yuding"></i>
+            我要预订
           </button>
         </div>
       </div>
@@ -152,11 +152,12 @@
     {{/each}}
   </script>
   <script>
-      var nowdate= dateFormat('yyyy-mm-dd', new Date()) // 当前日期
-      var numDate = 0 // 日期默认点击数
-      var pageno = 0, rowsize= 10;
+    var nowdate = dateFormat("yyyy-mm-dd", new Date()); // 当前日期
+    var numDate = 0; // 日期默认点击数
+    var pageno = 0,
+      rowsize = 10;
     $(function () {
-        // 高级搜索伸缩点击事件
+      // 高级搜索伸缩点击事件
       $("ul.accordion li span").on("click", function (event) {
         event.stopPropagation();
         $(this).parent().siblings().removeClass("selected").find("div").hide();
@@ -181,55 +182,81 @@
         });
       });
       // 设置默认时间
-      $('#my_input').val(nowdate)
-        // 时间组建初始化
-      $('#my_input').calendar({
-          value: [nowdate],
-          dateFormat: 'yyyy-mm-dd'
-      })
-        // 选择新的时间出发change事件 调取查询接口
-      $('#my_input').on('change', function (val) {
-          getDateApi() // 日期变化重新获取对应数据
-      })
-        // 点击前一天
-        $('#pre_day').click(function () {
-          if ($('#my_input').val() === nowdate) {
-              $.toast('日期大于今天', 'text');
-              return
-          }
-            numDate --
-          $('#my_input').val(dateFormat('yyyy-mm-dd', (new Date(new Date() + 3600000*24*numDate))))
-            getDateApi() // 日期变化重新获取对应数据
-        })
-        // 点击后一天
-        $('#next_day').click(function () {
-            numDate ++
-            var timme = new Date(new Date() * 1 + 3600000*24 * numDate)
-            $('#my_input').val(dateFormat('yyyy-mm-dd', timme))
-            getDateApi() // 日期变化重新获取对应数据
-        })
-        // 获取接口方法
-        function getDateApi() {
-            var result = ajaxMothed("/resource/wechatArea/auth/getMeetList", {
-                pageno: pageno,
-                rowsize: rowsize,
-                date: $('#my_input').val() || dateFormat('yyyy-mm-dd', nowdate)
-            });
-            result.done(function (resp) {
-                render(".container", "meeting", resp.data.dataList, true);
-                // 渲染玩模版 绑定点击事件
-                $('.goToDetailMeeting').click(function (val) {
-                  console.log($('.goToDetailMeeting').attr('fdId'), 88888)
-                  window.location.href ='detail.html?fdId=' + $('.goToDetailMeeting').attr('fdId') + '&date=' + $('#my_input').val()
-                })
-                // 点击我要预定 （传参数：fdId date name）
-              $('#preMeet').click(function (event) {
-                event.stopPropagation();
-                window.location.href= 'predetermine.html?fdId=' +  $('.goToDetailMeeting').attr('fdId') + '&date=' + $('#my_input').val() + '&name=' + $('#titName').attr('name')
-              })
-            });
+      $("#my_input").val(nowdate);
+      // 时间组建初始化
+      $("#my_input").calendar({
+        value: [nowdate],
+        dateFormat: "yyyy-mm-dd",
+      });
+      // 选择新的时间出发change事件 调取查询接口
+      $("#my_input").on("change", function (val) {
+        resetPageNo();
+        $(".container").html("");
+        getDateApi(); // 日期变化重新获取对应数据
+      });
+      // 点击前一天
+      $("#pre_day").click(function () {
+        if ($("#my_input").val() === nowdate) {
+          $.toast("日期大于今天", "text");
+          return;
         }
-        getDateApi()
+        numDate--;
+        $("#my_input").val(
+          dateFormat(
+            "yyyy-mm-dd",
+            new Date(new Date() + 3600000 * 24 * numDate)
+          )
+        );
+        resetPageNo();
+        $(".container").html("");
+        getDateApi(); // 日期变化重新获取对应数据
+      });
+      // 点击后一天
+      $("#next_day").click(function () {
+        numDate++;
+        var timme = new Date(new Date() * 1 + 3600000 * 24 * numDate);
+        $("#my_input").val(dateFormat("yyyy-mm-dd", timme));
+        resetPageNo();
+        $(".container").html("");
+        getDateApi(); // 日期变化重新获取对应数据
+      });
+      // 获取接口方法
+      function getDateApi() {
+        var result = ajaxMothed("/resource/wechatArea/auth/getMeetList", {
+          pageno: _scrollPageNo,
+          rowsize: rowsize,
+          date: $("#my_input").val() || dateFormat("yyyy-mm-dd", nowdate),
+        });
+        result.done(function (resp) {
+          if (resp.data.dataList.length == 0) {
+            return false;
+          }
+          render(".container", "meeting", resp.data.dataList, true);
+          lazyRender();
+          setScrollPage();
+          // 渲染玩模版 绑定点击事件
+          $(".goToDetailMeeting").click(function (val) {
+            console.log($(".goToDetailMeeting").attr("fdId"), 88888);
+            window.location.href =
+              "detail.html?fdId=" +
+              $(".goToDetailMeeting").attr("fdId") +
+              "&date=" +
+              $("#my_input").val();
+          });
+          // 点击我要预定 （传参数：fdId date name）
+          $("#preMeet").click(function (event) {
+            event.stopPropagation();
+            window.location.href =
+              "predetermine.html?fdId=" +
+              $(".goToDetailMeeting").attr("fdId") +
+              "&date=" +
+              $("#my_input").val() +
+              "&name=" +
+              $("#titName").attr("name");
+          });
+        });
+      }
+      getDateApi();
     });
   </script>
 </html>

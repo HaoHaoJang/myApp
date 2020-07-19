@@ -3,7 +3,6 @@
   overflow-x: auto; }
   .commentList .head-tit .tit-t {
     height: 100%;
-    display: flex;
     align-items: center;
     position: relative;
     margin-right: 2rem;
@@ -49,4 +48,4 @@
       background-color: #9BBAF0; }
 
 .commentList .container {
-  margin-top: 8.8rem; }
+  margin-top: 4.6rem; }

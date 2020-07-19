@@ -8,6 +8,8 @@
     />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <title></title>
+    <link rel="stylesheet" href="../../css/weui.css" />
+    <link rel="stylesheet" href="../../css/jquery-weui.css" />
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
     <script src="../../asset/font/iconfont.js"></script>
@@ -81,11 +83,17 @@
       }
 
       .personal-tiome {
-        font-size: 1rem;
+        font-size: 1.2rem;
         color: #ccc;
         margin-top: 2rem;
+        display: flex;
+        align-items: center;
       }
-
+      .personal-tiome .box {
+        margin-left: 1rem;
+        display: flex;
+        align-items: center;
+      }
       .connent-personal-tiome {
         font-size: 1rem;
         color: #ccc;
@@ -141,8 +149,9 @@
 
       .footer-commen {
         font-size: 1.8rem;
-        line-height: 30px;
+        line-height: 3rem;
         width: 4rem;
+        color: #ccc;
       }
 
       .footer-commen-ic {
@@ -151,17 +160,36 @@
 
       .footer-seacj {
         font-size: 1.4rem;
-        width: calc(100% - 140px);
-        margin-right: 40px;
+        /* width: calc(100% - 140px); */
+        margin-right: 4rem;
         padding-left: 2rem;
+        flex: 1;
       }
 
       .footer-personel {
+        padding-right: 2rem;
         font-size: 0;
+        display: flex;
+        align-items: center;
       }
 
       .footer-personel div {
         display: inline-block;
+      }
+      .publish {
+        width: 6rem;
+        text-align: center;
+        height: 3rem;
+        line-height: 3rem;
+        border: 1px solid rgb(4, 84, 148);
+        color: rgb(4, 84, 148);
+        border-radius: 0.8rem;
+        font-size: 1.2rem;
+      }
+      .publish.disabled {
+        background-color: #ccc;
+        border: none;
+        color: #fff;
       }
     </style>
   </head>
@@ -169,7 +197,7 @@
   <body>
     <div class="bg-all">
       <div class="header pad-mix bg-c-w flx">
-        <div class="back"><span> < </span></div>
+        <div class="back"><i class="icon iconfont icon-arrow-lift"></i></div>
         <div class="flx-1 tex-c head-tit">帖子详情</div>
         <div class="back"></div>
       </div>
@@ -184,9 +212,19 @@
                 <span class="header-name">只为回忆青春</span>
                 <i class="icon iconfont icon-pinglun header-ico"></i>
                 <i class="icon iconfont icon-pinglun header-nam-co"></i>
-                <span class="personal-focus">关注</span>
+                <!-- <span class="personal-focus">关注</span> -->
               </div>
-              <div class="personal-tiome">2020-07-01 16:18:54</div>
+              <div class="personal-tiome">
+                2020-07-01 16:18:54
+                <div class="box">
+                  <span> 0 </span>
+                  <i class="icon iconfont icon-xinxi3 footer-commen-ic"></i>
+                </div>
+                <div class="box">
+                  <span> 0 </span>
+                  <i class="icon iconfont icon-dianzan footer-commen-ic"></i>
+                </div>
+              </div>
             </div>
             <div class="fix-w personal-more">
               <i class="icon iconfont icon-pinglun personal-more"></i>
@@ -211,7 +249,7 @@
               <div class="comment-personal-text">钱</div>
             </div>
             <div class="fix-w connent-personal-more">
-              <i class="icon iconfont icon-pinglun"></i> <span> 0 </span>
+              <i class="icon iconfont icon-dianzan"></i> <span> 0 </span>
             </div>
           </div>
         </div>
@@ -219,18 +257,15 @@
       <div class="footer footer-personel">
         <div class="footer-seacj">
           <input
+            id="reply"
             type="text"
             placeholder="发表你的伟大言论"
             class="comment-inpt"
+            oninput="monitorInput()"
           />
         </div>
-        <div class="footer-commen">
-          <span> 0 </span>
-          <i class="icon iconfont icon-pinglun footer-commen-ic"></i>
-        </div>
-        <div class="footer-commen">
-          <span> 0 </span>
-          <i class="icon iconfont icon-pinglun footer-commen-ic"></i>
+        <div class="footer-commen publish disabled" onclick="saveTopic()">
+          <span> 发布</span>
         </div>
       </div>
     </div>
@@ -238,4 +273,61 @@
   <script src="../../js/lib.js"></script>
   <script src="../../js/common.js"></script>
   <script src="../../js/lazyLoad.js"></script>
+  <script>
+    //帖子详情
+    var fdId = "",
+      cateId = "";
+    $(function () {
+      fdId = GetRequest().fdId;
+      cateId = GetRequest().cateId;
+      getAreaDetail();
+    });
+    // 获取场地详情;
+    function getAreaDetail() {
+      var result = ajaxMothed("/resource/wechatArea/auth/getAreaDetail", {
+        fdId: GetRequest().fdId || "1734221d392627ccd7f7d2c40db89fe2",
+      });
+      result
+        .done(function (resp) {
+          if (resp.success) {
+            render(".container", "areaDetailTpl", resp.data, false);
+            new Swiper(".swiper-container", {
+              loop: true, // 循环模式选项
+              // 如果需要分页器
+              pagination: {
+                el: ".swiper-pagination",
+              },
+            });
+          }
+        })
+        .fail(function (resp) {
+          $.toast(resp.msg, "text");
+        });
+    }
+    // 帖子回复
+    function saveTopic() {
+      var result = ajaxMothed("/resource/forum/savePost", {
+        topicId: fdId,
+        cateId: cateId,
+        docCotent: $("#reply").val(),
+      });
+      result
+        .done(function (resp) {
+          if (resp.success) {
+            $.toast("发布成功", "text");
+          }
+        })
+        .fail(function (resp) {
+          $.toast(resp.msg, "text");
+        });
+    }
+    function monitorInput() {
+      var value = $("#reply").val();
+      if (value) {
+        $(".publish").removeClass("disabled");
+      } else {
+        $(".publish").addClass("disabled");
+      }
+    }
+  </script>
 </html>

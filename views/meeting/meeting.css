@@ -1,20 +1,24 @@
 .container {
   margin-top: 1px;
 }
+
 .meeting .back {
   font-size: 1.4rem;
   color: #000000;
 }
+
 .slid-shadow-container {
   width: 70%;
   height: 100%;
 
 }
+
 .meeting .container {
-     background-color: #fff;
-     margin-top: 1rem;
-     padding: 1rem;
-   }
+  background-color: #fff;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
 .meeting .container .pre-btn {
   height: 2.4rem;
   line-height: 2.4rem;
@@ -22,47 +26,76 @@
   text-align: center;
   padding: 0 0.6rem;
 }
-  .meeting .container .placed-item .con {
-    position: relative; }
-    .meeting .container .placed-item .con .price {
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 2rem;
-      line-height: 2rem;
-      background-color: rgb(4, 84, 148);
-      padding: 0 0.8rem; }
-      .meeting .container .placed-item .con .price span {
-        font-size: 1rem;
-        color: #fff; }
-  .meeting .container .placed-item .img {
-    height: 15rem;
-    width: 100%;
-    position: relative; }
-  .meeting .container .placed-item .tit {
-    font-size: 1.4rem;
-    padding: 0.8rem 0 0.5rem 0; }
-  .meeting .container .placed-item .desc {
-    color: #999;
-    font-size: 1.2rem; }
-  .meeting .container .placed-item .button {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; }
-    .meeting .container .placed-item .button a {
-      height: 2rem;
-      padding: 0.5rem 0.8rem;
-      border-radius: 0.2rem;
-      -webkit-border-radius: 0.2rem;
-      -moz-border-radius: 0.2rem;
-      -ms-border-radius: 0.2rem;
-      -o-border-radius: 0.2rem;
-      color: #fff;
-      background-color: #ff6600;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      margin-right: 0.5rem; }
+
+.meeting .container .placed-item .con {
+  position: relative;
+}
+
+.meeting .container .placed-item .con .price {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2rem;
+  line-height: 2rem;
+  background-color: rgb(4, 84, 148);
+  padding: 0 0.8rem;
+}
+
+.meeting .container .placed-item .con .price span {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.meeting .container .placed-item .img {
+  height: 15rem;
+  width: 100%;
+  position: relative;
+}
+
+.meeting .container .placed-item .tit {
+  font-size: 1.4rem;
+  padding: 0.8rem 0 0.5rem 0;
+}
+
+.meeting .container .placed-item .desc {
+  color: #999;
+  font-size: 1.2rem;
+  margin-bottom: .5rem;
+}
+
+.meeting .container .placed-item .desc .icon {
+  margin-right: 1rem;
+  color: rgb(4, 84, 148);
+  font-size: 1.2rem;
+}
+
+.meeting .container .placed-item .button {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.meeting .container .placed-item .button a {
+  height: 2rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.2rem;
+  -webkit-border-radius: 0.2rem;
+  -moz-border-radius: 0.2rem;
+  -ms-border-radius: 0.2rem;
+  -o-border-radius: 0.2rem;
+  color: #fff;
+  background-color: #f4b942;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+i.icon.icon-yuding {
+  font-size: 1.2rem;
+  vertical-align: baseline;
+}
+
 .slid-shadow-container {
   z-index: 999 !important;
   position: absolute;
@@ -70,10 +103,12 @@
   height: 100%;
   background: #f3f3f3;
 }
+
 .slid-shadow-container .slid-header {
   height: 4rem;
   line-height: 4rem;
 }
+
 .slid-shadow-container .slid-header input {
   height: 3rem;
   line-height: 3rem;
@@ -83,14 +118,19 @@
   margin: 0 0.6rem;
   border-radius: 4px;
 }
-.slid-shadow-container  .slid-content {
+
+.slid-shadow-container .slid-content {
   height: 100%;
   overflow: auto;
 }
-.slid-shadow-container  .slid-content .accordion {
+
+.slid-shadow-container .slid-content .accordion {
   margin-bottom: 8.4rem !important;
 }
-.slid-shadow-container .slid-content .accordion, .slid-shadow-container .slid-content .accordion ul { /* 折叠菜单及其子菜单的通用样式 */
+
+.slid-shadow-container .slid-content .accordion,
+.slid-shadow-container .slid-content .accordion ul {
+  /* 折叠菜单及其子菜单的通用样式 */
   font-size: 1.2rem;
   width: 100%;
   margin: 0;
@@ -104,13 +144,15 @@
   color: #909090;
 }
 
-.slid-shadow-container .slid-content .accordion ul li { /* 子菜单的菜单项样式 */
+.slid-shadow-container .slid-content .accordion ul li {
+  /* 子菜单的菜单项样式 */
   line-height: 4rem;
   height: 4rem;
   border-bottom: 1px solid #e8e8e8;
 }
 
-.slid-shadow-container .slid-content .accordion li span { /* 折叠菜单的标题样式 */
+.slid-shadow-container .slid-content .accordion li span {
+  /* 折叠菜单的标题样式 */
   line-height: 4rem;
   display: block;
   height: 4rem;
@@ -118,13 +160,17 @@
   border: 1px solid #e8e8e8;
   padding-left: 1rem;
 }
-.slid-shadow-container .slid-content .accordion li div { /* 子菜单平时不显示 */
+
+.slid-shadow-container .slid-content .accordion li div {
+  /* 子菜单平时不显示 */
   display: none;
 }
 
-.slid-shadow-container .slid-content .accordion li.selected div { /* 添加了selected样式时才显示 */
+.slid-shadow-container .slid-content .accordion li.selected div {
+  /* 添加了selected样式时才显示 */
   display: block;
 }
+
 .slid-footer {
   position: absolute;
   bottom: 0;
@@ -133,14 +179,17 @@
   width: 100%;
   border: 1px solid #e8e8e8;
 }
+
 .slid-footer div {
   height: 4rem;
   line-height: 4rem;
 }
+
 .slid-footer .sure {
   color: #ffffff;
   background-color: rgb(4, 84, 148);
 }
+
 .meeting .data-sele {
   position: absolute;
   top: 0;
@@ -148,5 +197,9 @@
   height: 100%;
   width: 100%;
   text-align: center;
-  color: #ff6600;
+  color: #f4b942;
+}
+
+.meeting #preMeet {
+  background-color: #f4b942;
 }

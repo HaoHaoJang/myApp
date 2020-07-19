@@ -7,7 +7,9 @@
       content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no"
     />
     <meta content="yes" name="apple-mobile-web-app-capable" />
-    <title>发表评论</title>
+    <title>发表话题</title>
+    <link rel="stylesheet" href="../../css/weui.css" />
+    <link rel="stylesheet" href="../../css/jquery-weui.css" />
     <link rel="stylesheet" href="../../css/base.css" />
     <link
       rel="stylesheet"
@@ -55,6 +57,12 @@
       .tex-con {
         position: relative;
       }
+      .container {
+        margin-top: 4.6rem;
+      }
+      .weui-toast--text {
+        font-size: 1.2rem;
+      }
     </style>
   </head>
 
@@ -66,21 +74,27 @@
             <i class="icon iconfont icon-arrow-lift"></i>返回
           </div>
           <div class="head-tit">发表话题</div>
-          <div class="back">
+          <div class="back" onclick="submit()">
             <span>提交</span>
           </div>
         </div>
       </header>
       <div class="content container">
-        <div class="area">
+        <!-- <div class="area">
           <i class=""></i><span>互联小区第一幢-2单元-101室</span>
-        </div>
+        </div> -->
         <div class="flx">
           <div class="flx-w">
             标题
           </div>
           <div class="flx-1">
-            <input type="text" placeholder="3-25个字" />
+            <input
+              type="text"
+              placeholder="3-25个字"
+              id="docSubject"
+              minlength="3"
+              maxlength="25"
+            />
           </div>
         </div>
         <div>
@@ -91,9 +105,11 @@
             <div class="flx-1 tex-con">
               <textarea
                 class="form-control"
-                id="content"
+                id="docCotent"
                 rows="6"
                 placeholder="10-100个字"
+                maxlength="100"
+                minlength="10"
               ></textarea>
             </div>
           </div>
@@ -108,6 +124,38 @@
   <script src="../../js/lib/script/jquery.mCustomScrollbar.min.js"></script>
   <script src="../../js/dist/js/jquery.emoji.min.js"></script>
   <script>
+    // 帖子回复
+    function submit() {
+      var docSubject = $("#docSubject").val(),
+        docCotent = $("#docCotent").val();
+      if (!docSubject || !docCotent) {
+        $.toast("标题或者内容不能为空", "text");
+        return false;
+      }
+      if (docSubject.length > 25 || docSubject.length < 3) {
+        $.toast("标题为3-25个字", "text");
+        return false;
+      }
+      if (docCotent.length > 100 || docCotent.length < 10) {
+        $.toast("内容为10-100个字", "text");
+        return false;
+      }
+      var result = ajaxMothed("/resource/forum/saveTopic", {
+        cateId: GetRequest().cateId || "17365f2e12d4e86b906d79e41a3afeb3",
+        docSubject: docSubject,
+        docCotent: docCotent,
+      });
+      result
+        .done(function (resp) {
+          if (resp.success) {
+            $.toast("发布成功", "text");
+            window.history.back();
+          }
+        })
+        .fail(function (resp) {
+          $.toast(resp.msg, "text");
+        });
+    }
     $("#content").emoji({
       showTab: true,
       animation: "fade",

@@ -26,6 +26,7 @@
         
         .tex-reference {
             font-size: 1.4rem;
+            align-items: center;
         }
         
         .reference-l {
@@ -69,11 +70,16 @@
         }
         
         .tim-c .icon {
-            padding: 0 .5rem;
+            padding: 0 .5rem 0 0;
         }
-        
+        .icon-yanjing_huaban1{
+            margin-left: .5rem;
+        }
         .head-im {
-            line-height: 40px;
+            height: 4rem;
+        }
+        .head-im img{
+            border-radius: 50%;
         }
         
         .head-cion {
@@ -119,6 +125,13 @@
     <div class="headers ">
         <div class="header">
             <div class="back">
+              <i class="icon iconfont icon-arrow-lift"></i>
+            </div>
+            <div class="head-tit" >论坛</div>
+            <div class="back"></div>
+          </div>
+        <!-- <div class="header">
+            <div class="back">
                 <i class="icon iconfont icon-kefu"></i>
             </div>
             <div class="head-tit">
@@ -133,8 +146,8 @@
             <div class="back">
                 <i class="icon iconfont icon-kefu"></i>
             </div>
-        </div>
-        <div class="header header2">
+        </div> -->
+        <!-- <div class="header header2">
             <div class="tag-tit clic">
                 综合
             </div>
@@ -156,56 +169,69 @@
             <div class="tag-tit">
                 攻略
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="container">
-        <div class="bg-c-w pd">
+        <script id="topListTpl" type="text/html">
+            
+        {{each list as item}}
+        <div class="bg-c-w pd" onclick="toDetail('{{item.fdId}}','{{item.cateId}}')">
             <div class="flx tex-reference">
                 <div class="flx-fix tex-c head-im">
+                    <img src="{{domain + item.userImg}}" alt="" srcset="">
                     <i class="icon iconfont icon-pinglun head-cion"></i>
                 </div>
                 <div class="flx-1">
                     <div class="reference-l">
-                        时空空千年 <i class="icon iconfont icon-pinglun"></i>
+                        {{item.userNick}} <i class="icon iconfont icon-pinglun"></i>
                     </div>
                     <div class="tim-c">
-                        <i class="icon iconfont icon-ai253"></i>01-17 16:12
+                        <i class="icon iconfont icon-ai253"></i>{{item.createTime}}
                         <i class="icon iconfont icon-yanjing_huaban1"></i>1234567
                     </div>
                 </div>
             </div>
             <div class="flx tit-text-c">
-                <div class="flx-w lie cor-r biaoj">
+                <!-- <div class="flx-w lie cor-r biaoj">
                     [攻略]
-                </div>
+                </div> -->
                 <div class="flx-1 lu">
-                    (6.21更新图形称号时装) 诛仙3最看了觉得舒服
+                    {{item.docSubject}}
                 </div>
             </div>
             <p class="text-c-content">
-                是的发送地方撒地方是的撒地方是大发的啥阿斯顿发送到发送是的发送是大发阿斯顿发撒地方多舒服是的发撒的发史蒂夫是的地方是的发史蒂夫撒
+                {{@ item.docContent}}
             </p>
-            <div class="comment-content-img">
+            <!-- <div class="comment-content-img">
                 <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" />
                 <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" />
                 <img src="" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" />
-            </div>
+            </div> -->
             <div class="flx perfect">
                 <div class="flx-1 tex-c posr">
                     <i class="icon iconfont icon-pinglun"></i>
-                    <span class="num">1</span>
+                    <span class="num">{{item.fdHitCount}}</span>
                 </div>
                 <div class="flx-1 tex-c posr">
                     <i class="icon iconfont icon-pinglun"></i>
-                    <span class="num">11</span>
+                    <span class="num">{{item.fdReplyCount}}</span>
                 </div>
+                <!-- 转发 -->
                 <div class="flx-1 tex-c posr">
                     <i class="icon iconfont icon-pinglun"></i>
-                    <span class="num">11</span>
+                    <span class="num">0</span>
                 </div>
             </div>
         </div>
+        {{/each}}
+       </script>
     </div>
+    <div class="empty hide">
+        <i class="icon icon-empty iconfont"></i>
+        <p>
+          暂无数据，敬请期待！！！
+        </p>
+      </div>
     <div class="footer flx">
         <a class="nav-item clic">
             <i class="icon iconfont icon-luntan"></i>
@@ -221,5 +247,46 @@
 <script src="../../js/lib.js"></script>
 <script src="../../js/common.js"></script>
 <script src="../../js/lazyLoad.js"></script>
-
+<script>
+    var cateId = ''
+    $(function () {
+        cateId = GetRequest().cateId
+      getTopicList();
+      // 滚动加载
+      pageScroll(getTopicList);
+    });
+    // 获取场地列表;
+    function getTopicList() {
+      var result = ajaxMothed("/resource/forum/getTopicList", {
+        pageno: _scrollPageNo,
+        rowsize: 10,
+        cateId:cateId
+      });
+      result
+        .done(function (resp) {
+          _scrollTotalPage = resp.data.total;
+          // 重置滚动条开关
+          if (resp.data.dataList.length == 0) {
+            if (_scrollPageNo == 1) {
+              $(".container").html("");
+              $(".empty").removeClass("hide");
+            }
+            return false;
+          }
+          $(".empty").addClass("hide");
+          render(".container", "topListTpl", resp.data.dataList, true);
+          setScrollPage();
+        })
+        .fail(function () {
+          if (_scrollPageNo == 1) {
+            $(".container").html("");
+            $(".empty").removeClass("hide");
+          }
+        });
+    }
+    // 打开帖子详情
+    function toDetail(fdId,cateId){
+      location.href="./commentDetail.html?fdId="+fdId+"&cateId="+cateId
+    }
+</script>
 </html>
