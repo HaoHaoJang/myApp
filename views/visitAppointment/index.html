@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <title></title>
+    <link rel="stylesheet" href="../../css/weui.css" />
+    <link rel="stylesheet" href="../../css/jquery-weui.css" />
+    <link rel="stylesheet" href="../../css/base.css" />
+    <link rel="stylesheet" href="../../asset/font/iconfont.css" />
+    <script src="../../asset/font/iconfont.js"></script>
+</head>
+<style>
+    .visit-appointment .weui-cells__title {
+        padding-left: 15px;
+        padding-right: 15px;
+        color: #999999;
+        font-size: 14px;
+        height: 4rem;
+        line-height: 4rem;
+        margin: 0;
+    }
+</style>
+<body class="visit-appointment">
+<div class="weui-cells__title bg-c-w">当前时间：<span id="newDate"></span></div>
+<div class="weui-cells__title">访客信息</div>
+<div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            <label class="weui-label">来访单位</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="请输入来访单位">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            <label class="weui-label">访客手机号</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="tel" placeholder="请输入手机号">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">访客姓名</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="请输入姓名">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">随行人员</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="请输入随行人员">
+        </div>
+    </div>
+</div>
+<div class="weui-cells__title">来访事由</div>
+<div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输来访事由" rows="3"></textarea>
+            <div class="weui-textarea-counter"><span>0</span>/200</div>
+        </div>
+    </div>
+</div>
+<div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <div class="weui-uploader">
+                <div class="weui-uploader__hd">
+                    <p class="weui-uploader__title">上传证件</p>
+                    <div class="weui-uploader__info">0/2</div>
+                </div>
+                <div class="weui-uploader__bd">
+                    <ul class="weui-uploader__files" id="uploaderFiles">
+                    </ul>
+                    <div class="weui-uploader__input-box">
+                        <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="weui-cells__title">被访信息</div>
+<div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            <label class="weui-label">访问单位</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="请输入访问单位">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            <label class="weui-label">访问部门</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="请输入访问部门">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            <label class="weui-label">访问人</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="请输入访问人">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            <label class="weui-label">访问手机号码</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="tel" placeholder="请输入手机号码">
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            <label class="weui-label">访问开始时间</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="date" placeholder="请选择访问开始时间">
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script src="../../js/lib.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/lazyLoad.js"></script>
+<script>
+    var nowdate= dateFormat('yyyy-mm-dd HH:MM:SS', new Date()) // 当前日期
+    $("#newDate").html(nowdate)
+    $("#reasonsForVisiting ").select({
+        closeText: "关闭",
+        title: "请选择来访事由",
+        items: ["商务洽谈", "求职面试", "参加会议", "参加培训", "送文件", "其他"]
+    });
+</script>
+</html>
