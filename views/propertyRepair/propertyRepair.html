@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
     />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <title></title>
@@ -13,110 +13,135 @@
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
     <script src="../../asset/font/iconfont.js"></script>
-</head>
-<style>
+  </head>
+  <style>
     .visit-appointment .weui-cells__title {
-        padding-left: 15px;
-        padding-right: 15px;
-        color: #999999;
-        font-size: 14px;
-        height: 40px;
-        line-height: 40px;
-        margin: 0;
+      padding-left: 15px;
+      padding-right: 15px;
+      color: #999999;
+      font-size: 16px;
+      height: 40px;
+      line-height: 40px;
+      margin: 0;
     }
-</style>
-<body class="visit-appointment">
-<div class="weui-cells__title">物业报修</div>
-<div class="weui-cells weui-cells_form">
-    <div class="weui-cell">
-        <div class="weui-cell__hd">
+    .weui-cell.content{
+        align-items: flex-start;
+    }
+  </style>
+  <body class="visit-appointment">
+    <header>
+      <div class="newHeader">
+        <div class="back">
+          <i class="icon iconfont icon-arrow-lift"></i>
+        </div>
+        <div class="head-tit">物业报修</div>
+        <div class="btn-right">
+            报修记录
+        </div>
+      </div>
+    </header>
+    <!-- 内容区 -->
+    <div class="newContainer">
+      <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+          <div class="weui-cell__hd">
             <label class="weui-label">报修日期</label>
+          </div>
+          <div class="weui-cell__bd">
+            <input
+              class="weui-input"
+              type="date"
+              id="repairDate"
+              placeholder="请选择时间"
+            />
+          </div>
         </div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="date" id="repairDate" placeholder="请选择时间">
+        <div class="weui-cell">
+          <div class="weui-cell__hd">
+            <label class="weui-label">报修人</label>
+          </div>
+          <div class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="请输入姓名" />
+          </div>
         </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label">报修人</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="text" placeholder="请输入姓名">
-        </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd">
+        <div class="weui-cell">
+          <div class="weui-cell__hd">
             <label class="weui-label">联系方式</label>
+          </div>
+          <div class="weui-cell__bd">
+            <input class="weui-input" type="tel" placeholder="请输入手机号" />
+          </div>
         </div>
-        <div class="weui-cell__bd">
-            <input class="weui-input" type="tel" placeholder="请输入手机号">
+        <!-- 报修内容 -->
+        <!-- 物理定位 -->
+        <div class="weui-cell">
+          <div class="weui-cell__hd">
+            <label class="weui-label">物理定位</label>
+          </div>
+          <div class="weui-cell__bd">
+            <!-- <input class="weui-input" type="tel" placeholder="" /> -->
+          </div>
         </div>
-    </div>
-</div>
-<div class="weui-cells__title">报修内容</div>
-<div class="weui-cells weui-cells_form">
-    <div class="weui-cell">
-        <div class="weui-cell__bd">
-            <textarea class="weui-textarea" placeholder="请输报修内容" rows="3"></textarea>
-            <div class="weui-textarea-counter"><span>0</span>/200</div>
+        <!-- 人工定位 -->
+        <div class="weui-cell">
+          <div class="weui-cell__hd">
+            <label class="weui-label">所在位置</label>
+          </div>
+          <div class="weui-cell__bd">
+            <input class="weui-input" type="tel" placeholder="请填写所在位置" />
+          </div>
         </div>
-    </div>
-</div>
-<div class="weui-cells weui-cells_form">
-    <div class="weui-cell">
-        <div class="weui-cell__bd">
+        <!-- 报修内容 -->
+        <div class="weui-cell content">
+            <div class="weui-cell__hd">
+              <label class="weui-label">报修内容</label>
+            </div>
+            <div class="weui-cell__bd">
+                <div class="weui-cell__bd">
+                    <textarea
+                      class="weui-textarea"
+                      placeholder="请输报修内容"
+                      rows="3"
+                    ></textarea>
+                    <div class="weui-textarea-counter"><span>0</span>/200</div>
+            </div>
+          </div>
+      </div>
+      <!-- 图片 -->
+        <div class="weui-cell">
+          <div class="weui-cell__bd">
             <div class="weui-uploader">
-                <div class="weui-uploader__hd">
-                    <p class="weui-uploader__title">现场图片</p>
-                    <div class="weui-uploader__info">0/2</div>
+              <div class="weui-uploader__hd">
+                <p class="weui-uploader__title">现场图片</p>
+                <div class="weui-uploader__info">0/2</div>
+              </div>
+              <div class="weui-uploader__bd">
+                <ul class="weui-uploader__files" id="uploaderFiles"></ul>
+                <div class="weui-uploader__input-box">
+                  <input
+                    id="uploaderInput"
+                    class="weui-uploader__input"
+                    type="file"
+                    accept="image/*"
+                    multiple=""
+                  />
                 </div>
-                <div class="weui-uploader__bd">
-                    <ul class="weui-uploader__files" id="uploaderFiles">
-                    </ul>
-                    <div class="weui-uploader__input-box">
-                        <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
+
     </div>
-</div>
-<div class="weui-cells__title">物理定位</div>
-<div class="weui-cells weui-cells_form">
-    <div class="weui-cell">
-        <div class="weui-cell__hd">
-            <label class="weui-label">状态</label>
-        </div>
-        <div class="weui-cell__bd flx">
-            <div class="flx-1">
-                <input type="radio" class="clor-gre" id="1">
-                <label for="1" class="clor-gre">已受理</label>
-            </div>
-            <div class="flx-1">
-                <input type="radio" class="clor-gre" id="2">
-                <label for="2" class="clor-gre">待确认</label>
-            </div>
-            <div class="flx-1">
-                <input type="radio" class="clor-gre" id="3">
-                <label for="3" class="clor-gre">已结案</label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="weui-cells__title">报修评价</div>
-<div class="weui-cells weui-cells_form">
-    <div class="weui-cell">
-        <div class="weui-cell__bd">
-            <textarea class="weui-textarea" placeholder="请输入评价" rows="3"></textarea>
-            <div class="weui-textarea-counter"><span>0</span>/200</div>
-        </div>
-    </div>
-</div>
-</div>
-</body>
-<script src="../../js/lib.js"></script>
-<script src="../../js/newCommon.js"></script>
-<script src="../../js/lazyLoad.js"></script>
-<script>
-    var nowdate= dateFormat('yyyy-mm-dd', new Date()) // 当前日期
-    $("#repairDate").html(nowdate)
-</script>
+    <!-- 底部a按钮 -->
+    <footer class="submit newFooter">
+        <p>提交</p>
+    </footer>
+  </body>
+  <script src="../../js/lib.js"></script>
+  <script src="../../js/newCommon.js"></script>
+  <script src="../../js/lazyLoad.js"></script>
+  <script>
+    var nowdate = dateFormat("yyyy-mm-dd", new Date()); // 当前日期
+    $("#repairDate").html(nowdate);
+  </script>
 </html>

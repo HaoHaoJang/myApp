@@ -395,3 +395,71 @@ input::-webkit-input-placeholder {
 .weui-dialog__btn {
     color: #0849a2;
 }
+
+.weui-cells {
+    font-size: 14px;
+}
+
+.newHeader {
+    padding: 0 10px;
+    height: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+}
+
+.newHeader .back {
+    font-size: 14px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    color: #000;
+    justify-content: center;
+    height: 100%;
+}
+
+.newHeader .back .icon {
+    font-size: 30px;
+}
+
+.newHeader .head-tit {
+    flex: 1;
+    text-align: center;
+    height: 100%;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.newHeader .btn-right {
+    font-size: 14px;
+    color: #4777f3;
+}
+
+.newContainer {
+    margin-top: 41px;
+    margin-bottom: 50px;
+}
+
+.newFooter.submit {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    text-align: center;
+    color: #fff;
+    background-color: #4777f3;
+    font-size: 14px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
