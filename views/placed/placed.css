@@ -1,6 +1,6 @@
 .placed .container,
 .placedDetail .container {
-  margin-top: 4.4rem; }
+  margin-top: 0; }
   .placed .container .header2.tit2,
   .placedDetail .container .header2.tit2 {
     padding: 0 1rem;
@@ -173,6 +173,9 @@
           color: #fff;
           display: block;
           height: 100%; }
+
+.placedOnline .container {
+  margin-top: 0; }
 
 .placedOnline .detail {
   margin-bottom: 1rem;

@@ -8,8 +8,8 @@
     />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <title>新闻列表</title>
-    <link rel="stylesheet" href="../../css/weui.css" />
-    <link rel="stylesheet" href="../../css/jquery-weui.css" />
+    <!-- <link rel="stylesheet" href="../../css/weui.css" />
+    <link rel="stylesheet" href="../../css/jquery-weui.css" /> -->
     <link rel="stylesheet" href="../../css/base.css" />
     <link rel="stylesheet" href="../../asset/font/iconfont.css" />
     <link rel="stylesheet" href="./news.css" />
@@ -48,28 +48,6 @@
           暂无数据！！！
         </p>
       </div>
-    </div>
-    <div class="footer flx">
-      <a class="nav-item" href="../comment/index.html">
-        <i class="icon iconfont icon-luntan"></i>
-        <span>论坛</span>
-      </a>
-      <a class="nav-item flx-1" href="../activity/index.html">
-        <i class="icon iconfont icon-remenhuodong"></i>
-        <span>园区活动</span>
-      </a>
-      <a class="nav-item flx-1 clic" href="../news/list.html">
-        <i class="icon iconfont icon-zixun"></i>
-        <span>资讯</span>
-      </a>
-      <a class="nav-item flx-1" href="../meeting/index.html">
-        <i class="icon iconfont icon-huiyishi"></i>
-        <span>会议室</span>
-      </a>
-      <a class="nav-item flx-1" href="../placed/index.html">
-        <i class="icon iconfont icon-chad"></i>
-        <span>场地</span>
-      </a>
     </div>
   </body>
   <!-- 模板 -->
@@ -128,6 +106,7 @@
         getNewList();
       });
       getNewList();
+      pageScroll(getNewList);
     });
     function getNewList() {
       var result = ajaxMothed("/resource/wechatDoc/getNewList", {

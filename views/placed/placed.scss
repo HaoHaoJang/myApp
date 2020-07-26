@@ -3,7 +3,7 @@
 .placed,
 .placedDetail {
     .container {
-        margin-top: 4.4rem;
+        margin-top: 0;
 
         .header2.tit2 {
             padding: 0 1rem;
@@ -227,6 +227,9 @@
 }
 
 .placedOnline {
+    .container {
+        margin-top: 0;
+    }
     .detail {
         margin-bottom: 1rem;
         background-color: #fff;

@@ -19,15 +19,7 @@
   <body>
     <div class="meeting">
       <header>
-        <div class="header">
-          <div class="back"></div>
-          <div class="head-tit">会议室</div>
-          <div class="back"></div>
-          <!-- <div class="back fot-max" id="highSeach">
-            高级搜索
-          </div> -->
-        </div>
-        <div class="flx header2">
+        <div class="flx newheader2">
           <div class="flx-1 tex-c" id="pre_day">
             前一天
           </div>
@@ -42,85 +34,9 @@
       </header>
       <div class="container"></div>
     </div>
-    <!-- <div class="slid-shadow">
-      <div class="slid-shadow-container">
-        <div class="slid-header">
-          <input type="text" placeholder="搜索" />
-        </div>
-        <div class="slid-content bg-c-w">
-          <ul class="accordion">
-            <li class="selected">
-              <span>可容纳人数</span>
-              <div>
-                <ul>
-                  <li>4人以下</li>
-                  <li>5～8人</li>
-                  <li>8～12人</li>
-                  <li>12～20人</li>
-                  <li>20人以上</li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <span>提供设备</span>
-              <div>
-                <ul>
-                  <li>投影仪</li>
-                  <li>电脑</li>
-                  <li>欢迎屏</li>
-                  <li>视频设备</li>
-                  <li>电话会议设备</li>
-                  <li>钢笔</li>
-                  <li>麦克风</li>
-                  <li>专业音响</li>
-                  <li>专业音响</li>
-                  <li>专业音响</li>
-                  <li>专业音响</li>
-                  <li>专业音响</li>
-                  <li>专业音响</li>
-                  <li>专业音响</li>
-                  <li>专业音响</li>
-                  <li>专业音响</li>
-                  <li>专业音响</li>
-                  <li>专业音响</li>
-                  <li>专业音响</li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <span>所属园区</span>
-              <div>
-                <ul>
-                  <li>牡丹创业楼</li>
-                  <li>牡丹创业楼</li>
-                  <li>牡丹创业楼</li>
-                  <li>牡丹创业楼</li>
-                  <li>牡丹创业楼</li>
-                  <li>牡丹创业楼</li>
-                  <li>牡丹创业楼</li>
-                  <li>牡丹创业楼</li>
-                  <li>牡丹创业楼</li>
-                  <li>牡丹创业楼</li>
-                  <li>牡丹创业楼</li>
-                  <li>牡丹创业楼</li>
-                  <li>牡丹创业楼</li>
-                  <li>牡丹创业楼</li>
-                  <li>牡丹创业楼</li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="slid-footer flx">
-          <div class="flx-1 tex-c fot-m bg-c-w">重置</div>
-          <div class="flx-1 sure tex-c fot-m">确定</div>
-        </div>
-      </div>
-      <div class="slid-shadow-background"></div>
-    </div> -->
   </body>
   <script src="../../js/lib.js"></script>
-  <script src="../../js/common.js"></script>
+  <script src="../../js/newCommon.js"></script>
   <script src="../../js/lazyLoad.js"></script>
   <script id="meeting" type="text/html">
     {{each list as item}}
@@ -257,6 +173,7 @@
         });
       }
       getDateApi();
+      pageScroll(getDateApi);
     });
   </script>
 </html>

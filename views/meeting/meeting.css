@@ -1,30 +1,38 @@
 .container {
   margin-top: 1px;
 }
-
+.picker-calendar-week-days {
+  font-size: 12px;
+}
+.newheader2 {
+  height: 44px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
 .meeting .back {
-  font-size: 1.4rem;
+  font-size: 16px;
   color: #000000;
 }
 
 .slid-shadow-container {
   width: 70%;
   height: 100%;
-
 }
 
 .meeting .container {
   background-color: #fff;
-  margin-top: 1rem;
-  padding: 1rem;
+  margin-top: 10px;
+  padding: 10px;
 }
 
 .meeting .container .pre-btn {
-  height: 2.4rem;
-  line-height: 2.4rem;
-  font-size: 1.2rem;
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
   text-align: center;
-  padding: 0 0.6rem;
+  padding: 0 6px;
 }
 
 .meeting .container .placed-item .con {
@@ -35,64 +43,65 @@
   position: absolute;
   left: 0;
   top: 0;
-  height: 2rem;
-  line-height: 2rem;
+  height: 20px;
+  line-height: 20px;
   background-color: #4777f3;
-  padding: 0 0.8rem;
+  padding: 0 8px;
+  font-size: 12px;
 }
 
 .meeting .container .placed-item .con .price span {
-  font-size: 1rem;
+  font-size: 12px;
   color: #fff;
 }
 
 .meeting .container .placed-item .img {
-  height: 15rem;
+  height: 150px;
   width: 100%;
   position: relative;
 }
 
 .meeting .container .placed-item .tit {
-  font-size: 1.4rem;
-  padding: 0.8rem 0 0.5rem 0;
+  font-size: 16px;
+  padding: 8px 0 5px 0;
 }
 
 .meeting .container .placed-item .desc {
   color: #999;
-  font-size: 1.2rem;
-  margin-bottom: .5rem;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .meeting .container .placed-item .desc .icon {
-  margin-right: 1rem;
+  margin-right: 10px;
   color: #4777f3;
-  font-size: 1.2rem;
+  font-size: 16px;
 }
 
 .meeting .container .placed-item .button {
-  margin-top: 1rem;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
 .meeting .container .placed-item .button a {
-  height: 2rem;
-  padding: 0.5rem 0.8rem;
-  border-radius: 0.2rem;
-  -webkit-border-radius: 0.2rem;
-  -moz-border-radius: 0.2rem;
-  -ms-border-radius: 0.2rem;
-  -o-border-radius: 0.2rem;
+  height: 20px;
+  padding: 5px 8px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
   color: #fff;
   background-color: #4777f3;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  margin-right: 0.5rem;
+  font-size: 12px;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }
 
 i.icon.icon-yuding {
-  font-size: 1.2rem;
+  font-size: 12px;
   vertical-align: baseline;
 }
 
@@ -105,17 +114,17 @@ i.icon.icon-yuding {
 }
 
 .slid-shadow-container .slid-header {
-  height: 4rem;
-  line-height: 4rem;
+  height: 40px;
+  line-height: 40px;
 }
 
 .slid-shadow-container .slid-header input {
-  height: 3rem;
-  line-height: 3rem;
+  height: 30px;
+  line-height: 30px;
   background: #ffffff;
   text-align: center;
-  width: calc(100% - 1rem);
-  margin: 0 0.6rem;
+  width: calc(100% - 10px);
+  margin: 0 6px;
   border-radius: 4px;
 }
 
@@ -125,13 +134,13 @@ i.icon.icon-yuding {
 }
 
 .slid-shadow-container .slid-content .accordion {
-  margin-bottom: 8.4rem !important;
+  margin-bottom: 84px !important;
 }
 
 .slid-shadow-container .slid-content .accordion,
 .slid-shadow-container .slid-content .accordion ul {
   /* 折叠菜单及其子菜单的通用样式 */
-  font-size: 1.2rem;
+  font-size: 12px;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -140,25 +149,25 @@ i.icon.icon-yuding {
 
 .slid-shadow-container .slid-content .accordion ul {
   border: 0;
-  padding-left: 1rem;
+  padding-left: 10px;
   color: #909090;
 }
 
 .slid-shadow-container .slid-content .accordion ul li {
   /* 子菜单的菜单项样式 */
-  line-height: 4rem;
-  height: 4rem;
+  line-height: 40px;
+  height: 40px;
   border-bottom: 1px solid #e8e8e8;
 }
 
 .slid-shadow-container .slid-content .accordion li span {
   /* 折叠菜单的标题样式 */
-  line-height: 4rem;
+  line-height: 40px;
   display: block;
-  height: 4rem;
-  font-size: 1.4rem;
+  height: 40px;
+  font-size: 16px;
   border: 1px solid #e8e8e8;
-  padding-left: 1rem;
+  padding-left: 10px;
 }
 
 .slid-shadow-container .slid-content .accordion li div {
@@ -174,15 +183,15 @@ i.icon.icon-yuding {
 .slid-footer {
   position: absolute;
   bottom: 0;
-  height: 4rem;
+  height: 40px;
   right: 0;
   width: 100%;
   border: 1px solid #e8e8e8;
 }
 
 .slid-footer div {
-  height: 4rem;
-  line-height: 4rem;
+  height: 40px;
+  line-height: 40px;
 }
 
 .slid-footer .sure {
