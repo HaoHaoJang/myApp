@@ -97,8 +97,9 @@
     });
     // 获取场地详情;
     function getAreaDetail() {
-      var result = ajaxMothed("/resource/wechatArea/auth/getAreaDetail", {
+      var result = ajaxMothed("/resource/wechat/auth/wechatAeea.do", {
         fdId: GetRequest().fdId || "1734221d392627ccd7f7d2c40db89fe2",
+        method: "getAreaDetail",
       });
       result
         .done(function (resp) {

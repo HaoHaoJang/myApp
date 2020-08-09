@@ -98,8 +98,9 @@
   <script>
     // 查询详情接口
     function getDetail() {
-      var result = ajaxMothed("/resource/wechatArea/auth/getMeetDetail", {
+      var result = ajaxMothed("/resource/wechat/auth/wechatMeet.do", {
         fdId: GetRequest(window.location.href)["fdId"],
+        method: "getMeetDetail",
       });
       result.done(function (resp) {
         render(".meeting-detail-container", "meetingDetail", resp.data, true);

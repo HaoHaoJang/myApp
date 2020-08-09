@@ -220,9 +220,10 @@
       ];
     // 查询详情接口
     function getDetail() {
-      var result = ajaxMothed("/resource/wechatArea/auth/getMeetOrders", {
+      var result = ajaxMothed("/resource/wechatArea/auth/wechatMeet.do", {
         fdId: GetRequest(window.location.href)["fdId"],
         orderDate: GetRequest(window.location.href)["date"],
+        method: "saveMeetOrder",
       });
       result.done(function (resp) {
         resp.data.dateFirst = dateFirst;
@@ -303,13 +304,14 @@
       campanyName = "";
     function postMeeting() {
       var result = ajaxMothed(
-        "/resource/wechatArea/auth/getMeetOrders",
+        "/resource/wechat/auth/wechatMeet.do",
         {
           fdId: GetRequest(window.location.href)["fdId"],
           fddate: GetRequest(window.location.href)["date"],
           fdcontact: userName || "",
           fdcompany: campanyName || "",
           fdStartTime: $($(".select-style")[0]).html(),
+          method: "saveMeetOrder",
           fdEndTime: $(
             $(".select-style")[$(".select-style").length - 1]
           ).html(),

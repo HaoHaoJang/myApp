@@ -87,6 +87,12 @@
               <input type="hidden" name="fdtime" value="" id="time" />
             </li>
           </ul>
+          <input
+            type="hidden"
+            value="saveAreaOrder"
+            name="method"
+            id="method"
+          />
           <input type="hidden" value="" name="fdId" id="fdId" />
         </form>
       </div>
@@ -126,8 +132,9 @@
     });
     /*场地预约信息*/
     function getAreaAbstract() {
-      var result = ajaxMothed("/resource/wechatArea/auth/getAreaAbstract", {
+      var result = ajaxMothed("/resource/wechat/auth/wechatAeea.do", {
         fdId: fdId,
+        method: "getAreaAbstract",
       });
       result
         .done(function (resp) {
@@ -147,7 +154,7 @@
         //几个参数需要注意一下
         type: "POST", //方法类型
         dataType: "json", //预期服务器返回的数据类型
-        url: domain + "/resource/wechatArea/auth/saveAreaOrder", //url
+        url: domain + "/resource/wechat/auth/wechatAeea.do", //url
         data: $("form").serialize(),
         success: function (result) {
           $.alert(result.data);

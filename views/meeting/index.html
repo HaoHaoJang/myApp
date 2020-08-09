@@ -68,7 +68,7 @@
     {{/each}}
   </script>
   <script>
-    var nowdate = dateFormat("yyyy-mm-dd", new Date()); // 当前日期
+    var nowdate = dateFormat(new Date(), "yyyy-mm-dd"); // 当前日期
     var numDate = 0; // 日期默认点击数
     var pageno = 0,
       rowsize = 10;
@@ -119,8 +119,8 @@
         numDate--;
         $("#my_input").val(
           dateFormat(
-            "yyyy-mm-dd",
-            new Date(new Date() + 3600000 * 24 * numDate)
+            new Date(new Date() + 3600000 * 24 * numDate),
+            "yyyy-mm-dd"
           )
         );
         resetPageNo();
@@ -131,17 +131,18 @@
       $("#next_day").click(function () {
         numDate++;
         var timme = new Date(new Date() * 1 + 3600000 * 24 * numDate);
-        $("#my_input").val(dateFormat("yyyy-mm-dd", timme));
+        $("#my_input").val(dateFormat(timme, "yyyy-mm-dd"));
         resetPageNo();
         $(".container").html("");
         getDateApi(); // 日期变化重新获取对应数据
       });
       // 获取接口方法
       function getDateApi() {
-        var result = ajaxMothed("/resource/wechatArea/auth/getMeetList", {
+        var result = ajaxMothed("/resource/wechat/auth/wechatMeet.do", {
           pageno: _scrollPageNo,
           rowsize: rowsize,
-          date: $("#my_input").val() || dateFormat("yyyy-mm-dd", nowdate),
+          method: "getMeetList",
+          date: $("#my_input").val() || dateFormat(nowdate, "yyyy-mm-dd"),
         });
         result.done(function (resp) {
           if (resp.data.dataList.length == 0) {

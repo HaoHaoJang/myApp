@@ -163,8 +163,9 @@
       loadActivityDetail();
     });
     function loadActivityDetail() {
-      var result = ajaxMothed("/resource/wechatActive/auth/wechatActives", {
+      var result = ajaxMothed("/resource/wechat/auth/wechatActive.do", {
         activeId: GetRequest().activeId,
+        method: "wechatActiveIn",
       });
       result.done(function (resp) {
         render(".container section", "detailTpl", resp.data.dataList[0], false);

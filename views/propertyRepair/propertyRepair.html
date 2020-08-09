@@ -141,7 +141,7 @@
   <script src="../../js/newCommon.js"></script>
   <script src="../../js/lazyLoad.js"></script>
   <script>
-    var nowdate = dateFormat("yyyy-mm-dd", new Date()); // 当前日期
+    var nowdate = dateFormat(new Date(),"yyyy-mm-dd"); // 当前日期
     $("#repairDate").html(nowdate);
     function next(){
         window.location.href="./record.html"

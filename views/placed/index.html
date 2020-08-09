@@ -89,8 +89,9 @@
   <script>
     // 获取场地列表;
     function getAreaList() {
-      var result = ajaxMothed("/resource/wechatArea/auth/getAreaList", {
+      var result = ajaxMothed("/resource/wechat/auth/wechatAeea.do", {
         pageno: _scrollPageNo,
+        method: "getAreaList",
         rowsize: 10,
       });
       result

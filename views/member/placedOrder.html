@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <title>场地订单</title>
+    <link rel="stylesheet" href="../../css/base.css" />
+    <link rel="stylesheet" href="../../asset/font/iconfont.css" />
+    <link rel="stylesheet" href="./news.css" />
+    <script src="../../asset/font/iconfont.js"></script>
+    <style>
+      .newsList .list li {
+        background-color: #fff;
+        display: flex;
+        padding: 1.4rem 0;
+        border-bottom: 1px solid rgba(217, 217, 217, 0.3);
+      }
+      .newsList .list li a {
+        flex: 1;
+        display: flex;
+      }
+      .newsList .list li .img {
+        width: 10rem;
+        height: 8rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
+      }
+      .newsList .list li .con {
+        position: relative;
+        flex: 1;
+        color: #c3c3c3;
+        font-size: 1.2rem;
+      }
+      .newsList .list li .con .head {
+        display: flex;
+      }
+      .newsList .list li .con .status {
+        margin: 0 10px 0 20px;
+        color: #004178;
+        font-size: 1.4rem;
+      }
+      .newsList .list li .con .tit {
+        font-size: 1.4rem;
+        color: #000000;
+        word-break: break-all;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        margin-bottom: 0.8rem;
+        flex: 1;
+      }
+      .newsList .list li .con .price {
+        font-size: 1.4rem;
+        color: #ea9425;
+      }
+      .newsList .list li .con .votes {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-size: 1.3rem;
+      }
+      .newsList .list li .con .votes i {
+        font-size: 1.4rem;
+      }
+      .icon-ai253 {
+        font-size: 1.8rem;
+      }
+      .newsList .list li .con .votes span:first-child {
+        margin-right: 0.5rem;
+      }
+      .newsList .list li .con p {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+      .newsList .list li .con p i {
+        margin-right: 0.3rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="newsList">
+      <header>
+        <div class="header">
+          <div class="back">
+            <i class="icon iconfont icon-arrow-lift"></i>
+          </div>
+          <div class="head-tit">我的订单</div>
+          <div class="back"></div>
+        </div>
+      </header>
+      <div class="container">
+        <ul class="list"></ul>
+        <div class="weui-loadmore">
+          <i class="weui-loading"></i>
+          <span class="weui-loadmore__tips">正在加载</span>
+        </div>
+      </div>
+      <div class="empty hide">
+        <i class="icon icon-empty iconfont"></i>
+        <p>
+          暂无数据
+        </p>
+      </div>
+    </div>
+  </body>
+  <!-- 模板 -->
+  <script id="orderlist" type="text/html">
+    {{each list as item}}
+    <li>
+        <a href="./placedOrderDetail.html?orderId={{item.fdId}}">
+            <p class="img">
+                <img src="" data-src="{{domain + item.fdImage[0]}}" alt="">
+            </p>
+            <!--  -->
+            <div class="con">
+                <div class="head">
+                  <span class="tit">{{item.areaName}}</span>
+                  <!-- <span class="status">待支付</span> -->
+                </div>
+                <!-- <p><i class="icon iconfont icon-location"></i>{{item.areaAdress}}</p> -->
+                <!-- <p class="price"><span>￥1500</span></p> -->
+                <div class="votes">
+                  <p class="time "><i class="icon iconfont icon-ai253"></i><span>{{ item.orderTime}}</span></p>
+
+                  <p><i class="icon iconfont icon-location"></i>{{item.areaAdress}}</p>
+                </div>
+            </div>
+        </a>
+    </li>
+    {{/each}}
+  </script>
+  <script src="../../js/lib.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/lazyLoad.js"></script>
+  <script>
+    var el = ".container .list";
+    $(function () {
+      getMineAreaOrder();
+      pageScroll(getMineAreaOrder);
+    });
+    function getMineAreaOrder() {
+      var result = ajaxMothed("/resource/wechat/auth/wechatAeea.do", {
+        pageNo: _scrollPageNo,
+        pageSize: 10,
+        method: "getMineAreaOrder",
+      });
+      result
+        .done(function (resp) {
+          _scrollTotalPage = resp.data.total;
+          // 重置滚动条开关
+          if (resp.data.dataList.length == 0) {
+            if (_scrollPageNo == 1) {
+              setEmptyPage(el);
+            }
+            return false;
+          }
+          removeEmptyPage(el);
+          render(".list", "orderlist", resp.data.dataList, true);
+          lazyRender();
+          setScrollPage();
+        })
+        .fail(function () {
+          if (_scrollPageNo == 1) {
+            setEmptyPage(el);
+          }
+        });
+    }
+  </script>
+</html>

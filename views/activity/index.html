@@ -190,9 +190,10 @@
         resetPageNo();
         $(".activityList").html("");
       }
-      var result = ajaxMothed("/resource/wechatActive/auth/wechatActives", {
+      var result = ajaxMothed("/resource/wechat/auth/wechatActive.do", {
         pageno: _scrollPageNo,
         rowsize: 10,
+        method: "getWechatActives",
         activeName: $("#activeName").val() || "",
       });
       result

@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
     />
     <meta content="yes" name="apple-mobile-web-app-capable" />
-    <title>访客预约</title>
+    <title>订单详情</title>
     <link rel="stylesheet" href="../../css/weui.css" />
     <link rel="stylesheet" href="../../css/jquery-weui.css" />
     <link rel="stylesheet" href="../../css/base.css" />
@@ -24,6 +24,17 @@
       line-height: 40px;
       margin: 0;
     }
+    footer p {
+      flex: 1;
+    }
+    .active {
+      background-color: #ff9a1a;
+      color: #fff;
+    }
+    .cancel {
+      background-color: #fff;
+      color: #000;
+    }
   </style>
   <body class="visit-appointment">
     <header>
@@ -31,152 +42,165 @@
         <div class="back">
           <i class="icon iconfont icon-arrow-lift"></i>
         </div>
-        <div class="head-tit">访客预约</div>
+        <div class="head-tit">订单详情</div>
         <div class="back"></div>
       </div>
     </header>
     <div class="newContainer">
-      <div class="weui-cells__title bg-c-w">
-        当前时间：<span id="newDate"></span>
-      </div>
-      <div class="weui-cells__title">访客信息</div>
+      <script  id="detailTpl" type="text/html">
+      <div class="weui-cells__title">预定信息</div>
       <div class="weui-cells weui-cells_form">
         <div class="weui-cell">
           <div class="weui-cell__hd">
-            <label class="weui-label">来访单位</label>
+            <label class="weui-label">预订资源</label>
           </div>
           <div class="weui-cell__bd">
             <input
               class="weui-input"
               type="text"
+              readonly
+              value="{{list.areaName}}"
               placeholder="请输入来访单位"
             />
           </div>
         </div>
         <div class="weui-cell">
           <div class="weui-cell__hd">
-            <label class="weui-label">访客手机号</label>
-          </div>
-          <div class="weui-cell__bd">
-            <input class="weui-input" type="tel" placeholder="请输入手机号" />
-          </div>
-        </div>
-        <div class="weui-cell">
-          <div class="weui-cell__hd">
-            <label class="weui-label">访客姓名</label>
-          </div>
-          <div class="weui-cell__bd">
-            <input class="weui-input" type="text" placeholder="请输入姓名" />
-          </div>
-        </div>
-        <div class="weui-cell">
-          <div class="weui-cell__hd">
-            <label class="weui-label">随行人员</label>
+            <label class="weui-label">收费标准</label>
           </div>
           <div class="weui-cell__bd">
             <input
               class="weui-input"
               type="text"
-              placeholder="请输入随行人员"
+              readonly
+              value="{{list.fdbalancetype}}"
             />
           </div>
         </div>
-      </div>
-      <div class="weui-cells__title">来访事由</div>
-      <div class="weui-cells weui-cells_form">
-        <div class="weui-cell">
-          <div class="weui-cell__bd">
-            <textarea
-              class="weui-textarea"
-              placeholder="请输来访事由"
-              rows="3"
-            ></textarea>
-            <div class="weui-textarea-counter"><span>0</span>/200</div>
-          </div>
-        </div>
-      </div>
-      <div class="weui-cells weui-cells_form">
-        <div class="weui-cell">
-          <div class="weui-cell__bd">
-            <div class="weui-uploader">
-              <div class="weui-uploader__hd">
-                <p class="weui-uploader__title">上传证件</p>
-                <div class="weui-uploader__info">0/2</div>
-              </div>
-              <div class="weui-uploader__bd">
-                <ul class="weui-uploader__files" id="uploaderFiles"></ul>
-                <div class="weui-uploader__input-box">
-                  <input
-                    id="uploaderInput"
-                    class="weui-uploader__input"
-                    type="file"
-                    accept="image/*"
-                    multiple=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="weui-cells__title">被访信息</div>
-      <div class="weui-cells weui-cells_form">
         <div class="weui-cell">
           <div class="weui-cell__hd">
-            <label class="weui-label">访问单位</label>
+            <label class="weui-label">订单金额</label>
           </div>
           <div class="weui-cell__bd">
             <input
               class="weui-input"
               type="text"
-              placeholder="请输入访问单位"
+              readonly
+              value="1005元"
             />
           </div>
         </div>
         <div class="weui-cell">
           <div class="weui-cell__hd">
-            <label class="weui-label">访问部门</label>
+            <label class="weui-label">预订时长</label>
           </div>
           <div class="weui-cell__bd">
             <input
               class="weui-input"
               type="text"
-              placeholder="请输入访问部门"
+              readonly
             />
           </div>
         </div>
         <div class="weui-cell">
           <div class="weui-cell__hd">
-            <label class="weui-label">访问人</label>
-          </div>
-          <div class="weui-cell__bd">
-            <input class="weui-input" type="text" placeholder="请输入访问人" />
-          </div>
-        </div>
-        <div class="weui-cell">
-          <div class="weui-cell__hd">
-            <label class="weui-label">访问手机号码</label>
-          </div>
-          <div class="weui-cell__bd">
-            <input class="weui-input" type="tel" placeholder="请输入手机号码" />
-          </div>
-        </div>
-        <div class="weui-cell">
-          <div class="weui-cell__hd">
-            <label class="weui-label">访问开始时间</label>
+            <label class="weui-label">开始时间</label>
           </div>
           <div class="weui-cell__bd">
             <input
               class="weui-input"
-              type="date"
-              placeholder="请选择访问开始时间"
+              type="text"
+              readonly
+              value="{{list.fdStartTime}}"
             />
           </div>
         </div>
+        <div class="weui-cell">
+          <div class="weui-cell__hd">
+            <label class="weui-label">结束时间</label>
+          </div>
+          <div class="weui-cell__bd">
+            <input
+              class="weui-input"
+              type="text"
+              readonly
+              value="{{list.fdStartTo}}"
+            />
+          </div>
+        </div>
+        <div class="weui-cell">
+          <div class="weui-cell__hd">
+            <label class="weui-label">设备预约</label>
+          </div>
+          <div class="weui-cell__bd">
+            <input
+              class="weui-input"
+              type="text"
+              readonly
+            />
+          </div>
+        </div>
+        <div class="weui-cell">
+          <div class="weui-cell__hd">
+            <label class="weui-label">服务预约</label>
+          </div>
+          <div class="weui-cell__bd">
+            <input
+              class="weui-input"
+              type="text"
+              readonly
+            />
+          </div>
+        </div>
+      </div>
+      <div class="weui-cells__title">个人信息</div>
+      <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+          <div class="weui-cell__hd">
+            <label class="weui-label">姓名</label>
+          </div>
+          <div class="weui-cell__bd">
+            <input
+              class="weui-input"
+              type="text"
+              readonly
+              value="{{list.fdcontact}}"
+            />
+          </div>
+        </div>
+        <div class="weui-cell">
+          <div class="weui-cell__hd">
+            <label class="weui-label">手机号码</label>
+          </div>
+          <div class="weui-cell__bd">
+            <input
+              class="weui-input"
+              type="text"
+              readonly
+              value="{{list.fdPhone}}"
+            />
+          </div>
+        </div>
+        <div class="weui-cell">
+          <div class="weui-cell__hd">
+            <label class="weui-label">邮箱</label>
+          </div>
+          <div class="weui-cell__bd">
+            <input
+              class="weui-input"
+              type="text"
+              readonly
+              value="{{list.fdEmail}}"
+            />
+          </div>
+        </div>
+      </script>
       </div>
       <!-- 底部a按钮 -->
-      <footer class="submit newFooter">
-        <p>提交</p>
+      <footer class="submit newFooter hide">
+        <p class="cancel">取消订单</p>
+        <!--  -->
+        <p class="active">去付款</p>
       </footer>
     </div>
   </body>
@@ -184,12 +208,18 @@
   <script src="../../js/newCommon.js"></script>
   <script src="../../js/lazyLoad.js"></script>
   <script>
-    var nowdate = dateFormat(new Date(), "yyyy-mm-dd HH:MM:SS"); // 当前日期
-    $("#newDate").html(nowdate);
-    $("#reasonsForVisiting ").select({
-      closeText: "关闭",
-      title: "请选择来访事由",
-      items: ["商务洽谈", "求职面试", "参加会议", "参加培训", "送文件", "其他"],
-    });
+    $(function () {
+      getMineAreaDetail();
+    }); 
+    function getMineAreaDetail() {
+      var result = ajaxMothed("/resource/wechat/auth/wechatAeea.do", {
+        fdId: GetRequest().orderId,
+        method:'getMineAreaDetail'
+      });
+      result.done(function (resp) {
+        render(".newContainer", "detailTpl", resp.data, false);
+        lazyRender();
+      });
+    }
   </script>
 </html>

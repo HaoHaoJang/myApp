@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <title>活动列表</title>
+    <link rel="stylesheet" href="../../css/weui.css" />
+    <link rel="stylesheet" href="../../css/jquery-weui.css" />
+    <link rel="stylesheet" href="../../css/base.css" />
+    <link rel="stylesheet" href="../../asset/font/iconfont.css" />
+    <script src="../../asset/font/iconfont.js"></script>
+    <style>
+      .act-img-content {
+        width: 100%;
+        height: 170px;
+        position: relative;
+      }
+      .fot-s {
+        font-size: 12px;
+        color: #aaa;
+      }
+      .flx-fix {
+        width: 50px;
+        text-align: right;
+      }
+
+      .ac-text {
+        margin: 10px 0;
+        font-size: 14px;
+      }
+      .content-img {
+        margin-bottom: 10px;
+      }
+      .pad-mix{
+        padding:10px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="weui-tab">
+      <div class="weui-navbar">
+        <a class="weui-navbar__item weui-bar__item--on" href="#myJoin" onclick="loadActivityList('myJoin')">
+          <span>
+            我报名的
+          </span>
+        </a>
+        <a class="weui-navbar__item hide" href="#myPublish" onclick="loadActivityList('myPublish')">
+         <span>我发布的</span> 
+        </a>
+      </div>
+      <div class="weui-tab__bd">
+        <div id="myJoin" class="weui-tab__bd-item weui-tab__bd-item--active">
+          <section ></section>
+        </div>
+        <div id="myPublish" class="weui-tab__bd-item">
+          <section> </section>
+        </div>
+      </div>
+    </div>
+    <div>
+  </body>
+  <script src="../../js/lib.js"></script>
+  <script src="../../js/newCommon.js"></script>
+  <script src="../../js/lazyLoad.js"></script>
+  <!-- 模板 -->
+  <script id="myActivityTpl" type="text/html">
+    {{each list as item}}
+    <a href="../activity/activeDetail.html?activeId={{item.fdId}}">
+        <div class="content-img bg-c-w pad-mix">
+            <div class="act-img-content">
+              <img src="" data-src="{{domain + item.imageUrl}}" alt="">
+            </div>
+            <div class="ac-text">
+                {{item.activeName}}
+            </div>
+            <div class="flx flx-c fot-s ac-ico">
+                <i class="icon iconfont icon-location"></i>
+                <span class="flx-1">fsafgsafsadfsd</span>
+                <i class="icon iconfont icon-ai253"></i>
+                <span>{{item.fdState | formatStatus }}</span>
+            </div>
+        </div>
+    </a>
+    {{/each}}
+  </script>
+  <script>
+    var _pageId = 'myJoin'
+     $(function () {
+      loadActivityList(_pageId);
+      pageScroll(loadActivityList);
+    });
+    // 我参加的活动
+    function loadActivityList(eleId) {
+
+      var el = $("#"+ eleId+ " section")
+      if (_pageId != eleId) {
+        resetPageNo();
+        el.html("");
+      }
+      _pageId = eleId   
+      var result = ajaxMothed("/resource/wechat/auth/wechatActive.do", {
+        pageno: _scrollPageNo,
+        rowsize: 10,
+        activeName:  "",
+        method:'getMineActive'
+      });
+      result
+        .done(function (resp) {
+          // 重置滚动条开关
+          _scrollTotalPage = resp.data.total;
+          if (resp.data.length == 0) {
+            if (_scrollPageNo == 1) {
+              setEmptyPage(el)
+            }
+            return false;
+          }
+          removeEmptyPage(el)
+          render(resp.data.dataList,el);
+          setScrollPage();
+          lazyRender();
+        })
+        .fail(function () {
+          if (_scrollPageNo == 1) {
+            setEmptyPage(el)
+          }
+        });
+    }
+    /*****模板渲染*****/
+    function render(data,el) {
+      var status = {
+        "20": "报名中",
+        "30": "进行中",
+        "40": "已结束",
+      };
+      // 活动状态 20报名中 30 进行中 40 已经结束
+      template.defaults.imports.formatStatus = function (state) {
+        return status[state];
+      };
+
+      var html = template("myActivityTpl", {
+        list: data,
+      });
+      el.append(html);
+    }
+  </script>
+</html>

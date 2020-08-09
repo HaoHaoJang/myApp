@@ -15,7 +15,8 @@ $(".back").click(function () {
     (n.addEventListener(o, a, !1),
     e.addEventListener("DOMContentLoaded", a, !1));
 })(window);
-var domain = "http://121.196.21.9/ekp";
+// var domain = "http://121.196.21.9/ekp";
+var domain = " http://www.haomge.com";
 // 全局template配置格式化url
 template.defaults.imports.domain = domain;
 
@@ -165,6 +166,16 @@ function setScrollPage() {
     setLoadFinish();
   }
 }
+function setEmptyPage(el) {
+  var a =
+    '<div class="empty"><i class="icon icon-empty iconfont"></i><p>暂无数据</p></div>';
+  $(el).html(a);
+  $(".weui-loadmore").hide();
+}
+function removeEmptyPage(el) {
+  $(el).html("");
+  $(".weui-loadmore").show();
+}
 /**
  * 滚动加载
  * @param {} callback
@@ -178,7 +189,7 @@ function pageScroll(callback, pageNo, total) {
       callback();
     });
 }
-function dateFormat(fmt, date) {
+function dateFormat(date, fmt) {
   let ret;
   const opt = {
     "y+": date.getFullYear().toString(), // 年
